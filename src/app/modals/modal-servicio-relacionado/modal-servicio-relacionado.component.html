@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Seleccionar Campo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-item>
+    <ion-label position="stacked">Buscar campo</ion-label>
+    <ion-input
+      type="text"
+      [(ngModel)]="busqueda"
+      placeholder="Escribe el nombre del campo...">
+    </ion-input>
+  </ion-item>
+
+  <ion-list>
+    <ion-item
+      *ngFor="let servicio of serviciosFiltrados"
+      button
+      (click)="seleccionar(servicio.nombre)"
+      [class.seleccionado]="servicio.nombre === campoSeleccionado">
+      {{ servicio.nombre }}
+    </ion-item>
+  </ion-list>
+
+  <ion-button
+    expand="block"
+    color="primary"
+    *ngIf="campoSeleccionado"
+    (click)="agregarCampo()">
+    Agregar "{{ campoSeleccionado }}"
+  </ion-button>
+
+</ion-content>

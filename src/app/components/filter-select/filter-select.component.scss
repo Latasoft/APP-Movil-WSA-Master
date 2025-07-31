@@ -1,0 +1,32 @@
+ion-checkbox {
+  --background: transparent;
+  --border-radius: 0 !important;
+  --border-width: 2px;
+  --border-color: #15395b;
+  width: 1.7rem;
+  height: 1.7rem;
+  --background-checked: #15395b;
+  --checkmark-color: #fff;
+  --border-color-checked: #15395b;
+}
+
+ion-label {
+  color: #15395b !important;
+  font-weight: 700;
+  font-size: 1.25em;
+}
+
+ion-searchbar,
+ion-searchbar::part(native),
+ion-searchbar::part(container),
+ion-searchbar input {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+}
+
+ion-label ion-icon[name="person-outline"] {
+  color: #15395b !important;
+  font-size: 1.35em;
+  vertical-align: middle;
+  margin-right: 8px;
+}

@@ -1,0 +1,60 @@
+<ion-header style="--background: #1e3a8a !important; background: #1e3a8a !important; background-color: #1e3a8a !important;">
+  <ion-toolbar style="--background: #1e3a8a !important; background: #1e3a8a !important; background-color: #1e3a8a !important; --color: #ffffff !important; color: #ffffff !important;">
+    <ion-buttons slot="start">
+      <ion-back-button 
+        style="--color: #ffffff !important; color: #ffffff !important;"
+        text="" 
+        icon="arrow-back-outline" 
+        defaultHref="/">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title style="--color: #ffffff !important; color: #ffffff !important; text-transform: uppercase; font-weight: 700; letter-spacing: 1.5px; font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif; font-size: 1.4rem; text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);">
+      GESTIÓN DE EMBARCACIONES
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button 
+        (click)="logout()" 
+        class="logout-btn"
+        style="--color: #ffffff !important; color: #ffffff !important;">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" fullscreen style="--background: #ffffff !important; background: #ffffff !important;">
+  <!-- Barra de búsqueda mejorada -->
+  <div class="search-container">
+    <ion-searchbar
+      placeholder="Buscar embarcaciones por nombre, tipo o estado..."
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterEmbarcaciones($event)"
+      class="enhanced-searchbar"
+      debounce="300">
+    </ion-searchbar>
+  </div>
+
+  <!-- Botón flotante de nueva embarcación -->
+  <div class="floating-action-button" *ngIf="rolUsuario === 'ADMINISTRADOR'">
+    <ion-button class="fab-new-vessel" routerLink="/embarcaciones">
+      <ion-icon name="boat-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Lista reutilizable -->
+  <app-lista-embarcaciones-base
+    [properties]="listaEmbarcacionesFiltradas"
+    [RolUsuario]="rolUsuario"
+    [link]="paginaANavegar"
+    [page]="page"
+    [limit]="limit"
+    [total]="total"
+    (pageChange)="onPageChange($event)"
+    (embarcacionDeleted)="handleEmbarcacionDeleted($event)">
+  </app-lista-embarcaciones-base>
+</ion-content>
+
+<!-- Footer de navegación -->
+<app-footer-navegacion 
+  style="position: fixed; bottom: 0; left: 0; right: 0; z-index: 1000;">
+</app-footer-navegacion>

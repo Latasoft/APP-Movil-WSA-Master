@@ -1,0 +1,286 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/lista-embarcaciones">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>{{ isEditMode ? 'Actualizar Embarcación' : 'Registrar Embarcación' }}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding fondo-marino">
+  <form [formGroup]="embarcacionForm">
+    
+    <ion-card class="info-card-embarcacion">
+      <ion-card-header>
+        <ion-card-title class="titulo-centrado titulo-embarcacion-azul">Información de la Embarcación</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Selector de Empresa Cliente (CORREGIDO) -->
+        <ion-item>
+          <ion-label><ion-icon name="business-outline" style="margin-right: 8px;"></ion-icon>Empresa Cliente</ion-label>
+          <ion-select formControlName="empresa_cliente_id" (ionChange)="onEmpresaChange($event)">
+            <ion-select-option *ngFor="let empresa of empresas" [value]="empresa._id">
+              {{ empresa.nombre_empresa }}
+            </ion-select-option>
+          </ion-select>
+        </ion-item>
+        <!-- Nombre Empresa Cliente (readonly) -->
+        <ion-item>
+          <ion-label position="stacked">Nombre Empresa Cliente</ion-label>
+          <ion-input formControlName="nombre_empresa_cliente" readonly></ion-input>
+        </ion-item>
+        <div class="form-grid">
+          <!-- Título de la Embarcación -->
+          <div class="form-item">
+            <ion-label position="stacked"><ion-icon name="document-text-outline" style="margin-right: 8px;"></ion-icon>Título de la Embarcación</ion-label>
+            <ion-input 
+              formControlName="titulo_embarcacion" 
+              placeholder="Ingrese el título">
+            </ion-input>
+          </div>
+          <!-- Destino Embarcación -->
+          <div class="form-item">
+            <ion-label position="stacked"><ion-icon name="navigate-outline" style="margin-right: 8px;"></ion-icon>Destino Embarcación</ion-label>
+            <ion-input 
+              formControlName="destino_embarcacion" 
+              placeholder="Ingrese el destino">
+            </ion-input>
+          </div>
+          <!-- País de la Embarcación -->
+          <div class="form-item">
+            <ion-label position="stacked"><ion-icon name="flag-outline" style="margin-right: 8px;"></ion-icon>País de la Embarcación</ion-label>
+            <ion-select formControlName="pais_embarcacion" placeholder="Seleccione el país">
+              <ion-select-option value="Argentina">Argentina</ion-select-option>
+              <ion-select-option value="Chile">Chile</ion-select-option>
+              <ion-select-option value="Uruguay">Uruguay</ion-select-option>
+              <ion-select-option value="Brasil">Brasil</ion-select-option>
+              <ion-select-option value="Perú">Perú</ion-select-option>
+              <ion-select-option value="Colombia">Colombia</ion-select-option>
+              <ion-select-option value="Ecuador">Ecuador</ion-select-option>
+              <ion-select-option value="Panamá">Panamá</ion-select-option>
+              <ion-select-option value="México">México</ion-select-option>
+              <ion-select-option value="Estados Unidos">Estados Unidos</ion-select-option>
+              <ion-select-option value="Canadá">Canadá</ion-select-option>
+              <ion-select-option value="NO DISPONIBLE">NO DISPONIBLE</ion-select-option>
+            </ion-select>
+          </div>
+          <!-- DA Número -->
+          <div class="form-item">
+            <ion-label position="stacked"><ion-icon name="pricetag-outline" style="margin-right: 8px;"></ion-icon>DA N°</ion-label>
+            <ion-input 
+              formControlName="da_numero" 
+              placeholder="EJ: DA-1234">
+            </ion-input>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card class="info-card-embarcacion">
+      <ion-card-header>
+        <ion-card-title class="titulo-centrado titulo-embarcacion-azul">Fechas de Operación</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <div class="fechas-grid">
+          <div class="fecha-item">
+            <ion-label position="stacked"><ion-icon name="calendar-outline" style="margin-right: 8px;"></ion-icon>Fecha Arribo</ion-label>
+            <ion-input 
+              type="date" 
+              formControlName="fecha_arribo">
+            </ion-input>
+          </div>
+          <div class="fecha-item">
+            <ion-label position="stacked"><ion-icon name="calendar-outline" style="margin-right: 8px;"></ion-icon>Fecha ETB</ion-label>
+            <ion-input 
+              type="date" 
+              formControlName="fecha_estimada_zarpe">
+            </ion-input>
+          </div>
+          <div class="fecha-item">
+            <ion-label position="stacked"><ion-icon name="calendar-outline" style="margin-right: 8px;"></ion-icon>Fecha Zarpe</ion-label>
+            <ion-input 
+              type="date" 
+              formControlName="fecha_zarpe">
+            </ion-input>
+          </div>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Sección de asignaciones -->
+    <ion-card class="info-card-embarcacion">
+      <ion-card-header>
+        <ion-card-title class="titulo-centrado titulo-embarcacion-azul">Asignaciones</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <!-- Sección de asignar trabajador (solo visible para administradores) -->
+        <div class="form-item" *ngIf="rolUsuario !== 'TRABAJADOR'">
+          <ion-label position="stacked">Asignar Trabajador</ion-label>
+          <div *ngIf="TRABAJADORes.length === 0" class="debug-info">
+            <p>🔄 Cargando trabajadores...</p>
+          </div>
+          <div *ngIf="TRABAJADORes.length > 0" class="debug-info success">
+            <!-- Texto de usuarios de tipo trabajador eliminado -->
+          </div>
+          <app-filter-select
+            [items]="TRABAJADORes"
+            placeholder="busca un trabajador aqui..."
+            itemTextField="username"
+            itemValueField="_id"
+            [multiple]="true"
+            [selected]="embarcacionForm.get('TRABAJADORes')?.value"
+            (selectedChange)="embarcacionForm.get('TRABAJADORes')?.setValue($event)">
+          </app-filter-select>
+        </div>
+        <div class="form-item toggle-item">
+          <ion-label>¿Embarcación Activada?</ion-label>
+          <ion-toggle formControlName="is_activated" class="marine-toggle"></ion-toggle>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+      <!-- Sección de servicios -->
+      <div class="info-section">
+        <div class="section-header">
+          <h2>Servicios Marítimos</h2>
+          <div class="section-subtitle">Seleccione los servicios requeridos</div>
+        </div>
+
+        <!-- Botón y select para agregar servicios -->
+        <div class="agregar-servicio-bar">
+          <ion-select
+            placeholder="Agregar servicio..."
+            interface="popover"
+            [value]="null"
+            (ionChange)="onServicioSelect($event)"
+            class="select-agregar-servicio"
+          >
+            <ion-select-option *ngFor="let servicio of servicios" [value]="servicio.nombre_servicio" [disabled]="selectedServicios.includes(servicio.nombre_servicio)">
+              {{ servicio.nombre_servicio }}
+            </ion-select-option>
+          </ion-select>
+        </div>
+
+        <!-- Mostrar Estados y Acciones -->
+        <div class="servicios-container">
+          <div *ngFor="let servicioCtrl of serviciosFormArray.controls; let i = index" class="servicio-card">
+            <div class="servicio-header" (click)="toggleExpand(i)">
+              <h3>{{ servicioCtrl.value.nombre_servicio }}</h3>
+              <ion-icon [name]="expandedServices[i] ? 'chevron-down-circle-outline' : 'chevron-up-circle-outline'"></ion-icon>
+              <ion-button fill="clear" color="danger" size="small" (click)="$event.stopPropagation(); quitarServicio(servicioCtrl.value.nombre_servicio)">
+                <ion-icon name="close-circle-outline"></ion-icon>
+              </ion-button>
+            </div>
+
+            <div *ngIf="expandedServices[i]" class="servicio-content">
+              <div *ngFor="let estadoCtrl of (getEstadosFormArray(servicioCtrl.value.nombre_servicio)?.controls || []); let j = index" class="estado-item">
+                
+                <div class="estado-header" (click)="toggleExpandEstado(i, j)">
+                  <h4>{{ estadoCtrl.value.nombre_estado }}</h4>
+                  <ion-icon [name]="expandedStates[i] && expandedStates[i][j] ? 'chevron-down-circle-outline' : 'chevron-up-circle-outline'"></ion-icon>
+                </div>
+
+                <div *ngIf="expandedStates[i] && expandedStates[i][j]" class="estado-content">
+                  <!-- Barra de búsqueda de acciones -->
+                  <div class="search-container">
+                    <ion-searchbar 
+                      placeholder="Buscar acciones..." 
+                      [formControl]="getSearchControl(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado)"
+                      debounce="300"
+                      class="marine-searchbar">
+                    </ion-searchbar>
+                  </div>
+
+                  <!-- Lista de acciones -->
+                  <div class="acciones-list">
+                    <div *ngFor="let accion of getFilteredAcciones(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado) | async" class="accion-item">
+                      <div class="accion-content">
+                        <ion-checkbox 
+                          (ionChange)="toggleAccion(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado, accion, $event)"
+                          [checked]="selectedAcciones[servicioCtrl.value.nombre_servicio] && selectedAcciones[servicioCtrl.value.nombre_servicio][estadoCtrl.value.nombre_estado].includes(accion.nombre)"
+                          [disabled]="selectedAcciones[servicioCtrl.value.nombre_servicio] && selectedAcciones[servicioCtrl.value.nombre_servicio][estadoCtrl.value.nombre_estado].includes(accion.nombre)"
+                          class="marine-checkbox">
+                        </ion-checkbox>
+                        
+                        <span class="accion-nombre">{{ accion.nombre }}</span>
+                        
+                        <ion-button 
+                          fill="clear" 
+                          size="small"
+                          (click)="toggleComentario(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado, accion.nombre)"
+                          class="btn-incidente">
+                          <ion-icon name="alert-circle-outline"></ion-icon>
+                        </ion-button>
+                      </div>
+                      
+                      <!-- Comentario de incidente -->
+                      <div *ngIf="mostrarComentario[servicioCtrl.value.nombre_servicio + '-' + estadoCtrl.value.nombre_estado + '-' + accion.nombre]" class="comentario-container">
+                        <ion-input
+                          [formControl]="getComentarioControl(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado, accion.nombre)"
+                          placeholder="Escribe un comentario de incidente"
+                          (ionInput)="actualizarEstadoIncidente(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado, accion.nombre, $event)"
+                          (ionChange)="actualizarEstadoIncidente(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado, accion.nombre, $event)"
+                          class="comentario-input">
+                        </ion-input>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <ion-button 
+                    expand="block" 
+                    (click)="agregarAccion(servicioCtrl.value.nombre_servicio, estadoCtrl.value.nombre_estado)"
+                    class="btn-agregar-accion">
+                    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+                    Agregar Acción
+                  </ion-button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        <!-- Botón de envío -->
+        <div class="submit-container">
+          <ion-button 
+            expand="block" 
+            type="button"
+            (click)="saveEmbarcacion()"
+            [disabled]="embarcacionForm.invalid"
+            class="btn-submit">
+            <ion-icon name="boat-outline" slot="start"></ion-icon>
+            {{ isEditMode ? 'Actualizar Embarcación' : 'Crear Embarcación' }}
+          </ion-button>
+        </div>
+      </form>
+    </ion-content>
+    
+<ion-footer>
+  <ion-toolbar class="vessels-footer-toolbar">
+    <ion-buttons slot="primary" class="vessels-footer-buttons">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="construct-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+    

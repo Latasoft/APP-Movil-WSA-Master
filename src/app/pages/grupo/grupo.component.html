@@ -1,0 +1,49 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-title class="ion-text-center">{{isEditMode ? 'Actualizar grupo': 'Crear nuevo grupo'}}</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/lista-grupos"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <form [formGroup]="grupoForm" class="form-container" (ngSubmit)="onSubmit()">
+
+    <ion-item lines="inset" class="input-item">
+      <ion-label position="floating">Nombre del Grupo</ion-label>
+      <ion-input formControlName="name" required></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" class="toggle-item">
+      <ion-label>¿Activado?</ion-label>
+      <ion-toggle formControlName="status" color="success"></ion-toggle>
+    </ion-item>
+
+    <div class="select-container">
+      <ion-label position="stacked">Seleccione TRABAJADORes</ion-label>
+      <app-filter-select
+        [items]="TRABAJADORes"
+        placeholder="Seleccione TRABAJADORes"
+        itemTextField="username"
+        itemValueField="_id"
+        [multiple]="true"
+        [selected]="grupoForm.get('members')?.value"
+        (selectedChange)="grupoForm.get('members')?.setValue($event)">
+      </app-filter-select>
+    </div>
+
+    <ion-button
+      expand="block"
+      type="submit"
+      [disabled]="grupoForm.invalid"
+      shape="round"
+      color="primary"
+      class="submit-button">
+      {{ isEditMode ? 'Actualizar Grupo' : 'Crear Grupo' }}
+    </ion-button>
+
+  </form>
+
+</ion-content>

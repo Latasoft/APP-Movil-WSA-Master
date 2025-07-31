@@ -1,0 +1,72 @@
+<ion-header >
+  <ion-toolbar >
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content  class="ion-padding">
+  <div class="profile-container">
+    <!-- Contenedor de la foto de perfil -->
+    <div class="photo-container" (click)="selectPhoto()">
+      <ion-img [src]="existFile || 'assets/logo-profile.svg'" alt="Foto de Perfil"></ion-img>
+      <!-- Overlay con icono de cámara -->
+      <div class="photo-overlay">
+        <ion-icon name="camera-outline" class="camera-icon"></ion-icon>
+      </div>
+      <!-- Input file oculto -->
+      <input type="file" accept="image/*" (change)="onFileSelected($event)" hidden #fileInput>
+    </div>
+
+    <!-- Formulario de perfil -->
+    <form [formGroup]="perfilForm" class="perfil-form">
+      <ion-item lines="full">
+        <!-- Solo mostramos el label externo si NO está activo el modo de cambio -->
+        <ion-label position="stacked" *ngIf="!cambiarNacionalidad">Nacionalidad</ion-label>
+      
+        <!-- 🔹 Muestra el valor actual como texto si no está en modo edición -->
+        <ion-input
+          *ngIf="!cambiarNacionalidad"
+          [value]="perfilForm.get('pais_cliente')?.value"
+          readonly>
+        </ion-input>
+      
+        <!-- 🔹 Selector interactivo al activar el check -->
+        <app-searchable-select
+          *ngIf="cambiarNacionalidad"
+          [items]="listaPaises"
+          label="Nacionalidad"
+          placeholder="Buscar país..."
+          (selectionChange)="onPaisSelected($event)">
+        </app-searchable-select>
+      </ion-item>
+      
+      <!-- Checkbox para activar el cambio -->
+      <ion-item lines="full">
+        <ion-label>Cambiar nacionalidad</ion-label>
+        <ion-checkbox
+          slot="end"
+          [checked]="cambiarNacionalidad"
+          (ionChange)="toggleCambiarNacionalidad($event)">
+        </ion-checkbox>
+      </ion-item>      
+      <ion-item lines="full">
+        <ion-label position="stacked">Nombre Cliente</ion-label>
+        <ion-input formControlName="nombre_cliente"></ion-input>
+      </ion-item>
+      <ion-item lines="full">
+        <ion-label position="stacked">Dato contacto cliente</ion-label>
+        <ion-input formControlName="dato_contacto_cliente"></ion-input>
+      </ion-item>
+    </form>
+
+    <!-- Botón para guardar cambios -->
+    <div class="button-container">
+      <ion-button expand="block" color="primary" (click)="actualizarinfromacion()">
+        Guardar
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

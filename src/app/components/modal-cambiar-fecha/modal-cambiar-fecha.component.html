@@ -1,0 +1,14 @@
+<ion-content class="ion-padding">
+  <ion-item>
+    <ion-label position="stacked">Selecciona nueva fecha</ion-label>
+    <ion-datetime
+      presentation="date"
+      locale="es-ES"
+      [(ngModel)]="nuevaFecha"
+      [value]="fechaActual">
+    </ion-datetime>
+  </ion-item>
+
+  <ion-button expand="block" color="success" (click)="guardar()">Guardar fecha</ion-button>
+  <ion-button expand="block" color="medium" (click)="cerrar()">Cancelar</ion-button>
+</ion-content>

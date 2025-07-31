@@ -1,0 +1,184 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>DETALLES DE LA NAVE</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <!-- Usamos ng-container para evitar quitar el ion-content del DOM -->
+  <ng-container *ngIf="!loading && embarcacion; else loadingTpl">
+
+    <div class="detalle-container">
+      <div class="titulo-seccion">
+        <ion-icon name="boat" class="icon-titulo"></ion-icon>
+        VESSEL INFORMATION
+      </div>
+      <ion-card class="vessel-card">
+        <ion-card-content *ngIf="embarcacion">
+          <div class="titulo-vessel">
+            <ion-icon name="boat" style="font-size: 1.2em; margin-right: 8px;"></ion-icon>
+            {{ embarcacion.titulo_embarcacion || '-' }}
+          </div>
+          <div class="vessel-list">
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="location"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">Puerto</div>
+                  <div class="valor-dato">{{ embarcacion.destino_embarcacion || '-' }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="flag"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">País</div>
+                  <div class="valor-dato">{{ getPaisFromPuerto(embarcacion.destino_embarcacion) }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="checkmark-circle"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">Estado</div>
+                  <div class="valor-dato">{{ embarcacion.estado_actual || '-' }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="time"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">ETA</div>
+                  <div class="valor-dato">{{ formatDate(embarcacion.fecha_arribo) }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="calendar"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">ETB</div>
+                  <div class="valor-dato">{{ formatDate(embarcacion.fecha_estimada_zarpe) }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="exit"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">ETD</div>
+                  <div class="valor-dato">{{ formatDate(embarcacion.fecha_zarpe) }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+            
+            <div class="vessel-item">
+              <div class="item-header">
+                <div class="item-icon">
+                  <ion-icon name="document"></ion-icon>
+                </div>
+                <div class="item-info">
+                  <div class="titulo-dato">DA ID</div>
+                  <div class="valor-dato">{{ embarcacion.da_numero || '-' }}</div>
+                </div>
+                <div class="item-arrow">
+                  <ion-icon name="chevron-forward"></ion-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-card-content>
+      </ion-card>
+    </div>
+
+    <!-- Sección de Servicios Principales -->
+    <div class="servicios-container" *ngIf="embarcacion?.services && embarcacion.services.length > 0">
+      <div class="titulo-seccion">
+        <ion-icon name="construct" class="icon-titulo"></ion-icon>
+        SERVICIOS PRINCIPALES
+      </div>
+      
+      <div class="servicios-cards">
+        <ion-card class="servicio-card" *ngFor="let servicio of embarcacion.services"
+                  (click)="openModal(servicio.main_service)">
+          <ion-card-content>
+            <div class="servicio-header">
+              <div class="servicio-info">
+                <ion-icon name="document-text" class="servicio-icon"></ion-icon>
+                <div class="servicio-texto">
+                  <h3 class="servicio-titulo">{{ servicio.main_service }}</h3>
+                  <p class="servicio-subtitle">{{ servicio.sub_services?.length || 0 }} subservicios</p>
+                </div>
+              </div>
+              <ion-icon name="chevron-forward" class="servicio-arrow"></ion-icon>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </div>
+    </div>
+
+  </ng-container>
+
+  <ng-template #loadingTpl>
+    <div class="loading-container">
+      <ion-spinner></ion-spinner>
+      <p>Cargando detalles del vessel...</p>
+    </div>
+  </ng-template>
+
+  <!-- Mensaje de error si no se encuentra la embarcación -->
+  <div *ngIf="!loading && !embarcacion" class="error-container">
+    <ion-icon name="alert-circle" class="error-icon"></ion-icon>
+    <h3>No se encontró la embarcación</h3>
+    <p>La embarcación con DA Nº {{ id }} no fue encontrada.</p>
+    <ion-button routerLink="/detalle-naves-cliente" color="primary">
+      <ion-icon name="arrow-back" slot="start"></ion-icon>
+      Volver a la lista
+    </ion-button>
+  </div>
+
+</ion-content>

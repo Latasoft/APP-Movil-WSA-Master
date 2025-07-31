@@ -1,0 +1,32 @@
+<ion-footer class="custom-footer">
+  <div class="footer-content">
+    <ion-buttons slot="start">
+      <ion-button (click)="navigateToVessels()">
+        <ion-icon name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="navigateToReports()">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button (click)="navigateToGroups()">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="confirmLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <button (click)="navigateToHome()" class="home-button">
+      <ion-icon name="home-outline"></ion-icon>
+    </button>
+  </div>
+</ion-footer>
+
+<!-- Alert para confirmación de logout -->
+<ion-alert
+  [isOpen]="isAlertOpen"
+  [header]="'logout' | translate"
+  [message]="'logoutMessage' | translate"
+  [buttons]="alertButtons"
+  (didDismiss)="setOpen(false)">
+</ion-alert>

@@ -1,0 +1,142 @@
+/* ANULAR ESTILOS GLOBALES ESPECÍFICAMENTE PARA EL FOOTER */
+:host {
+  /* Forzar que no haya estilos globales que interfieran */
+  ion-footer {
+    --background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background-color: #1e3a8a !important;
+    --ion-background-color: #1e3a8a !important;
+  }
+  
+  ion-toolbar {
+    --background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background-color: #1e3a8a !important;
+    --ion-background-color: #1e3a8a !important;
+    --color: #ffffff !important;
+    color: #ffffff !important;
+    --ion-text-color: #ffffff !important;
+  }
+  
+  /* Forzar colores en todos los elementos del footer */
+  ion-footer * {
+    color: rgba(255, 255, 255, 0.7) !important;
+  }
+  
+  /* Elementos activos en calipso */
+  .footer-item.activo {
+    color: #008BA3 !important;
+    
+    ion-icon {
+      color: #008BA3 !important;
+    }
+  }
+}
+
+.footer-nav {
+  position: fixed !important;
+  bottom: 0 !important;
+  width: 100% !important;
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+  background-color: #1e3a8a !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15) !important;
+  z-index: 1000 !important;
+  backdrop-filter: blur(10px) !important;
+  height: 60px !important;
+  
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, #008BA3, #00ACC1, #008BA3) !important;
+  }
+}
+
+.footer-flex {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 8px 16px !important;
+  min-height: 50px !important;
+  background: transparent !important;
+}
+
+.footer-item {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  color: rgba(255, 255, 255, 0.7) !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  font-family: 'Teko', 'Arial', sans-serif !important;
+  letter-spacing: 0.3px !important;
+  transition: all 0.3s ease !important;
+  cursor: pointer !important;
+  padding: 6px 10px !important;
+  border-radius: 10px !important;
+  position: relative !important;
+  overflow: hidden !important;
+  background: transparent !important;
+  
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: -100% !important;
+    width: 100% !important;
+    height: 100% !important;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+    transition: left 0.5s ease !important;
+  }
+  
+  &:hover {
+    color: #ffffff !important;
+    transform: translateY(-1px) !important;
+    
+    &::before {
+      left: 100% !important;
+    }
+  }
+  
+  &:active {
+    transform: scale(0.95) !important;
+  }
+
+  ion-icon {
+    font-size: 20px !important;
+    margin-bottom: 2px !important;
+    transition: all 0.3s ease !important;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2)) !important;
+    color: rgba(255, 255, 255, 0.7) !important;
+    font-weight: bold !important;
+  }
+
+  &.activo {
+    color: #008BA3 !important;
+    font-weight: 700 !important;
+    
+    ion-icon {
+      color: #008BA3 !important;
+      transform: scale(1.05) !important;
+      filter: drop-shadow(0 3px 6px rgba(0, 139, 163, 0.4)) !important;
+      font-weight: bold !important;
+    }
+    
+    &::after {
+      content: '' !important;
+      position: absolute !important;
+      bottom: -1px !important;
+      left: 50% !important;
+      transform: translateX(-50%) !important;
+      width: 16px !important;
+      height: 2px !important;
+      background: #008BA3 !important;
+      border-radius: 1px !important;
+    }
+  }
+}

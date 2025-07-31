@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar class="custom-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="toolbar-title">Generar Reporte</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding custom-content">
+  <div class="subtitle">
+    Selecciona el tipo de reporte que deseas generar
+  </div>
+
+  <div class="card-container">
+    <div class="report-card">
+      <h3 class="report-title">Total Vessel's Reports</h3>
+      <p class="report-subtitle">Reporte completo de todas las embarcaciones</p>
+      <button class="select-btn" (click)="goToTotalVesselsReports()">
+        <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
+        Seleccionar
+      </button>
+    </div>
+
+    <div class="report-card">
+      <h3 class="report-title">Vessel's by Customer</h3>
+      <p class="report-subtitle">Embarcaciones agrupadas por cliente</p>
+      <button class="select-btn" (click)="goToCustom()">
+        <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
+        Seleccionar
+      </button>
+    </div>
+
+    <div class="report-card">
+      <h3 class="report-title">Vessel's by Country</h3>
+      <p class="report-subtitle">Embarcaciones agrupadas por país</p>
+      <button class="select-btn" (click)="goToVesselsByCountry()">
+        <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
+        Seleccionar
+      </button>
+    </div>
+
+    <div class="report-card">
+      <h3 class="report-title">Vessel's Reports</h3>
+      <p class="report-subtitle">Reportes generales de embarcaciones</p>
+      <button class="select-btn" (click)="goToVesselsReports()">
+        <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
+        Seleccionar
+      </button>
+    </div>
+
+    <div class="report-card">
+      <h3 class="report-title">Vessel's by Services</h3>
+      <p class="report-subtitle">Embarcaciones agrupadas por servicios</p>
+      <button class="select-btn" (click)="goToVesselsByServices()">
+        <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
+        Seleccionar
+      </button>
+    </div>
+
+    <div class="report-card">
+      <h3 class="report-title">Vessel's by Operator</h3>
+      <p class="report-subtitle">Embarcaciones agrupadas por operador</p>
+      <button class="select-btn" (click)="goToVesselsByOperator()">
+        <ion-icon name="document-text-outline" class="btn-icon"></ion-icon>
+        Seleccionar
+      </button>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="custom-footer">
+    <ion-buttons slot="primary">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="document-text-outline" class="mint-icon"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>
+
+

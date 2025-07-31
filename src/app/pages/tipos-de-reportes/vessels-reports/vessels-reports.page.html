@@ -1,0 +1,117 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/" text="" icon="arrow-back-outline" style="color: #fff;"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="vessels-clone-title">Vessel's Reports</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="vessels-clone-bg">
+  <div class="vessels-clone-center">
+    <ion-card class="vessels-clone-card">
+      <ion-card-content>
+        <div class="vessels-clone-title-main">VESSEL'S REPORTS</div>
+        <div class="vessels-clone-section">
+          <ion-label class="vessels-clone-label"><ion-icon name="calendar-outline"></ion-icon> FROM:</ion-label>
+          <ion-input class="vessels-clone-input" type="date" [(ngModel)]="fechaDesdeStr"></ion-input>
+        </div>
+        <div class="vessels-clone-section">
+          <ion-label class="vessels-clone-label"><ion-icon name="calendar-outline"></ion-icon> TO:</ion-label>
+          <ion-input class="vessels-clone-input" type="date" [(ngModel)]="fechaHastaStr"></ion-input>
+        </div>
+        <ion-card class="vessels-clone-summary">
+          <ion-card-content>
+            <div class="vessels-clone-summary-title">TOTAL VESSELS</div>
+            <div class="vessels-clone-summary-value">{{ totalVessels }}</div>
+            <div class="vessels-clone-summary-label">VESSELS: <span>{{ isAllVesselsSelected() ? 'ALL' : vesselsSeleccionados.join(', ') }}</span></div>
+            <div class="vessels-clone-summary-label">DA N°: <span>{{ daNumeroSeleccionado || 'ALL' }}</span></div>
+          </ion-card-content>
+        </ion-card>
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle">Escribir DA N°:</div>
+          <ion-input class="vessels-clone-input" type="text" placeholder="Ingrese DA N° (ej: 2023)" [(ngModel)]="daNumeroSeleccionado" (ionInput)="filtrarTodo()"></ion-input>
+        </div>
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle">Seleccionar Vessel:</div>
+          <ion-card class="vessels-clone-list-card">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox slot="start" [checked]="isAllVesselsSelected()" (ionChange)="toggleAllVessels()"></ion-checkbox>
+                <ion-label>ALL</ion-label>
+              </ion-item>
+              <ion-item *ngFor="let vessel of vesselsUnicos">
+                <ion-checkbox slot="start" [checked]="vesselsSeleccionados.includes(vessel)" (ionChange)="toggleVessel(vessel)"></ion-checkbox>
+                <ion-label>{{ vessel }}</ion-label>
+                <ion-icon name="boat-outline" slot="end" style="margin-left:auto;"></ion-icon>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle">Puerto (Auto-llenado):</div>
+          <ion-card class="vessels-clone-list-card">
+            <ion-list>
+              <ion-item>
+                <ion-checkbox slot="start" [checked]="isAllPuertosSelected()" (ionChange)="toggleAllPuertos()"></ion-checkbox>
+                <ion-label>ALL</ion-label>
+              </ion-item>
+              <ion-item *ngFor="let puerto of puertosUnicos">
+                <ion-checkbox slot="start" [checked]="puertosSeleccionados.includes(puerto)" (ionChange)="togglePuerto(puerto)"></ion-checkbox>
+                <ion-label>{{ puerto }}</ion-label>
+                <ion-icon name="location-outline" slot="end" style="margin-left:auto;"></ion-icon>
+              </ion-item>
+            </ion-list>
+          </ion-card>
+        </div>
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle vessels-clone-subtitle-format">
+            Formato de Reporte
+            <ion-icon name="logo-microsoft" class="icon-excel"></ion-icon>
+            <ion-icon name="document-text-outline" class="icon-pdf"></ion-icon>
+          </div>
+          <ion-item>
+            <ion-label>Formato de Reporte</ion-label>
+            <ion-select placeholder="Seleccionar formato" [(ngModel)]="formatoReporte">
+              <ion-select-option value="excel">Excel</ion-select-option>
+              <ion-select-option value="pdf">PDF</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div *ngIf="mensajeNoResultados" class="mensaje-no-resultados">{{ mensajeNoResultados }}</div>
+        <div class="vessels-clone-buttons">
+          <ion-button expand="block" fill="outline" color="dark" (click)="limpiarFiltros()" class="vessels-clone-btn-outline">Limpiar Filtros</ion-button>
+          <ion-button expand="block" color="light" (click)="generarReporte()" class="vessels-clone-btn-solid" [disabled]="embarcacionesFiltradas.length === 0">Generar Reporte</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="vessels-footer-toolbar">
+    <ion-buttons slot="primary" class="vessels-footer-buttons">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="construct-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

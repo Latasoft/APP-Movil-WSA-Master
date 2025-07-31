@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Acciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cancelar()">Cancelar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-item lines="none" class="ion-text-center hint-item">
+    <ion-label color="medium">
+      Mantén presionado
+      <ion-icon name="reorder-three-outline" color="primary"></ion-icon>
+      y arrastra para reordenar
+    </ion-label>
+  </ion-item>
+
+  <ion-reorder-group (ionItemReorder)="reorderActions($event)" [disabled]="false" class="reorder-container">
+    <div class="accion-box" *ngFor="let accion of acciones; let i = index">
+
+      <!-- Título de la acción -->
+      <div class="accion-titulo">
+        <ion-reorder>
+          <ion-icon name="reorder-three-outline" size="small"></ion-icon>
+        </ion-reorder>
+        <span>{{ accion.nombre }}</span>
+        <ion-badge color="tertiary">{{ accion.orden }}</ion-badge>
+      </div>
+
+      <!-- Fila de datos -->
+      <div class="accion-row">
+        <ion-input
+          type="date"
+          [(ngModel)]="accion.fecha"
+          class="accion-fecha">
+        </ion-input>
+
+        <ion-textarea
+          placeholder="Comentario"
+          [(ngModel)]="accion.comentario"
+          class="accion-comentario">
+        </ion-textarea>
+
+        <ion-checkbox
+          [(ngModel)]="accion.incidente"
+          class="accion-checkbox">
+        </ion-checkbox>
+      </div>
+    </div>
+  </ion-reorder-group>
+
+  <ion-button expand="full" class="confirm-button" (click)="confirmar()">
+    Confirmar
+  </ion-button>
+</ion-content>

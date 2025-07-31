@@ -1,0 +1,59 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Nuevo Cliente</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrar()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <ion-list>
+    <ion-item>
+      <ion-input label="Empresa" [(ngModel)]="cliente.nombre_empresa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="País" [(ngModel)]="cliente.pais"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Dirección" [(ngModel)]="cliente.direccion"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Teléfono" [(ngModel)]="cliente.telefono"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-input label="Correo institucional" [(ngModel)]="cliente.correo"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <ion-text color="primary"><h4>Contacto Operativo</h4></ion-text>
+  <ion-item>
+    <ion-input label="Nombre" [(ngModel)]="cliente.contacto_operativo.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Cargo" [(ngModel)]="cliente.contacto_operativo.cargo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Correo" [(ngModel)]="cliente.contacto_operativo.correo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Teléfono" [(ngModel)]="cliente.contacto_operativo.telefono"></ion-input>
+  </ion-item>
+
+  <ion-text color="primary"><h4>Contacto DA</h4></ion-text>
+  <ion-item>
+    <ion-input label="Nombre" [(ngModel)]="cliente.contacto_da.nombre"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Cargo" [(ngModel)]="cliente.contacto_da.cargo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Correo" [(ngModel)]="cliente.contacto_da.correo"></ion-input>
+  </ion-item>
+  <ion-item>
+    <ion-input label="Teléfono" [(ngModel)]="cliente.contacto_da.telefono"></ion-input>
+  </ion-item>
+
+  <ion-button expand="block" color="success" (click)="guardar()">Guardar</ion-button>
+</ion-content>

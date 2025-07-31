@@ -1,0 +1,157 @@
+<ion-header class="ion-no-border" style="--background: #14213d !important; background: #14213d !important; background-color: #14213d !important;">
+  <ion-toolbar style="--background: #14213d !important; background: #14213d !important; background-color: #14213d !important; --color: #ffffff !important; color: #ffffff !important;">
+    <ion-buttons slot="start">
+      <ion-back-button 
+        style="--color: #ffffff !important; color: #ffffff !important;"
+        defaultHref="/home">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>GESTIÓN DE USUARIOS</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="custom-content" fullscreen>
+  
+  <!-- Barra de búsqueda mejorada -->
+  <div class="search-container">
+    <ion-searchbar 
+      [(ngModel)]="searchTerm"
+      (ionInput)="filterUsers($event.detail.value || '')"
+      placeholder="🔍 Buscar usuarios por nombre, email o rol..."
+      show-clear-button="focus"
+      animated="true"
+      debounce="300"
+      class="search-bar">
+      <ion-icon name="search-outline" slot="start"></ion-icon>
+    </ion-searchbar>
+  </div>
+
+  <!-- Filtros rápidos mejorados -->
+  <div class="quick-filters">
+    <ion-chip 
+      (click)="filterByQuickRole('')" 
+      [color]="selectedRole === '' ? 'primary' : 'medium'"
+      class="filter-chip"
+      [class.active]="selectedRole === ''">
+      <ion-icon name="people-outline"></ion-icon>
+      <ion-label>Todos</ion-label>
+      <div class="filter-count">{{ getTotalCount() }}</div>
+    </ion-chip>
+    
+    <ion-chip 
+      (click)="filterByQuickRole('ADMINISTRADOR')" 
+      [color]="selectedRole === 'ADMINISTRADOR' ? 'primary' : 'medium'"
+      class="filter-chip"
+      [class.active]="selectedRole === 'ADMINISTRADOR'">
+      <ion-icon name="shield-outline"></ion-icon>
+      <ion-label>Administradores</ion-label>
+      <div class="filter-count">{{ getAdminCount() }}</div>
+    </ion-chip>
+    
+    <ion-chip 
+      (click)="filterByQuickRole('CLIENTE')" 
+      [color]="selectedRole === 'CLIENTE' ? 'primary' : 'medium'"
+      class="filter-chip"
+      [class.active]="selectedRole === 'CLIENTE'">
+      <ion-icon name="business-outline"></ion-icon>
+      <ion-label>Clientes</ion-label>
+      <div class="filter-count">{{ getClientCount() }}</div>
+    </ion-chip>
+    
+    <ion-chip 
+      (click)="filterByQuickRole('TRABAJADOR')" 
+      [color]="selectedRole === 'TRABAJADOR' ? 'primary' : 'medium'"
+      class="filter-chip"
+      [class.active]="selectedRole === 'TRABAJADOR'">
+      <ion-icon name="construct-outline"></ion-icon>
+      <ion-label>Trabajadores</ion-label>
+      <div class="filter-count">{{ getWorkerCount() }}</div>
+    </ion-chip>
+    
+    <ion-chip 
+      (click)="filterByQuickRole('ASISTENTE')" 
+      [color]="selectedRole === 'ASISTENTE' ? 'primary' : 'medium'"
+      class="filter-chip"
+      [class.active]="selectedRole === 'ASISTENTE'">
+      <ion-icon name="person-add-outline"></ion-icon>
+      <ion-label>Asistentes</ion-label>
+      <div class="filter-count">{{ getAssistantCount() }}</div>
+    </ion-chip>
+    
+    <ion-chip 
+      (click)="filterByQuickRole('ADMINISTRATIVO')" 
+      [color]="selectedRole === 'ADMINISTRATIVO' ? 'primary' : 'medium'"
+      class="filter-chip"
+      [class.active]="selectedRole === 'ADMINISTRATIVO'">
+      <ion-icon name="document-text-outline"></ion-icon>
+      <ion-label>Administrativos</ion-label>
+      <div class="filter-count">{{ getAdministrativeCount() }}</div>
+    </ion-chip>
+  </div>
+
+  <!-- Botón flotante de nuevo usuario -->
+  <div class="floating-action-button">
+    <ion-button class="fab-new-user" (click)="nuevoUsuario()">
+      <ion-icon name="person-add-outline"></ion-icon>
+    </ion-button>
+  </div>
+
+  <!-- Lista de usuarios mejorada -->
+  <div class="users-container">
+    <!-- Mensaje cuando no hay usuarios -->
+    <div *ngIf="filteredUsers.length === 0" class="no-users">
+      <ion-icon name="people-outline"></ion-icon>
+      <h3>No se encontraron usuarios</h3>
+      <p>Intenta ajustar los filtros de búsqueda</p>
+    </div>
+
+    <!-- Lista de usuarios -->
+    <div class="users-grid" *ngIf="filteredUsers.length > 0">
+      <div class="user-card" *ngFor="let user of filteredUsers; trackBy: trackByUserId">
+        <div class="card-header">
+          <div class="user-avatar">
+            <ion-icon name="person-circle-outline"></ion-icon>
+          </div>
+          <div class="user-info">
+            <h3 class="username">{{ user.username }}</h3>
+            <span class="user-role">{{ user.tipo_usuario }}</span>
+          </div>
+          <div class="card-actions">
+            <ion-button 
+              fill="clear" 
+              (click)="openOptions(user)"
+              class="options-btn">
+              <ion-icon name="ellipsis-vertical-outline"></ion-icon>
+            </ion-button>
+          </div>
+        </div>
+        
+        <div class="card-content">
+          <div class="user-details">
+            <div class="detail-item">
+              <ion-icon name="mail-outline"></ion-icon>
+              <span>{{ user.email || 'Sin email' }}</span>
+            </div>
+            <div class="detail-item">
+              <ion-icon name="business-outline"></ion-icon>
+              <span>{{ (user.tipo_usuario === 'ADMINISTRADOR' || user.tipo_usuario === 'TRABAJADOR' || user.tipo_usuario === 'ADMINISTRATIVO' || user.tipo_usuario === 'ASISTENTE') ? 'Wsa-Agencies' : (user.empresa_cliente || 'Sin empresa') }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Paginación -->
+  <div class="pagination-container" *ngIf="totalPages > 1">
+    <app-paginacion
+      [page]="currentPage"
+      [total]="totalUsers"
+      [limit]="limit"
+      (pageChange)="onPageChange($event)">
+    </app-paginacion>
+  </div>
+</ion-content>
+
+<!-- Footer de navegación -->
+<app-shared-footer></app-shared-footer>

@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Historial de Descargas</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Spinner mientras carga -->
+  <ng-container *ngIf="isLoading; else content">
+    <div class="loading-container">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  </ng-container>
+
+  <!-- Contenido principal -->
+  <ng-template #content>
+    <ion-list *ngIf="solicitudes.length > 0; else noData">
+      <ion-item *ngFor="let solicitud of solicitudes" lines="full" class="solicitud-item">
+        <ion-label>
+          <h2>{{ solicitud.solicitante?.username || 'Solicitante desconocido' }}</h2>
+          <div class="datos-solicitud">
+            <p><strong>Inicio:</strong> {{ solicitud.rango_fecha_inicio | date: 'dd/MM/yyyy' : 'UTC' }}</p>
+<p><strong>Término:</strong> {{ solicitud.rango_fecha_termino | date: 'dd/MM/yyyy' : 'UTC' }}</p>
+<p><strong>Descargado:</strong> {{ solicitud.fecha_descarga | date: 'dd/MM/yyyy' : 'UTC' }}</p>
+
+          </div>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    
+
+    <!-- Sin datos -->
+    <ng-template #noData>
+      <div class="no-data">
+        <p>No hay registros de descargas disponibles.</p>
+      </div>
+    </ng-template>
+  </ng-template>
+
+</ion-content>
+ <app-footer-navegacion [activo]="'Embarcaciones'"></app-footer-navegacion>

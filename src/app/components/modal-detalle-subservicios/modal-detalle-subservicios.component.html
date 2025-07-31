@@ -1,0 +1,78 @@
+<div class="modal-overlay">
+  <div class="modal-container">
+    <div class="modal-header">
+      <h2 class="modal-title">{{ mainServiceName }}</h2>
+      <button class="close-button" (click)="close()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </div>
+
+    <div class="table-container">
+      <div class="table-header">
+        <h3 class="table-title">
+          <ion-icon name="document-text-outline"></ion-icon>
+          DETALLE DE SUBSERVICIOS
+        </h3>
+      </div>
+
+      <div class="subservice-data-cards">
+        <div class="data-header">
+          <div class="header-main">
+            <div class="header-icon">
+              <ion-icon name="analytics-outline"></ion-icon>
+            </div>
+            <div class="header-text">
+              <h3 class="data-title">DETALLE ESTRUCTURADO</h3>
+              <p class="data-subtitle">Información completa de cada subservicio</p>
+            </div>
+          </div>
+          <div class="header-summary">
+            <div class="summary-item resumen-subservicios">
+              <span class="summary-number">{{ subservices.length }}</span>
+              <span class="summary-label">Subservicios</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="data-container">
+          <div class="data-card mejorada" *ngFor="let s of subservices; let i = index">
+            <div class="card-header-mejorado">
+              <div class="card-header-icon">
+                <ion-icon name="document-text-outline"></ion-icon>
+              </div>
+              <div class="card-header-title">
+                <span class="card-header-index">#{{ i + 1 }}</span>
+                <span class="card-header-nombre">{{ s.sub_service || s.nombre }}</span>
+              </div>
+              <ion-checkbox [(ngModel)]="s.selected" name="sub_{{i}}"></ion-checkbox>
+              <span class="status-badge badge-esquina" [ngClass]="getStatusColor(s.estado)">
+                <ion-icon *ngIf="s.estado?.toLowerCase() === 'completado'" name="checkmark-circle-outline"></ion-icon>
+                <ion-icon *ngIf="s.estado?.toLowerCase() === 'pendiente'" name="alert-circle-outline"></ion-icon>
+                <ion-icon *ngIf="s.estado?.toLowerCase() === 'en_progreso'" name="time-outline"></ion-icon>
+                {{ s.estado ? s.estado.toUpperCase() : '-' }}
+              </span>
+            </div>
+            <div class="card-body-mejorado">
+              <div class="info-row">
+                <ion-icon name="calendar-outline"></ion-icon>
+                <span class="info-label">Fecha de Modificación:</span>
+                <span class="info-value">{{ formatDate(s.fecha_modificacion) }}</span>
+              </div>
+              <div class="info-row">
+                <ion-icon name="chatbubble-ellipses-outline"></ion-icon>
+                <span class="info-label">Nota:</span>
+                <button class="note-button mejorada" (click)="verNota(s.nota, $event)" [disabled]="!s.nota || s.nota.trim() === ''" title="Ver nota">
+                  <ion-icon name="information-circle-outline"></ion-icon>
+                </button>
+                <span *ngIf="!s.nota || s.nota.trim() === ''" class="nota-vacia">Sin nota</span>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center; margin-top: 18px;">
+            <ion-button color="primary" (click)="confirmarSeleccion()">Agregar seleccionados</ion-button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

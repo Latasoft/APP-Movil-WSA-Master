@@ -1,0 +1,31 @@
+// For information on how to create your own theme, please see:
+// http://ionicframework.com/docs/theming/
+
+/* 1. Definimos una variable que recoge el valor real del notch/notch inset */
+:root {
+    /* recoge la altura real de la barra de estado / notch */
+  --ion-safe-area-top: env(safe-area-inset-top);
+  --ion-color-celeste: #00bcd4;
+  --ion-color-celeste-rgb: 0,188,212;
+  --ion-color-celeste-contrast: #fff;
+  --ion-color-celeste-contrast-rgb: 255,255,255;
+  --ion-color-celeste-shade: #0097a7;
+  --ion-color-celeste-tint: #33cde3;
+}
+  
+  /* 2. Aplicamos ese espacio al header y toolbar */
+  ion-header {
+    /* compatibilidad iOS antigua */
+    padding-top: constant(safe-area-inset-top);
+    /* estándar moderno */
+    padding-top: var(--ion-safe-area-top);
+  }
+  
+  ion-toolbar {
+    /* Quitamos la altura fija y usamos padding en su lugar */
+    padding-top: var(--ion-safe-area-top);
+    /* Mantenemos el contenido centrado en la parte visible */
+    display: flex;
+    align-items: center;
+  }
+  

@@ -1,0 +1,895 @@
+// Variables de tipografía marítima - Encapsuladas para evitar interferencias globales
+:host {
+  --ion-background-color: #ffffff !important;
+  --ion-text-color: #1a252f !important;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  
+  // Asegurar que los estilos marítimos solo se apliquen en esta página
+  * {
+    font-family: inherit;
+  }
+  
+  // Sobrescribir estilos globales para esta vista
+  ion-content {
+    --background: #ffffff !important;
+    background: #ffffff !important;
+  }
+  
+  ion-content .inner-scroll {
+    background: #ffffff !important;
+  }
+  
+  ion-content::part(scroll), 
+  ion-content .inner-scroll, 
+  ion-content .scroll-content,
+  ion-content .scroll-y,
+  ion-content .scroll-x {
+    background: #ffffff !important;
+  }
+  
+  ion-header {
+    --background: #ffffff !important;
+    background: #ffffff !important;
+  }
+  
+  ion-toolbar {
+    --background: #ffffff !important;
+    --color: #1a252f !important;
+    background: #ffffff !important;
+    color: #1a252f !important;
+  }
+  
+  ion-title {
+    --color: #1a252f !important;
+    color: #1a252f !important;
+    font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+    font-weight: 600 !important;
+    letter-spacing: 2px !important;
+  }
+  
+  ion-button {
+    --color: #1a252f !important;
+    color: #1a252f !important;
+  }
+  
+  // Forzar fondo blanco en toda la página
+  ion-app, ion-page {
+    --background: #ffffff !important;
+    background: #ffffff !important;
+  }
+  
+  // Asegurar que los estilos marítimos no afecten otros componentes
+  ion-content {
+    font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  }
+  
+  // Reset de fuentes para elementos específicos de esta página
+  .detalle-container,
+  .vessel-card,
+  .servicios-container,
+  .vessel-list,
+  .vessel-sections,
+  .vessel-cards-container {
+    font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  }
+  
+  // Contenedores y wrappers
+  .container, .wrapper, .content-wrapper, .page-wrapper {
+    background: #ffffff !important;
+    color: #1a252f !important;
+  }
+}
+
+.detalle-container {
+  animation: fadeIn 0.4s ease-in;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  margin-top: 20px;
+  padding: 0 16px;
+}
+
+.titulo-seccion {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6em;
+  font-weight: 600;
+  color: #1a252f;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+  gap: 10px;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+}
+.titulo-seccion .icon-titulo {
+  font-size: 1.3em;
+  color: #34495e;
+}
+
+// Estilos para la sección de servicios
+.servicios-container {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.servicios-cards {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.servicio-card {
+  border-radius: 16px !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.08) !important;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+  color: #1a252f !important;
+  border: 1px solid rgba(52, 73, 94, 0.1) !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  margin: 0 !important;
+  position: relative !important;
+  overflow: hidden !important;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #34495e, #5a6c7d, #34495e);
+    border-radius: 16px 16px 0 0;
+  }
+  
+  &:active {
+    transform: scale(0.98) !important;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.12) !important;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%) !important;
+    border-color: #34495e !important;
+  }
+}
+
+.servicio-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 14px 14px 14px !important;
+  gap: 12px;
+  position: relative;
+  z-index: 1;
+}
+
+.servicio-info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex: 1;
+}
+
+.servicio-icon {
+  font-size: 1.5em !important;
+  background: linear-gradient(135deg, #34495e, #5a6c7d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  min-width: 24px;
+  filter: drop-shadow(0 1px 1px rgba(52, 73, 94, 0.15));
+}
+
+.servicio-texto {
+  flex: 1;
+}
+
+.servicio-titulo {
+  font-size: 1.3em !important;
+  font-weight: 600 !important;
+  color: #1a252f !important;
+  margin: 0 0 4px 0 !important;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  letter-spacing: 1px !important;
+}
+
+.servicio-subtitle {
+  font-size: 0.9em !important;
+  color: #7f8c8d !important;
+  margin: 0 !important;
+  font-family: 'Orbitron', 'Courier New', monospace !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.5px !important;
+}
+
+.servicio-arrow {
+  font-size: 1.1em !important;
+  color: #bdc3c7 !important;
+  transition: all 0.2s ease !important;
+}
+
+.servicio-card:active .servicio-arrow {
+  color: #34495e !important;
+  transform: translateX(2px) !important;
+}
+
+.servicios-seccion {
+  margin-top: 24px;
+  color: #1a252f;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif;
+  font-weight: 600;
+  font-size: 1.3em;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.vessel-card {
+  border-radius: 16px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+  background: #ffffff !important;
+  color: #1a252f;
+  padding: 24px 20px 20px 20px;
+  margin-bottom: 0;
+  border: 1px solid #e9ecef;
+  max-width: 480px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  position: relative;
+  overflow: hidden;
+}
+
+.vessel-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #34495e, #5a6c7d, #34495e);
+}
+
+.titulo-vessel {
+  font-size: 2em;
+  font-weight: 700;
+  color: #1a252f;
+  text-align: center;
+  margin-bottom: 20px;
+  letter-spacing: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  line-height: 1.2;
+}
+
+.datos-block, .datos-lista {
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  color: #1a252f;
+}
+
+.vessel-list {
+  margin-top: 16px;
+}
+
+.vessel-item {
+  padding: 14px;
+  border-bottom: 1px solid rgba(52, 73, 94, 0.08);
+  transition: background 0.2s ease;
+  position: relative;
+  
+  &:active {
+    background: rgba(52, 73, 94, 0.02);
+    border-radius: 6px;
+    margin: 0 2px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+  
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(180deg, #34495e, #5a6c7d);
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  
+  &:active::before {
+    opacity: 1;
+  }
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+}
+
+.item-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #34495e, #5a6c7d);
+  color: #ffffff;
+  font-size: 1em;
+  flex-shrink: 0;
+  box-shadow: 0 1px 3px rgba(52, 73, 94, 0.15);
+  transition: all 0.2s ease;
+}
+
+.vessel-item:active .item-icon {
+  transform: scale(0.95);
+  box-shadow: 0 2px 5px rgba(52, 73, 94, 0.25);
+}
+
+.item-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.item-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #bdc3c7;
+  font-size: 1em;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.vessel-item:active .item-arrow {
+  color: #34495e;
+  transform: translateX(2px);
+}
+
+.vessel-section {
+  margin-bottom: 20px;
+  
+  .section-title {
+    font-size: 0.9em;
+    color: #7f8c8d;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    padding-left: 4px;
+    display: flex;
+    align-items: center;
+    font-weight: 600;
+    font-family: 'Russo One', 'Arial Black', sans-serif;
+  }
+  
+  .section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    
+    .fila-dato {
+      padding: 10px;
+      border-radius: 8px;
+      background: #ffffff;
+      border: 1px solid rgba(52, 73, 94, 0.08);
+      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, #34495e, #5a6c7d);
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+      
+      &:active {
+        transform: scale(0.98);
+        box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        border-color: #34495e;
+        
+        &::before {
+          opacity: 1;
+        }
+      }
+      
+      &:nth-child(odd) {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+        
+        &:hover {
+          background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+        }
+      }
+    }
+  }
+}
+
+.vessel-info-card {
+  padding: 16px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border: 1px solid rgba(52, 73, 94, 0.1);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #34495e, #5a6c7d, #34495e);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border-color: #34495e;
+    
+    &::before {
+      opacity: 1;
+    }
+  }
+  
+  &:nth-child(even) {
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    
+    &:hover {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    }
+  }
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #34495e, #5a6c7d);
+  color: #ffffff;
+  font-size: 1.2em;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(52, 73, 94, 0.2);
+  transition: all 0.3s ease;
+}
+
+.vessel-info-card:hover .card-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(52, 73, 94, 0.3);
+}
+
+.card-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+  .vessel-item {
+    padding: 12px 10px;
+    
+    &:active {
+      margin: 0 1px;
+      padding-left: 14px;
+      padding-right: 14px;
+    }
+  }
+  
+  .item-icon {
+    width: 32px;
+    height: 32px;
+    font-size: 0.9em;
+    border-radius: 6px;
+  }
+  
+  .item-header {
+    gap: 12px;
+  }
+  
+  .vessel-item .titulo-dato {
+    font-size: 0.75em;
+  }
+  
+  .vessel-item .valor-dato {
+    font-size: 1em;
+  }
+  
+  .item-arrow {
+    font-size: 1em;
+  }
+  
+    // Estilos para el layout anterior (mantenidos por compatibilidad)
+  .fila-dato {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 16px 12px;
+    border-radius: 12px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+    border: 1px solid rgba(52, 73, 94, 0.08);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #34495e, #5a6c7d);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+    
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      border-color: #34495e;
+      
+      &::before {
+        opacity: 1;
+      }
+    }
+    
+    &:nth-child(odd) {
+      background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+      
+      &:hover {
+        background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);
+      }
+    }
+  }
+
+.fila-dato:last-child {
+  border-bottom: none;
+}
+
+.titulo-dato {
+  font-weight: 600;
+  color: #7f8c8d;
+  font-size: 0.9em;
+  letter-spacing: 1px;
+  font-family: 'Russo One', 'Arial Black', sans-serif;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.valor-dato {
+  color: #1a252f;
+  font-size: 1.2em;
+  font-weight: 600;
+  text-shadow: none;
+  text-align: left;
+  word-break: break-word;
+  font-family: 'Teko', 'Arial', sans-serif;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+}
+
+// Estilos específicos para las tarjetas individuales
+.vessel-info-card .titulo-dato {
+  font-size: 0.8em;
+  color: #7f8c8d;
+  margin-bottom: 4px;
+  display: block;
+  font-family: 'Russo One', 'Arial Black', sans-serif;
+  letter-spacing: 0.8px;
+}
+
+.vessel-info-card .valor-dato {
+  font-size: 1.1em;
+  font-weight: 600;
+  color: #1a252f;
+  line-height: 1.2;
+  font-family: 'Teko', 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+// Estilos específicos para las secciones
+.vessel-section .fila-dato {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.vessel-section .titulo-dato {
+  font-size: 0.75em;
+  color: #7f8c8d;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.vessel-section .valor-dato {
+  font-size: 1em;
+  font-weight: 600;
+  color: #2c3e50;
+  line-height: 1.2;
+  text-align: left;
+}
+
+// Estilos específicos para la lista
+.vessel-item .titulo-dato {
+  font-size: 0.9em;
+  color: #7f8c8d;
+  font-weight: 500;
+  letter-spacing: 0.8px;
+  margin-bottom: 2px;
+  font-family: 'Russo One', 'Arial Black', sans-serif;
+}
+
+.vessel-item .valor-dato {
+  font-size: 1.2em;
+  font-weight: 600;
+  color: #1a252f;
+  line-height: 1.2;
+  font-family: 'Teko', 'Arial', sans-serif;
+  letter-spacing: 0.5px;
+}
+
+.dato-simple {
+  background: none !important;
+  border: none !important;
+  color: #2c3e50 !important;
+  box-shadow: none !important;
+}
+
+// Cambiar el fondo del contenido
+ion-content {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+}
+
+// Cambiar el fondo del contenido interno
+ion-content .inner-scroll {
+  background: #ffffff !important;
+}
+
+// Sobrescribir estilos globales de cards
+ion-card {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+  color: #2c3e50 !important;
+  border: 1px solid #e9ecef !important;
+}
+
+// Sobrescribir estilos globales de lists
+ion-list {
+  background: transparent !important;
+  
+  ion-item {
+    --background: transparent !important;
+    --color: #2c3e50 !important;
+    background: transparent !important;
+    color: #2c3e50 !important;
+    
+    ion-label {
+      color: #2c3e50 !important;
+    }
+  }
+}
+
+// Sobrescribir estilos globales de badges
+ion-badge {
+  --background: #34495e !important;
+  --color: #ffffff !important;
+  background: #34495e !important;
+  color: #ffffff !important;
+}
+
+.loading-container, .error-container {
+  color: #1a252f;
+  font-family: 'Teko', 'Arial', sans-serif;
+  font-size: 1.1em;
+  letter-spacing: 0.5px;
+}
+
+.boton-detalle-centro {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  margin: 20px 0 0 0 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+// Estilos para el header
+ion-header {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+}
+
+ion-header ion-toolbar {
+  --background: #ffffff !important;
+  --color: #2c3e50 !important;
+  background: #ffffff !important;
+  color: #2c3e50 !important;
+  border-bottom: 1px solid rgba(52, 73, 94, 0.1);
+}
+
+ion-header ion-title {
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  font-weight: 600 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #1a252f !important;
+}
+
+ion-header ion-button {
+  --color: #1a252f !important;
+  color: #1a252f !important;
+}
+
+// Forzar fondo blanco en toda la aplicación para esta página
+ion-app {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+}
+
+ion-page {
+  --background: #ffffff !important;
+  background: #ffffff !important;
+}
+
+// Animaciones
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Reglas para evitar interferencias con estilos globales
+:host {
+  // Aislar estilos marítimos de otros componentes
+  ion-header:not(.detalle-nave-header) {
+    font-family: initial !important;
+  }
+  
+  ion-content:not(.detalle-nave-content) {
+    font-family: initial !important;
+  }
+  
+  // Asegurar que los estilos solo se apliquen en esta página
+  .detalle-container {
+    isolation: isolate;
+  }
+  
+  // Preservar estilos del modal global
+  .modal-detalle-subservicios {
+    font-family: initial !important;
+    
+    ion-header,
+    ion-toolbar,
+    ion-title,
+    ion-button {
+      font-family: initial !important;
+    }
+  }
+}
+
+// Responsive para móvil
+@media (max-width: 480px) {
+  .detalle-container {
+    padding: 0 12px;
+    margin-top: 16px;
+  }
+  
+  .vessel-card {
+    padding: 20px 16px 16px 16px;
+    border-radius: 12px;
+  }
+  
+  .titulo-vessel {
+    font-size: 1.4em;
+    margin-bottom: 16px;
+  }
+  
+  .titulo-seccion {
+    font-size: 1.2em;
+    margin-bottom: 16px;
+  }
+  
+  .servicios-container {
+    margin-top: 20px;
+  }
+  
+  .servicios-cards {
+    gap: 12px;
+  }
+  
+  .servicio-card {
+    border-radius: 12px !important;
+    
+    &::before {
+      border-radius: 12px 12px 0 0;
+    }
+    
+    &:active {
+      transform: scale(0.96) !important;
+    }
+  }
+  
+  .servicio-header {
+    padding: 12px 10px 10px 10px !important;
+    gap: 10px;
+  }
+  
+  .servicio-icon {
+    font-size: 1.3em !important;
+  }
+  
+  .servicio-titulo {
+    font-size: 0.95em !important;
+  }
+  
+  .servicio-subtitle {
+    font-size: 0.8em !important;
+  }
+  
+  .fila-dato {
+    padding: 12px 0 10px 0;
+  }
+  
+  .titulo-dato {
+    font-size: 0.9em;
+  }
+  
+  .valor-dato {
+    font-size: 0.95em;
+  }
+}

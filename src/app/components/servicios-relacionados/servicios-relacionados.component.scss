@@ -1,0 +1,69 @@
+/** Fuerza máxima para el botón personalizado, usando ::ng-deep y selectores específicos */
+:host ::ng-deep ion-button.btn-marino-anadir-servicio,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) {
+  --background: #15395b !important;
+  --color: #fff !important;
+  --border-radius: 0px !important;
+  --border-width: 2px !important;
+  --border-style: solid !important;
+  --border-color: #15395b !important;
+  background: #15395b !important;
+  color: #fff !important;
+  border-radius: 0px !important;
+  border-width: 2px !important;
+  border-style: solid !important;
+  border-color: #15395b !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+:host ::ng-deep ion-button.btn-marino-anadir-servicio ion-icon,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) ion-icon {
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
+  font-size: 1.4em !important;
+  margin-right: 6px !important;
+}
+
+/** Fuerza máxima para el icono blanco en el botón personalizado */
+:host ::ng-deep ion-button.btn-marino-anadir-servicio ion-icon,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) ion-icon,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio ion-icon svg,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) ion-icon svg,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio ion-icon svg path,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) ion-icon svg path {
+  color: #fff !important;
+  fill: #fff !important;
+  stroke: #fff !important;
+}
+
+/** Fuerza máxima para el botón sin bordes redondeados (cuadrado) */
+:host ::ng-deep ion-button.btn-marino-anadir-servicio,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+}
+
+:host ::ng-deep ion-button.btn-marino-anadir-servicio,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native),
+:host ::ng-deep ion-button.btn-marino-anadir-servicio button,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) button {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+}
+
+/** ULTRA-FUERZA: Borde cuadrado para el botón, sobrescribe cualquier global o Ionic */
+:host ::ng-deep ion-button.btn-marino-anadir-servicio,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native),
+:host ::ng-deep ion-button.btn-marino-anadir-servicio button,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio::part(native) button,
+:host ::ng-deep ion-button.btn-marino-anadir-servicio[expand],
+:host ::ng-deep ion-button.btn-marino-anadir-servicio[expand]::part(native) {
+  border-radius: 0px !important;
+  --border-radius: 0px !important;
+  border-top-left-radius: 0px !important;
+  border-top-right-radius: 0px !important;
+  border-bottom-left-radius: 0px !important;
+  border-bottom-right-radius: 0px !important;
+}

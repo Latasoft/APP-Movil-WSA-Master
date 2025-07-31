@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400">
+  <!-- Franjas rojas -->
+  <rect width="760" height="400" fill="#B22234"/>
+  <!-- Franjas blancas -->
+  <rect y="30.77" width="760" height="30.77" fill="white"/>
+  <rect y="92.31" width="760" height="30.77" fill="white"/>
+  <rect y="153.85" width="760" height="30.77" fill="white"/>
+  <rect y="215.38" width="760" height="30.77" fill="white"/>
+  <rect y="276.92" width="760" height="30.77" fill="white"/>
+  <rect y="338.46" width="760" height="30.77" fill="white"/>
+  <!-- Cuadro azul -->
+  <rect width="304" height="215.38" fill="#3C3B6E"/>
+  <!-- Estrellas simplificadas (representativas) -->
+  <g fill="white">
+    <!-- Fila 1 -->
+    <circle cx="25" cy="20" r="8"/>
+    <circle cx="75" cy="20" r="8"/>
+    <circle cx="125" cy="20" r="8"/>
+    <circle cx="175" cy="20" r="8"/>
+    <circle cx="225" cy="20" r="8"/>
+    <circle cx="275" cy="20" r="8"/>
+    <!-- Fila 2 -->
+    <circle cx="50" cy="45" r="8"/>
+    <circle cx="100" cy="45" r="8"/>
+    <circle cx="150" cy="45" r="8"/>
+    <circle cx="200" cy="45" r="8"/>
+    <circle cx="250" cy="45" r="8"/>
+    <!-- Fila 3 -->
+    <circle cx="25" cy="70" r="8"/>
+    <circle cx="75" cy="70" r="8"/>
+    <circle cx="125" cy="70" r="8"/>
+    <circle cx="175" cy="70" r="8"/>
+    <circle cx="225" cy="70" r="8"/>
+    <circle cx="275" cy="70" r="8"/>
+    <!-- Fila 4 -->
+    <circle cx="50" cy="95" r="8"/>
+    <circle cx="100" cy="95" r="8"/>
+    <circle cx="150" cy="95" r="8"/>
+    <circle cx="200" cy="95" r="8"/>
+    <circle cx="250" cy="95" r="8"/>
+    <!-- Fila 5 -->
+    <circle cx="25" cy="120" r="8"/>
+    <circle cx="75" cy="120" r="8"/>
+    <circle cx="125" cy="120" r="8"/>
+    <circle cx="175" cy="120" r="8"/>
+    <circle cx="225" cy="120" r="8"/>
+    <circle cx="275" cy="120" r="8"/>
+    <!-- Fila 6 -->
+    <circle cx="50" cy="145" r="8"/>
+    <circle cx="100" cy="145" r="8"/>
+    <circle cx="150" cy="145" r="8"/>
+    <circle cx="200" cy="145" r="8"/>
+    <circle cx="250" cy="145" r="8"/>
+    <!-- Fila 7 -->
+    <circle cx="25" cy="170" r="8"/>
+    <circle cx="75" cy="170" r="8"/>
+    <circle cx="125" cy="170" r="8"/>
+    <circle cx="175" cy="170" r="8"/>
+    <circle cx="225" cy="170" r="8"/>
+    <circle cx="275" cy="170" r="8"/>
+    <!-- Fila 8 -->
+    <circle cx="50" cy="195" r="8"/>
+    <circle cx="100" cy="195" r="8"/>
+    <circle cx="150" cy="195" r="8"/>
+    <circle cx="200" cy="195" r="8"/>
+    <circle cx="250" cy="195" r="8"/>
+  </g>
+</svg>

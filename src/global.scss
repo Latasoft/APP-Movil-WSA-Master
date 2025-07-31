@@ -1,0 +1,542 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "@ionic/angular/css/normalize.css";
+@import "@ionic/angular/css/structure.css";
+@import "@ionic/angular/css/typography.css";
+@import "@ionic/angular/css/display.css";
+
+/* Optional CSS utils that can be commented out */
+@import "@ionic/angular/css/padding.css";
+@import "@ionic/angular/css/float-elements.css";
+@import "@ionic/angular/css/text-alignment.css";
+@import "@ionic/angular/css/text-transformation.css";
+@import "@ionic/angular/css/flex-utils.css";
+
+/**
+ * Ionic Dark Mode
+ * -----------------------------------------------------
+ * For more info, please see:
+ * https://ionicframework.com/docs/theming/dark-mode
+ */
+
+// === ELIMINACIÓN COMPLETA DE ZONAS BLANCAS ===
+// Forzar fondo marino en TODOS los componentes de Ionic
+// ion-app, ion-content, ion-page, ion-header, ion-footer, ion-toolbar, ion-card, ion-list, ion-item, ion-grid, ion-row, ion-col {
+//   --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+//   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+// }
+
+// Forzar texto blanco en TODOS los elementos
+// ion-title, ion-label, ion-text {
+//   color: #ffffff !important;
+// }
+
+// Scroll interno de ion-content
+ion-content::part(scroll), 
+ion-content .inner-scroll, 
+ion-content .scroll-content,
+ion-content .scroll-y,
+ion-content .scroll-x {
+  // background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  background: transparent !important;
+}
+
+// Contenedores y wrappers
+.container, .wrapper, .content-wrapper, .page-wrapper {
+  // background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  background: transparent !important;
+  color: inherit !important;
+}
+
+// Eliminar bordes blancos
+* {
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+// === ESTILOS GLOBALES PARA SELECTS Y POPOVERS ===
+/*
+ion-toolbar {
+    padding-top: var(--ion-safe-area-top);
+}
+*/
+
+// Estilos globales para forzar el tema oscuro en todos los selects
+/*
+ion-select-option {
+  --background: rgba(45, 45, 45, 0.95) !important;
+  --color: #ffffff !important;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+  
+  &:hover {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+    --color: white !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+    color: white !important;
+  }
+}
+
+ion-item-option {
+  --background: rgba(45, 45, 45, 0.95) !important;
+  --color: #ffffff !important;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+}
+
+ion-popover {
+  --background: rgba(35, 35, 35, 0.98) !important;
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95) !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95) !important;
+      --color: #ffffff !important;
+      background: rgba(45, 45, 45, 0.95) !important;
+      color: #ffffff !important;
+      
+      &:hover {
+        --background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+        --color: white !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+        color: white !important;
+      }
+      
+      ion-label {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
+
+ion-modal {
+  --background: rgba(25, 25, 25, 0.98) !important;
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95) !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95) !important;
+      --color: #ffffff !important;
+      background: rgba(45, 45, 45, 0.95) !important;
+      color: #ffffff !important;
+      
+      &:hover {
+        --background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+        --color: white !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%) !important;
+        color: white !important;
+      }
+      
+      ion-label {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
+*/
+
+// === ESTILO MARINO OSCURO GLOBAL PARA SELECTS ===
+/*
+ion-select {
+  --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  --color: #fff !important;
+  --placeholder-color: #fff !important;
+  --border-radius: 12px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  font-weight: 700;
+  font-size: 1.1em;
+  color: #fff !important;
+}
+
+ion-select::part(icon) {
+  color: #fff !important;
+}
+
+ion-select-option {
+  --background: #1e3c72 !important;
+  --color: #fff !important;
+  background: #1e3c72 !important;
+  color: #fff !important;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+ion-popover {
+  --background: #1e3c72 !important;
+  --color: #fff !important;
+  --backdrop-opacity: 0.7;
+  --border-radius: 18px;
+  --box-shadow: 0 8px 32px rgba(30,60,114,0.4);
+  
+  ion-content {
+    --background: #1e3c72 !important;
+    color: #fff !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: #1e3c72 !important;
+      --color: #fff !important;
+      background: #1e3c72 !important;
+      color: #fff !important;
+      border-radius: 12px;
+      margin: 4px 8px;
+      
+      ion-label {
+        color: #fff !important;
+      }
+    }
+  }
+  
+  .alert-button,
+  .alert-button-group button {
+    background: #1e3c72 !important;
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 10px;
+    font-size: 1.1em;
+    margin: 0 6px;
+  }
+}
+
+ion-modal {
+  --background: #1e3c72 !important;
+  --color: #fff !important;
+  
+  ion-content {
+    --background: #1e3c72 !important;
+    color: #fff !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: #1e3c72 !important;
+      --color: #fff !important;
+      background: #1e3c72 !important;
+      color: #fff !important;
+      border-radius: 12px;
+      margin: 4px 8px;
+      
+      ion-label {
+        color: #fff !important;
+      }
+    }
+  }
+  
+  .alert-button,
+  .alert-button-group button {
+    background: #1e3c72 !important;
+    color: #fff !important;
+    font-weight: 700;
+    border-radius: 10px;
+    font-size: 1.1em;
+    margin: 0 6px;
+  }
+}
+*/
+
+// === ESTILOS ADICIONALES PARA ELIMINAR BLANCOS ===
+// Inputs y textareas
+/*
+ion-input, ion-textarea {
+  --background: rgba(255,255,255,0.1) !important;
+  --color: #fff !important;
+  --placeholder-color: rgba(255,255,255,0.7) !important;
+  background: rgba(255,255,255,0.1) !important;
+  color: #fff !important;
+}
+*/
+
+// Botones
+/*
+ion-button.btn-primary, .btn-primary, ion-button.btn-primary::part(native) {
+  --background: #0cdbe4 !important;
+  background: #0cdbe4 !important;
+  color: #fff !important;
+  --color: #fff !important;
+  border: none !important;
+  --border-color: transparent !important;
+  box-shadow: none !important;
+  outline: none !important;
+  border-radius: 100px !important;
+  --border-radius: 100px !important;
+}
+*/
+
+// Badges
+/*
+ion-badge {
+  --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  --color: #fff !important;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  color: #fff !important;
+}
+*/
+
+// Cards
+/*
+ion-card {
+  --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  color: #fff !important;
+  border: 1px solid rgba(255,255,255,0.2) !important;
+}
+*/
+
+// Lists
+/*
+ion-list {
+  background: transparent !important;
+  
+  ion-item {
+    --background: rgba(255,255,255,0.1) !important;
+    --color: #fff !important;
+    background: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+    
+    ion-label {
+      color: #fff !important;
+    }
+  }
+}
+*/
+
+// Headers y toolbars
+// ion-header, ion-toolbar {
+//   --background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+//   background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+//   
+//   ion-title {
+//     color: #fff !important;
+//   }
+// }
+
+// === FIN ESTILO MARINO OSCURO GLOBAL ===
+
+// === ESTILOS PARA CAMPOS DE FECHA (ion-datetime e ion-input) ===
+/*
+ion-datetime, ion-datetime::part(native), ion-input, ion-input::part(native) {
+  --background: transparent !important;
+  background: transparent !important;
+  --color: #fff !important;
+  color: #fff !important;
+  --placeholder-color: rgba(255,255,255,0.7) !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: none !important;
+  font-weight: 600;
+}
+*/
+
+ion-datetime {
+  --background: rgba(30,60,114,0.7) !important;
+  background: rgba(30,60,114,0.7) !important;
+  --color: #fff !important;
+  color: #fff !important;
+  --placeholder-color: rgba(255,255,255,0.7) !important;
+  border-radius: 10px !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+ion-datetime::part(calendar-day) {
+  color: #fff !important;
+  background: transparent !important;
+}
+
+// === ESTILOS MARINO OSCURO GLOBAL PARA ALERTAS ===
+/*
+ion-alert {
+  --background: rgba(30,60,114,0.65) !important;
+  --color: #fff !important;
+  --backdrop-opacity: 0.7;
+  --border-radius: 22px;
+  --box-shadow: 0 12px 40px rgba(30,60,114,0.35), 0 2px 8px rgba(0,0,0,0.18);
+  border: 1.5px solid rgba(255,255,255,0.25) !important;
+  backdrop-filter: blur(18px) !important;
+  padding: 18px 0 !important;
+}
+ion-alert .alert-wrapper {
+  background: transparent !important;
+  border-radius: 22px !important;
+  box-shadow: 0 12px 40px rgba(30,60,114,0.35), 0 2px 8px rgba(0,0,0,0.18) !important;
+  border: 1.5px solid rgba(255,255,255,0.25) !important;
+  backdrop-filter: blur(18px) !important;
+  padding: 18px 0 !important;
+}
+ion-alert::part(header),
+ion-alert .alert-title {
+  color: #fff !important;
+  font-weight: 800;
+  font-size: 1.25em;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 8px rgba(30,60,114,0.18);
+}
+ion-alert::part(message),
+ion-alert .alert-message {
+  color: #fff !important;
+  font-weight: 500;
+  font-size: 1.08em;
+  text-shadow: 0 1px 4px rgba(30,60,114,0.10);
+}
+ion-alert::part(button),
+ion-alert .alert-button,
+ion-alert .alert-button-group button {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%) !important;
+  color: #fff !important;
+  font-weight: 700;
+  border-radius: 12px;
+  font-size: 1.1em;
+  margin: 0 8px 8px 8px;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.10);
+  border: 1.5px solid rgba(255,255,255,0.18);
+  transition: background 0.2s, box-shadow 0.2s;
+}
+ion-alert .alert-button:hover,
+ion-alert .alert-button-group button:hover {
+  background: linear-gradient(135deg, #2a5298 0%, #1e3c72 100%) !important;
+  box-shadow: 0 4px 16px rgba(30,60,114,0.18);
+}
+ion-alert::part(input),
+ion-alert input,
+ion-alert textarea {
+  background: rgba(255,255,255,0.13) !important;
+  color: #fff !important;
+  border-radius: 10px;
+  border: 1.5px solid rgba(255,255,255,0.18) !important;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+ion-alert .alert-wrapper,
+ion-alert .alert-head,
+ion-alert .alert-message,
+ion-alert .alert-input-group,
+ion-alert .alert-input,
+ion-alert .alert-button-group {
+  background: transparent !important;
+  color: #fff !important;
+}
+*/
+
+// === ESTILO GLOBAL PARA SEARCHBAR - COMENTADO PARA LISTA-USUARIOS ===
+// ion-searchbar {
+//   --background: #14345C !important;
+//   --border-radius: 12px !important;
+//   --box-shadow: none !important;
+//   --color: #fff !important;
+//   --placeholder-color: #fff !important;
+//   color: #fff !important;
+// }
+  
+  // Forzar texto negro en todos los modales y overlays
+ion-modal, .modal-overlay, .modal-container, .modal-header, .modal-title, .table-title, .data-title, .data-subtitle, .card-header-nombre, .info-label, .info-value, .nota-vacia, .summary-label, .summary-number, .card-header-index, .status-badge, .card-body-mejorado, .data-card, .data-header, .header-main, .header-text, .header-summary, .info-row, .note-button, .mejorada, .badge-esquina, ion-label, ion-title, h2, h3, h4, h5, h6, p, span, div, ion-item, ion-item *, ion-checkbox, ion-checkbox * {
+  color: #111 !important;
+  --color: #111 !important;
+  --ion-color-base: #111 !important;
+  --ion-text-color: #111 !important;
+  --ion-item-color: #111 !important;
+  --ion-background-color: #fff !important;
+}
+  
+ion-select-option[aria-selected="true"] {
+  background: #e0f2ff !important; /* Celeste claro */
+  color: #1976d2 !important;      /* Azul */
+  font-weight: bold;
+}
+  
+ion-accordion ion-item,
+ion-accordion ion-item::part(native),
+ion-accordion ion-item[slot='header'],
+ion-accordion ion-item[slot='header']::part(native) {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+  
+/***** ULTRA-FUERZA: Borde cuadrado en acordeones y wrappers *****/
+ion-accordion,
+ion-accordion::part(native),
+ion-accordion ion-item,
+ion-accordion ion-item::part(native),
+ion-accordion ion-item[slot='header'],
+ion-accordion ion-item[slot='header']::part(native),
+ion-accordion .header-servicio-principal,
+ion-accordion .header-servicio-principal::part(native),
+ion-card.info-card-embarcacion,
+ion-card.info-card-embarcacion::part(native) {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+// === FORZAR COLOR CORRECTO PARA HOME PAGE HEADER ===
+/* Máxima especificidad para sobrescribir cualquier estilo */
+ion-app app-home ion-header,
+/* Estilos específicos para home page */
+ion-app app-home ion-header ion-toolbar,
+app-home ion-header,
+app-home ion-toolbar {
+  --background: #14213d !important;
+  background: #14213d !important;
+  background-color: #14213d !important;
+  --ion-background-color: #14213d !important;
+  --color: #ffffff !important;
+  color: #ffffff !important;
+  --ion-text-color: #ffffff !important;
+  --border-color: transparent !important;
+  border: none !important;
+}
+
+/* Forzar texto blanco en elementos del header de home */
+ion-app app-home ion-header *,
+ion-app app-home ion-header ion-toolbar *,
+app-home ion-header *,
+app-home ion-toolbar * {
+  color: #ffffff !important;
+  --color: #ffffff !important;
+  --ion-text-color: #ffffff !important;
+}
+
+/* Específicamente para ion-title y ion-menu-button en home */
+app-home ion-title,
+app-home ion-menu-button {
+  color: #ffffff !important;
+  --color: #ffffff !important;
+}
+  
+  

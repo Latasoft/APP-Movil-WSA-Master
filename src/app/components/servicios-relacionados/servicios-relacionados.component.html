@@ -1,0 +1,72 @@
+<ion-item>
+  <ion-label position="stacked">Buscar servicio</ion-label>
+  <ion-input
+    [(ngModel)]="servicioRelacionadoSeleccionado"
+    placeholder="Escribe para buscar..."
+    (ionInput)="seleccionarServicioRelacionado.emit(servicioRelacionadoSeleccionado)">
+  </ion-input>
+</ion-item>
+
+<ion-list *ngIf="serviciosRelacionadosFiltrados.length > 0">
+  <ion-item
+    *ngFor="let servicio of serviciosRelacionadosFiltrados"
+    button
+    (click)="seleccionarServicioRelacionado.emit(servicio.nombre)">
+    {{ servicio.nombre }}
+  </ion-item>
+</ion-list>
+
+<ion-item *ngIf="servicioRelacionadoSeleccionado">
+  <ion-label position="stacked">Fecha</ion-label>
+  <ion-input
+    type="date"
+    [(ngModel)]="fechaServicioRelacionado"
+    (ngModelChange)="cambiarFecha.emit($event)">
+  </ion-input>
+</ion-item>
+
+<ion-item *ngIf="servicioRelacionadoSeleccionado">
+  <ion-label position="stacked">Nota</ion-label>
+  <ion-textarea
+    [(ngModel)]="notaServicioRelacionado"
+    (ngModelChange)="cambiarNota.emit($event)">
+  </ion-textarea>
+</ion-item>
+
+<ion-button expand="block" class="btn-marino-anadir-servicio" (click)="anadirServicio.emit()" style="border-radius:0px !important; --border-radius:0px !important;">
+  <ion-icon name="add" slot="start" color="light"></ion-icon>
+  Añadir servicio
+</ion-button>
+<ion-item *ngIf="subServicios.length > 0">
+  <ion-label>Selecciona un subservicio</ion-label>
+</ion-item>
+
+<ion-list *ngIf="subServicios.length > 0">
+  <ion-item *ngFor="let sub of subServicios" button (click)="seleccionarSubservicio.emit(sub.nombre)">
+    {{ sub.nombre }}
+  </ion-item>
+</ion-list>
+
+<ion-list *ngIf="serviciosRelacionados.length > 0">
+  <ion-item *ngFor="let s of serviciosRelacionados; let i = index">
+    <ion-label>
+      <strong>{{ s.nombre }}</strong><br>
+      {{ s.fecha | date:'dd-MM-yyyy' }}<br>
+      <small *ngIf="s.fecha_modificacion" style="color: gray;">
+        (Modificado a las {{ s.fecha_modificacion | date:'HH:mm' }} hrs)
+      </small><br>
+      Nota: {{ s.nota || 'Sin nota' }}
+    </ion-label>
+    <ion-select
+      [(ngModel)]="s.estado"
+      interface="popover"
+      (ionChange)="actualizarEstado.emit(i)">
+      <ion-select-option value="pendiente">Pendiente</ion-select-option>
+      <ion-select-option value="en_proceso">En Proceso</ion-select-option>
+      <ion-select-option value="completado">Completado</ion-select-option>
+    </ion-select>
+    <ion-badge slot="end" [color]="getColorEstado(s.estado)">
+      {{ s.estado }}
+    </ion-badge>
+  </ion-item>
+</ion-list>

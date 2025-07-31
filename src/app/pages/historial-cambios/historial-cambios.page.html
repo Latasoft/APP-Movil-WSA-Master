@@ -1,0 +1,166 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Historial </ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Título de la sección -->
+  <div class="page-header">
+    <h2>Historial de Cambios - Embarcaciones</h2>
+    <p>Registro de modificaciones realizadas a las embarcaciones</p>
+  </div>
+
+  <!-- Panel de filtros avanzados -->
+  <ion-card *ngIf="showFilters" class="filtros-card">
+    <ion-card-header>
+      <ion-card-title>Filtros Avanzados</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Tipo de Acción</ion-label>
+        <ion-select 
+          [(ngModel)]="filtros.accion" 
+          placeholder="Seleccionar acción">
+          <ion-select-option 
+            *ngFor="let accion of tiposAccion" 
+            [value]="accion.value">
+            {{ accion.label }}
+          </ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha Inicio</ion-label>
+        <ion-datetime 
+          [(ngModel)]="filtros.fecha_inicio"
+          presentation="date"
+          placeholder="Seleccionar fecha">
+        </ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="stacked">Fecha Fin</ion-label>
+        <ion-datetime 
+          [(ngModel)]="filtros.fecha_fin"
+          presentation="date"
+          placeholder="Seleccionar fecha">
+        </ion-datetime>
+      </ion-item>
+
+      <div class="filtros-buttons">
+        <ion-button 
+          expand="block" 
+          (click)="aplicarFiltros()"
+          color="primary">
+          Aplicar Filtros
+        </ion-button>
+        <ion-button 
+          expand="block" 
+          fill="outline" 
+          (click)="limpiarFiltros()">
+          Limpiar Filtros
+        </ion-button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Lista de cambios simple y limpia -->
+  <div class="historial-container">
+    <div class="changes-list" *ngIf="historialCambios.length > 0">
+      <ion-item 
+        *ngFor="let cambio of historialCambios; let i = index; trackBy: trackByCambio"
+        class="change-item">
+        
+        <div class="change-content">
+          <div class="change-info">
+            <div class="info-line">
+              <span class="label">USUARIO:</span>
+              <span class="value">{{ cambio.usuario?.username || 'Usuario desconocido' }}</span>
+            </div>
+            
+            <div class="info-line">
+              <span class="label">DA:</span>
+              <span class="value">{{ getEmbarcacionInfo(cambio.entidad_id) }}</span>
+            </div>
+                        <div class="info-line">
+              <span class="label">FECHA:</span>
+              <span class="value">{{ cambio.fecha_cambio | date:'dd/MM/yyyy' }}</span>
+            </div>
+            
+            <div class="info-line">
+              <span class="label">HORA:</span>
+              <span class="value">{{ cambio.fecha_cambio | date:'HH:mm:ss' }}</span>
+            </div>
+          </div>
+        </div>
+      </ion-item>
+    </div>
+
+    <!-- Mensaje cuando no hay datos -->
+    <ion-card *ngIf="!isLoading && historialCambios.length === 0" class="no-data-card">
+      <ion-card-content>
+        <div class="no-data">
+          <ion-icon name="document-text-outline" size="large"></ion-icon>
+          <h3>No hay cambios registrados</h3>
+          <p>No se encontraron cambios con los filtros aplicados.</p>
+        </div>
+      </ion-card-content>
+    </ion-card>
+
+    <!-- Spinner de carga -->
+    <div *ngIf="isLoading" class="loading-container">
+      <ion-spinner name="crescent"></ion-spinner>
+      <p>Cargando historial...</p>
+    </div>
+  </div>
+
+  <!-- Infinite scroll -->
+  <ion-infinite-scroll 
+    threshold="100px" 
+    (ionInfinite)="onIonInfinite($event)"
+    [disabled]="!hasMoreData">
+    <ion-infinite-scroll-content
+      loadingSpinner="bubbles"
+      loadingText="Cargando más cambios...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<ion-footer class="custom-footer">
+  <div class="footer-content">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/lista-embarcaciones">
+        <ion-icon name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/generar-reporte">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/lista-grupos">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="confirmLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <button routerLink="/home" class="home-button">
+      <ion-icon name="home-outline"></ion-icon>
+    </button>
+  </div>
+</ion-footer>
+
+<ion-alert
+  [isOpen]="showLogoutAlert"
+  [header]="'logout' | translate"
+  [message]="'logoutMessage' | translate"
+  cssClass="logout-alert-marino"
+  [backdropDismiss]="true"
+  [buttons]="alertButtons"
+  (didDismiss)="handleLogoutConfirm($event)">
+</ion-alert>

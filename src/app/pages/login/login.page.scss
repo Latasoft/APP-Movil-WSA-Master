@@ -1,0 +1,417 @@
+/* 1) Toolbar con efecto glassmorphism */
+ion-toolbar {
+  --background: rgba(20, 52, 92, 0.8);
+  --border: none;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+ion-title {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-align: center;
+  letter-spacing: 0.5px;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* 2) Fondo con gradiente complejo */
+.login-content {
+  position: relative;
+  z-index: 1;
+  background: transparent !important;
+}
+
+/* 3) Hero con efecto glassmorphism - imagen original */
+.hero-bg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 35%;
+  background: url('/assets/logo-barco.png') center/cover no-repeat;
+  clip-path: polygon(0 0, 100% 0, 100% 75%, 0 100%);
+  z-index: 1;
+  filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+  opacity: 0.9;
+}
+
+/* 4) Tarjeta con efecto glassmorphism - ajustada para el logo */
+.login-card {
+  position: relative;
+  z-index: 2;
+  margin: 0 auto;
+  margin-top: 20%;
+  background: rgba(20, 52, 92, 0.35) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+  border-radius: 16px;
+  width: 90%; max-width: 360px;
+  padding: 3rem 1.5rem 1.5rem;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  text-align: center;
+  border: 1.5px solid rgba(255,255,255,0.18);
+  overflow: visible;
+  backdrop-filter: blur(8px);
+  align-self: center;
+}
+
+.login-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0.05) 100%);
+  pointer-events: none;
+}
+
+/* 5) Icono con efecto glassmorphism - logo WSA más llamativo */
+.login-icon {
+  position: absolute;
+  top: -50px; left: 50%;
+  transform: translateX(-50%);
+  width: 120px; height: 120px;
+  background: rgba(20, 52, 92, 0.95);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 2px 0 rgba(255, 255, 255, 0.3),
+    0 0 20px rgba(255, 255, 255, 0.1);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  animation: logoGlow 3s ease-in-out infinite alternate;
+  z-index: 10;
+}
+
+.login-icon img {
+  width: 90px;
+  height: 90px;
+  filter: brightness(0) invert(1);
+  animation: logoPulse 2s ease-in-out infinite;
+}
+
+/* Animaciones para el logo */
+@keyframes logoGlow {
+  0% {
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3),
+      0 0 20px rgba(255, 255, 255, 0.1);
+  }
+  100% {
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      inset 0 2px 0 rgba(255, 255, 255, 0.3),
+      0 0 30px rgba(255, 255, 255, 0.2);
+  }
+}
+
+@keyframes logoPulse {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* 6) Títulos con efecto glassmorphism */
+.login-header {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 2.2rem;
+  color: #ffffff;
+  font-weight: 800;
+  letter-spacing: 1px;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+  position: relative;
+  z-index: 1;
+}
+
+.login-subtitle {
+  margin-bottom: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+  position: relative;
+  z-index: 1;
+}
+
+/* 7) Inputs con efecto glassmorphism */
+.input-item {
+  --background: rgba(255, 255, 255, 0.1);
+  margin-bottom: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0px;
+  --highlight-color-focused: rgba(255, 255, 255, 0.3);
+  --padding-start: 16px;
+  --padding-end: 16px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  position: relative;
+  z-index: 1;
+}
+
+.input-item ion-input {
+  color: #ffffff;
+  font-weight: 500;
+  --placeholder-color: rgba(255, 255, 255, 0.6);
+}
+
+.input-item ion-label {
+  color: rgba(255, 255, 255, 0.8);
+  font-weight: 600;
+}
+
+/* Input de password con botón del ojo */
+.input-with-icon {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: relative;
+
+  ion-input {
+    flex: 1;
+    --padding-end: 50px;
+    color: #ffffff;
+    font-weight: 500;
+    --placeholder-color: rgba(255, 255, 255, 0.6);
+  }
+
+  .eye-button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    --padding-start: 0;
+    --padding-end: 0;
+    --background: transparent;
+    --box-shadow: none;
+    --border: none;
+    --border-radius: 0px;
+    --border-style: none;
+    --border-width: 0;
+    --color: #ffffff;
+    min-width: 50px;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    cursor: pointer;
+    z-index: 10;
+
+    &::part(native) {
+      background: transparent !important;
+      border: none !important;
+      box-shadow: none !important;
+      outline: none !important;
+    }
+
+    ion-icon {
+      font-size: 28px;
+      color: #ffffff;
+      transition: all 0.3s ease;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.1) !important;
+    }
+
+    &:hover ion-icon {
+      color: rgba(255, 255, 255, 0.8);
+      transform: scale(1.1);
+    }
+  }
+}
+
+/* 8) Botón con efecto glassmorphism - más pequeño con icono */
+ion-button.btn-primary,
+ion-button.btn-primary::part(native),
+.btn-primary {
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  --border-color: transparent !important;
+}
+
+.btn-primary:hover {
+  --background: rgba(30, 74, 122, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* 9) Links con efecto glassmorphism */
+.aux-links {
+  margin-top: 1.5rem;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 0.95rem;
+  position: relative;
+  z-index: 1;
+}
+
+.aux-links a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+.aux-links a:hover {
+  color: #ffffff;
+  text-shadow: 0 4px 8px rgba(0,0,0,0.5);
+}
+
+/* 10) Responsive para móviles pequeños */
+@media (max-width: 360px) {
+  .login-card { 
+    padding: 2rem 1rem 1rem; 
+    width: 95%;
+  }
+  .login-header { 
+    font-size: 1.6rem; 
+  }
+  .login-icon { 
+    width: 70px; height: 70px; top: -35px; 
+  }
+}
+
+.video-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.video-zoom {
+  width: 100vw;
+  height: 100dvh;
+  min-width: 100vw;
+  min-height: 100dvh;
+  max-width: 100vw;
+  max-height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.video-bg iframe {
+  position: absolute;
+  top: -175dvh;
+  left: -175vw;
+  width: 450vw;
+  height: 450dvh;
+  min-width: 450vw;
+  min-height: 450dvh;
+  max-width: 450vw;
+  max-height: 450dvh;
+  object-fit: cover !important;
+  pointer-events: none;
+  border: none;
+  background: #000;
+  display: block;
+}
+
+html, body {
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  margin: 0;
+  padding: 0;
+  background: transparent !important;
+  overflow: hidden;
+}
+
+ion-content.login-content {
+  --background: transparent !important;
+  background: transparent !important;
+  width: 100vw;
+  height: 100dvh;
+  min-height: 100dvh;
+  max-height: 100dvh;
+  margin: 0 !important;
+  padding: 0 !important;
+  position: relative;
+  z-index: 1;
+}
+
+ion-app, ion-router-outlet, ion-content, .login-content {
+  width: 100vw !important;
+  height: 100dvh !important;
+  min-width: 100vw !important;
+  min-height: 100dvh !important;
+  max-width: 100vw !important;
+  max-height: 100dvh !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  background: transparent !important;
+  box-sizing: border-box !important;
+}
+
+.login-marca-logo {
+  display: block;
+  margin: 0 auto 0 auto;
+  width: 100%;
+  max-width: 320px;
+  height: auto;
+  background: none;
+  border-radius: 18px;
+  box-shadow: none;
+  filter: none;
+  padding: 0;
+  border: 4px solid rgba(0,0,0,0.85);
+  z-index: 2;
+}
+
+.login-form {
+  background: none !important;
+  box-shadow: none !important;
+}
+
+.login-form ion-item,
+.login-form ion-row,
+.login-form ion-col,
+.login-form div {
+  background: none !important;
+  --background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+ion-item.input-item {
+  background: none !important;
+  --background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 100px !important;
+  --border-radius: 100px !important;
+  overflow: hidden;
+}
+
+ion-item.input-item ion-input,
+ion-item.input-item .input-with-icon {
+  border-radius: 100px !important;
+  --border-radius: 100px !important;
+}
+  

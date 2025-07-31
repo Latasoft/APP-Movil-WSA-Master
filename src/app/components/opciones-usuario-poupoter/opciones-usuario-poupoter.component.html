@@ -1,0 +1,17 @@
+<ion-list>
+  <ion-item button (click)="selectOption('edit')">
+    <ion-label>Editar</ion-label>
+  </ion-item>
+  <ion-item button (click)="selectOption('delete')">
+    <ion-label>Eliminar</ion-label>
+  </ion-item>
+  <ion-item
+    *ngIf="user.tipo_usuario === 'TRABAJADOR'"
+    button
+    (click)="toggleCrearNave()"
+  >
+    <ion-label>
+      {{ user.puede_crear_nave ? 'Deshabilitar Crear Nave': 'Habilitar Crear Nave' }}
+    </ion-label>
+  </ion-item>
+</ion-list>

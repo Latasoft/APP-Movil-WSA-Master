@@ -1,0 +1,26 @@
+<ion-footer class="footer-nav" style="--background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important; background-color: #1e3a8a !important;">
+  <ion-toolbar style="--background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important; background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important; background-color: #1e3a8a !important; --color: #ffffff !important; color: #ffffff !important;">
+    <div class="footer-flex">
+      <div class="footer-item" [class.activo]="activo === 'Inicio'" (click)="goTo('/home')">
+        <ion-icon name="home-outline"></ion-icon>
+        <div>Inicio</div>
+      </div>
+      <div class="footer-item" [class.activo]="activo === 'Mi perfil'" (click)="goTo('/perfil')">
+        <ion-icon name="person-outline"></ion-icon>
+        <div>Mi perfil</div>
+      </div>
+      <div class="footer-item" [class.activo]="activo === 'Embarcaciones'" (click)="goTo('/embarcaciones')">
+        <ion-icon name="boat-outline"></ion-icon>
+        <div>Embarcaciones</div>
+      </div>
+      <div class="footer-item" [class.activo]="activo === 'Contacto'" (click)="goTo('/contacto')">
+        <ion-icon name="call-outline"></ion-icon>
+        <div>Contact US</div>
+      </div>
+      <div class="footer-item" (click)="cerrarSesion()">
+        <ion-icon name="log-out-outline"></ion-icon>
+        <div>Cerrar Sesión</div>
+      </div>
+    </div>
+  </ion-toolbar>
+</ion-footer>

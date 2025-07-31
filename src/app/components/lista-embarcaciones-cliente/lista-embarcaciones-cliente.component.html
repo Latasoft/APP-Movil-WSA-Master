@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Mis Embarcaciones</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content class="ion-padding custom-content">
+  <!-- Barra de búsqueda -->
+  <ion-grid class="search-grid">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="12">
+        <ion-searchbar 
+          [(ngModel)]="searchTerm"
+          (ionChange)="filterEmbarcaciones($event)"
+          placeholder="Buscar por título o destino"
+          showCancelButton="focus"
+        >
+        </ion-searchbar>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <!-- Lista y paginación de embarcaciones -->
+  <app-lista-embarcaciones-base
+    [properties]="listaEmbarcacionesFiltradas"
+    [page]="page"
+    [limit]="limit"
+    [total]="total"
+    (pageChange)="onPageChange($event)">
+  </app-lista-embarcaciones-base>
+</ion-content>

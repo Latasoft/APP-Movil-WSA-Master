@@ -1,0 +1,440 @@
+/* 🌟 Estilos mejorados para Ionic */
+
+/* 🎨 Encabezado con mejor visibilidad */
+ion-toolbar {
+  --background: #fff;
+  color: #222;
+}
+
+ion-title {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: #222;
+}
+
+/* 📌 Fondo general */
+.content {
+  background-color: #f4f6f9; /* Un gris muy claro */
+  padding: 0!important;
+}
+
+/* 📌 Estilos mejorados para los formularios */
+.form-list {
+  background-color: #ffffff;
+  width: 100%;
+  border-radius: 12px;
+  margin: 0!important;
+  padding:0 ;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 📌 Estilos para cada ion-item */
+.item {
+  --min-height: 56px;
+  margin-bottom: 1.2rem;
+  border-radius: 8px;
+  transition: background-color 0.3s ease-in-out;
+
+  /* Efecto visual cuando el input está enfocado */
+  &.ion-focused {
+    --background: #e3f2fd; /* Un tono azul pastel */
+  }
+
+  ion-label.label {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #555;
+  }
+
+  ion-input.input {
+    font-size: 1rem;
+    color: #333;
+  }
+
+  .toggle-label {
+    font-weight: 600;
+    color: #666;
+  }
+}
+
+/* 📌 Contenedor para los select personalizados */
+.custom-select {
+  margin: 1rem 0;
+  background-color: #ffffff;
+  border-radius: 10px;
+  padding: 0.7rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.08);
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* 📌 Botón de envío con animación */
+.submit-button {
+  margin-top: 1.5rem;
+  --background: #10dc60; /* Verde éxito */
+  --border-radius: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 1rem;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.03);
+    --background: #0bb54d; /* Verde más oscuro */
+  }
+}
+
+/* 📌 Estilos para las tarjetas de servicios */
+ion-card {
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Evita bordes duros */
+  width: 100%;
+  margin: 0;
+  ion-card-header {
+    background: #14345C;
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: 1.1rem;
+    width: 100%;
+  }
+
+  ion-card-content {
+    width: 100%;
+    background-color: #f9fbfc; /* Suave fondo gris */
+    padding: 0;
+  }
+}
+
+ion-card ion-label[position='stacked'] {
+  color: #15395b !important;
+  font-size: 1.25em;
+  font-weight: 700;
+  margin-bottom: 2px;
+  position: relative;
+}
+ion-card ion-label[position='stacked']::after {
+  content: ':';
+  margin-left: 2px;
+}
+
+ion-card ion-card-content {
+  padding-left: 2.5rem;
+  padding-right: 2rem;
+  padding-bottom: 2rem;
+  padding-top: 1.5rem;
+}
+
+ion-card .form-item,
+ion-card .fecha-item {
+  margin-top: 1.2rem;
+}
+
+/* 📌 Checkbox y lista de acciones */
+ion-checkbox {
+  --background-checked: #10dc60;
+  --border-radius: 6px;
+  margin-right: 0.5rem;
+}
+
+/* 📌 Botón de agregar acción */
+.add-action-button {
+  --background: #3899ff;
+  --border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  margin:  auto ; 
+  transition: background 0.3s ease-in-out;
+  width: 50%;
+  display: block;
+  justify-content: center;
+  text-align: center;
+  &:hover {
+    --background: #237de8; /* Azul más oscuro */
+  }
+}
+
+
+/* ============================================ */
+/*          Estilos para subservicios           */
+/* ============================================ */
+
+/* Encabezado clicable del subservicio (estado) */
+ion-item.clickable-subheader {
+  /* Ajusta el espaciado, la altura y el background */
+  --inner-padding-start: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  width: 100%;
+  margin: 0.5rem 0;
+  border-radius: 6px;
+  background-color: #f0f4f8; /* Un gris claro-azulado */
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+
+  ion-label {
+    font-weight: 600;
+    color: #2c3e50; /* Gris oscuro */
+    font-size: 0.9rem;
+  }
+
+  &:hover {
+    background-color: #e6eff8; /* Un tono más claro */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+  }
+
+  ion-icon {
+    font-size: 1rem;
+    color: #14345C; /* Azul oscuro */
+    transition: transform 0.2s ease-in-out;
+  }
+}
+
+/* Contenedor que se expande para mostrar las acciones del subservicio */
+.subservice-content {
+  width: 100%;
+  border-left: 3px solid #14345C; /* Llama la atención con un borde a la izquierda */
+  background-color: #ffffff;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  transition: all 0.3s ease-in-out;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+/* Searchbar y ítems internos */
+.subservice-content ion-item {
+  --background: transparent;
+  --inner-padding-start: 0;
+  --padding-start: 0;
+  --padding-end: 0;
+  width: 100%;
+  font-size: 0.9rem;
+}
+
+.subservice-content ion-searchbar {
+  --background: #f9fbfc;
+  --icon-color: #14345C;
+  border-radius: 6px;
+  margin-bottom: 0.8rem;
+
+  input {
+    font-size: 0.95rem;
+  }
+}
+
+/* Para resaltar el checkbox y su texto dentro del subservicio */
+.subservice-content ion-checkbox {
+  margin-right: 0.7rem;
+  --background: #ebeef3;
+  --background-checked: #10dc60;
+  --border-color-checked: #0bb54d;
+}
+
+.subservice-content ion-checkbox + label {
+  font-size: 0.95rem;
+  color: #555;
+}
+
+/* Botón agregar acción dentro de cada subservicio */
+.subservice-content .add-action-button {
+  margin-top: 0.8rem;
+  --background: #3899ff;
+  --border-radius: 6px;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: background 0.3s ease;
+
+  &:hover {
+    --background: #237de8;
+  }
+}
+
+.debug-info {
+  background: #f0f8ff;
+  border: 1px solid #007bff;
+  border-radius: 8px;
+  padding: 8px 12px;
+  margin: 8px 0;
+  font-size: 0.9em;
+  
+  p {
+    margin: 0;
+    color: #007bff;
+    font-weight: 500;
+    
+    &:not(:last-child) {
+      margin-bottom: 4px;
+    }
+  }
+  
+  &.success {
+    background: #f0fff4;
+    border-color: #28a745;
+    
+    p {
+      color: #28a745;
+    }
+  }
+}
+
+// Eliminar todos los estilos personalizados y dejar por defecto Ionic
+
+ion-toolbar {
+  --background: #15395b !important;
+  background: #15395b !important;
+  color: #fff !important;
+}
+ion-title, ion-toolbar ion-title {
+  color: #fff !important;
+}
+
+.content, .form-list, .custom-select, .form-container, .info-section, .form-item, .servicio-card, .subservice-content, .estado-item, .estado-header, .servicio-header, .servicio-content, .fechas-grid, .fecha-item, .toggle-item, .servicios-container, .acciones-list, .accion-item, .accion-content, .comentario-container, .comentario-input, .submit-container, .btn-submit, .debug-info, .section-header, .section-header h2, .section-header .section-subtitle, .marine-input, .marine-checkbox, .marine-toggle, .marine-searchbar, .btn-incidente, .btn-agregar-accion, .add-action-button, .select-agregar-servicio, .agregar-servicio-bar {
+  background: #fff !important;
+  color: #222 !important;
+  box-shadow: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  text-shadow: none !important;
+  backdrop-filter: none !important;
+}
+
+// Eliminar fondo marino
+.fondo-marino {
+  --background: #fff !important;
+  background: #fff !important;
+}
+
+// Eliminar reglas de app-filter-select
+:host ::ng-deep app-filter-select ion-searchbar,
+:host ::ng-deep app-filter-select ion-searchbar::part(native),
+:host ::ng-deep app-filter-select ion-list,
+:host ::ng-deep app-filter-select ion-item,
+:host ::ng-deep app-filter-select ion-item ion-label,
+:host ::ng-deep app-filter-select ion-item[aria-checked="true"],
+:host ::ng-deep app-filter-select ion-item.selected,
+:host ::ng-deep app-filter-select ion-item:hover {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+ion-card app-filter-select ion-searchbar {
+  --border-radius: 0 !important;
+  border-radius: 0 !important;
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .form-container {
+    padding: 12px;
+  }
+  
+  .info-section {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .section-header h2 {
+    font-size: 1.5em;
+  }
+  
+  .fechas-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.titulo-centrado.titulo-embarcacion-azul {
+  color: #fff !important;
+  font-size: 1.5em !important;
+  font-weight: 800;
+  margin: 12px 0 18px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+
+.vessels-footer-toolbar {
+  --background: #15395b !important;
+  background: #15395b !important;
+}
+
+.vessels-footer-buttons ion-button {
+  margin: 0 18px !important;
+}
+
+.vessels-footer-toolbar ion-icon {
+  color: #fff !important;
+}
+
+ion-toolbar.vessels-footer-toolbar {
+  --background: #15395b !important;
+  background: #15395b !important;
+  color: #fff;
+}
+
+// BOTÓN SUBMIT - Cambiado a gris con bordes redondeados
+.btn-submit {
+  --background: #ffb300 !important; /* Cambiado de gris a amarillo */
+  --color: #fff !important;
+  --border-radius: 12px !important; /* Agregado bordes redondeados */
+  border-radius: 12px !important; /* Agregado bordes redondeados */
+  --box-shadow: none !important;
+  font-weight: 700;
+  font-size: 1.1em;
+  height: 56px;
+  margin-top: 18px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  display: block;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+.btn-submit[disabled] {
+  opacity: 1 !important;
+  filter: grayscale(0.2) brightness(1.1);
+  pointer-events: auto !important;
+}
+
+:host ::ng-deep ion-toolbar {
+  --background: #15395b !important;
+  background: #15395b !important;
+  color: #fff !important;
+}
+:host ::ng-deep ion-toolbar ion-title, :host ::ng-deep ion-title {
+  color: #fff !important;
+}
+
+:host ::ng-deep ion-card-title.titulo-centrado.titulo-embarcacion-azul {
+  background: #15395b !important;
+  color: #fff !important;
+  width: 100%;
+  display: block;
+  padding: 24px 0 24px 0;
+  text-align: center;
+  font-weight: 800;
+  font-size: 2em;
+  border-radius: 0;
+}
+
+:host ::ng-deep ion-card-header {
+  background: #15395b !important;
+  color: #fff !important;
+  padding: 1px 0 !important;
+  text-align: center;
+  border-radius: 0 !important;
+}
+:host ::ng-deep ion-card-header *,
+:host ::ng-deep ion-card-header div,
+:host ::ng-deep ion-card-header span {
+  background: transparent !important;
+  color: #fff !important;
+}
+

@@ -1,0 +1,135 @@
+/* --- Mobile First --- */
+ion-label{
+    &[position="stacked"] {
+        margin-bottom: 6px;
+        padding-bottom: 4px;
+        display: inline-block;
+      }
+}
+/* Contenedor general */
+app-searchable-select {
+    width: 100%;
+  }
+  
+  /* Input de búsqueda */
+  .search-input {
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 12px;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    transition: all 0.3s ease;
+  
+    &::placeholder {
+      color: #aaa;
+      font-style: italic;
+    }
+  
+    &:focus {
+      border-color: #14345C;
+      box-shadow: 0 0 0 2px rgba(20, 52, 92, 0.2);
+      outline: none;
+    }
+  }
+  
+  /* Lista de resultados */
+  .search-results {
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto;
+    margin-top: 5px;
+    border: 1px solid #dedede;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  
+    /* Scroll personalizado */
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb {
+      background: #c1c1c1;
+      border-radius: 10px;
+    }
+    &::-webkit-scrollbar-thumb:hover {
+      background: #a8a8a8;
+    }
+  }
+  
+  /* Cada item */
+  .search-item {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    font-size: 15px;
+  
+    &:hover {
+      background-color: rgba(20, 52, 92, 0.1);
+    }
+  
+    &.selected {
+      background-color: rgba(20, 52, 92, 0.2);
+      font-weight: 500;
+    }
+  }
+  
+  /* Cuando no hay resultados */
+  .no-results {
+    padding: 15px;
+    text-align: center;
+    color: #666;
+    font-style: italic;
+  }
+  
+  /* Mejora visual cuando se enfoca */
+  .searchable-component-focused {
+    position: relative;
+  
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #14345C;
+      transform: scaleX(0);
+      transition: transform 0.3s ease;
+    }
+  
+    &:focus-within::after {
+      transform: scaleX(1);
+    }
+  }
+  
+  /* Ítem seleccionado (el chip) */
+  .selected-item {
+    margin-top: 10px;
+  
+    ion-chip {
+      background-color: #14345C;
+      color: white;
+      font-weight: 600;
+  
+      ion-icon {
+        margin-left: 8px;
+        cursor: pointer;
+      }
+    }
+  }
+  
+  /* --- Desktop Mejoras Opcionales (desde 768px en adelante) --- */
+  @media (min-width: 768px) {
+    .search-input {
+      font-size: 18px;
+    }
+  
+    .search-item {
+      font-size: 16px;
+    }
+  }
+  

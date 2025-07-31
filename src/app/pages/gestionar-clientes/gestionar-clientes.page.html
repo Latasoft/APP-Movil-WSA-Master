@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Gestión de Clientes</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- Contenedor de filtros -->
+  <div class="filtros">
+    <ion-searchbar placeholder="Buscar cliente"
+                   [(ngModel)]="busqueda"
+                   (ionInput)="filtrarClientes()">
+    </ion-searchbar>
+
+    <ion-select placeholder="País" [(ngModel)]="filtroPais" (ionChange)="filtrarClientes()">
+      <ion-select-option *ngFor="let pais of paises" [value]="pais">{{ pais }}</ion-select-option>
+    </ion-select>
+  </div>
+
+  <!-- Botón nuevo cliente -->
+  <ion-button expand="block" color="success" (click)="abrirModalCliente()">
+    + Nuevo Cliente
+  </ion-button>
+
+  <!-- Tabla de clientes -->
+  <ion-card *ngFor="let cliente of clientesFiltrados">
+    <ion-card-content>
+      <h2><strong>Cliente:</strong> {{ cliente.nombre_empresa }}</h2>
+      <p><strong>País:</strong> {{ cliente.pais }}</p>
+      <p><strong>Naves Activas:</strong> {{ cliente.naves_activas }}</p>
+      <p><strong>Naves Completadas:</strong> {{ cliente.naves_completadas }}</p>
+
+      
+      <ion-button fill="clear" slot="end" (click)="mostrarOpciones($event, cliente)">⋮
+        <ion-icon name="ellipsis-vertical"></ion-icon>
+      </ion-button>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

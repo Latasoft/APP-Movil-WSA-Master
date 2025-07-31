@@ -1,0 +1,59 @@
+/* Estilos para la página de creación/edición de grupo */
+
+ion-toolbar {
+  --background: linear-gradient(to right, #14345C, #1E5D89);
+  color: #ffffff;
+}
+
+ion-title {
+  text-transform: uppercase;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+ion-content {
+  --background: #ffffff;
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1rem;
+}
+
+.input-item,
+.toggle-item {
+  border-radius: 12px;
+  background: #f8f9fa;
+  --padding-start: 16px;
+  --inner-padding-end: 16px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.select-container {
+  background: #f8f9fa;
+  padding: 12px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.submit-button {
+  margin-top: 24px;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.5px;
+  border-radius: 10px;
+  --background: #14345C;
+  --background-hover: #1E5D89;
+  --color: #ffffff;
+  box-shadow: 0 3px 10px rgba(20, 52, 92, 0.3);
+}
+
+
+app-filter-select {
+  display: block;
+  margin-top: 0.5rem;
+  border-radius: 10px;
+  background: white;
+}

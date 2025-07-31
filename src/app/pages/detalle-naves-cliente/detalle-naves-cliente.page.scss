@@ -1,0 +1,1594 @@
+html, body {
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
+  margin: 0;
+  padding: 0;
+  background: #f4f6fa;
+  font-family: Arial, sans-serif;
+}
+
+// Estilos globales para forzar el tema oscuro en todos los selects
+/*
+ion-select-option {
+  --background: rgba(45, 45, 45, 0.95) !important;
+  --color: #ffffff !important;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+}
+
+ion-item-option {
+  --background: rgba(45, 45, 45, 0.95) !important;
+  --color: #ffffff !important;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+}
+
+ion-popover {
+  --background: rgba(35, 35, 35, 0.98) !important;
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95) !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95) !important;
+      --color: #ffffff !important;
+      background: rgba(45, 45, 45, 0.95) !important;
+      color: #ffffff !important;
+      
+      ion-label {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
+
+ion-modal {
+  --background: rgba(25, 25, 25, 0.98) !important;
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95) !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95) !important;
+      --color: #ffffff !important;
+      background: rgba(45, 45, 45, 0.95) !important;
+      color: #ffffff !important;
+      
+      ion-label {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
+*/
+
+.filters-container {
+  padding: 28px 32px 24px 32px !important;
+  background: #14345C !important;
+  border-radius: 0;
+  margin: 0 0 28px 0 !important;
+  box-shadow: none;
+  border: none;
+  position: relative;
+  width: 100% !important;
+}
+  
+  .filters-header {
+    text-align: center;
+    margin-bottom: 15px;
+    
+    h3 {
+      color: white;
+      font-size: 1.5em;
+      font-weight: 900;
+      margin: 0;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+      letter-spacing: 1px;
+    }
+    
+    .filters-subtitle {
+      color: rgba(255,255,255,0.9);
+      font-size: 0.9em;
+      margin-top: 3px;
+      font-weight: 500;
+    }
+  }
+
+
+.filters-container ion-item {
+  --background: rgba(255,255,255,0.08);
+  --border-radius: 12px;
+  margin-bottom: 10px;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  padding: 0;
+}
+
+ion-input, ion-input::part(native) {
+  --background: transparent;
+  --color: #fff;
+  --placeholder-color: rgba(255,255,255,0.6);
+  border-radius: 12px;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+  font-weight: 500;
+}
+
+.dropdowns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 0;
+}
+
+/*
+ion-select {
+  width: 100%;
+  --background: rgba(255,255,255,0.08);
+  --border-radius: 0;
+  --color: #fff;
+  --placeholder-color: rgba(255,255,255,0.6);
+  border: none;
+  box-shadow: none;
+  font-size: 1em;
+  font-weight: 600;
+  padding: 0 8px;
+}
+ion-select::part(icon) {
+  color: rgba(255,255,255,0.7);
+}
+ion-select, ion-select-option {
+  border-radius: 0 !important;
+}
+*/
+
+// Estilos para las opciones del select
+/*
+ion-select-option {
+  --background: rgba(45, 45, 45, 0.95);
+  --color: #ffffff;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-weight: 500;
+  font-size: 1em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  border-radius: 0;
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+*/
+
+// Estilos específicos para el contenido del select
+/*
+ion-select::part(placeholder),
+ion-select::part(text) {
+  color: white;
+  font-weight: 600;
+}
+*/
+
+// Estilos para el modal/popover del select
+/*
+ion-select {
+  &::part(icon) {
+    color: rgba(255,255,255,0.9);
+  }
+}
+*/
+
+// Estilos para las opciones dentro del modal
+/*
+ion-modal ion-item,
+ion-popover ion-item {
+  --background: rgba(45, 45, 45, 0.95);
+  --color: #ffffff;
+  --border-radius: 0;
+  margin: 2px 8px;
+  transition: all 0.2s ease;
+  
+  &:hover {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    --color: white;
+    transform: translateX(3px);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+  }
+  
+  ion-label {
+    font-weight: 500;
+    font-size: 1em;
+    color: #ffffff;
+  }
+}
+*/
+
+// Estilos para el contenido del modal/popover
+/*
+ion-modal ion-content,
+ion-popover ion-content {
+  --background: rgba(35, 35, 35, 0.95);
+}
+*/
+
+// Estilos para la lista dentro del modal/popover
+/*
+ion-modal ion-list,
+ion-popover ion-list {
+  background: transparent;
+  padding: 8px 0;
+}
+*/
+
+// Estilos específicos para el interface popover
+/*
+ion-select[interface="popover"] {
+  &::part(placeholder),
+  &::part(text) {
+    color: white;
+  }
+}
+*/
+
+// Estilos específicos para las opciones desplegadas
+/*
+ion-select-option {
+  --background: rgba(45, 45, 45, 0.95) !important;
+  --color: #ffffff !important;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+  
+  &:hover {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    --color: white !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+  }
+}
+*/
+
+// Estilos globales para forzar el tema oscuro en los selects
+/*
+:host {
+  ion-select-option {
+    --background: rgba(45, 45, 45, 0.95) !important;
+    --color: #ffffff !important;
+    background: rgba(45, 45, 45, 0.95) !important;
+    color: #ffffff !important;
+  }
+  
+  ion-item-option {
+    --background: rgba(45, 45, 45, 0.95) !important;
+    --color: #ffffff !important;
+    background: rgba(45, 45, 45, 0.95) !important;
+    color: #ffffff !important;
+  }
+  
+  ion-popover {
+    --background: rgba(35, 35, 35, 0.98) !important;
+    
+    ion-content {
+      --background: rgba(35, 35, 35, 0.95) !important;
+    }
+    
+    ion-list {
+      background: transparent !important;
+      
+      ion-item {
+        --background: rgba(45, 45, 45, 0.95) !important;
+        --color: #ffffff !important;
+        background: rgba(45, 45, 45, 0.95) !important;
+        color: #ffffff !important;
+        
+        ion-label {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+  
+  ion-modal {
+    --background: rgba(25, 25, 25, 0.98) !important;
+    
+    ion-content {
+      --background: rgba(35, 35, 35, 0.95) !important;
+    }
+    
+    ion-list {
+      background: transparent !important;
+      
+      ion-item {
+        --background: rgba(45, 45, 45, 0.95) !important;
+        --color: #ffffff !important;
+        background: rgba(45, 45, 45, 0.95) !important;
+        color: #ffffff !important;
+        
+        ion-label {
+          color: #ffffff !important;
+        }
+      }
+    }
+  }
+}
+*/
+
+// Estilos para el popover cuando está abierto
+/*
+ion-popover {
+  --background: rgba(35, 35, 35, 0.98) !important;
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95) !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95) !important;
+      --color: #ffffff !important;
+      background: rgba(45, 45, 45, 0.95) !important;
+      color: #ffffff !important;
+      border-radius: 0;
+      
+      &:hover {
+        --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        --color: white !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: white !important;
+      }
+      
+      ion-label {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
+*/
+
+// Estilos para el modal cuando está abierto
+/*
+ion-modal {
+  --background: rgba(25, 25, 25, 0.98) !important;
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95) !important;
+  }
+  
+  ion-list {
+    background: transparent !important;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95) !important;
+      --color: #ffffff !important;
+      background: rgba(45, 45, 45, 0.95) !important;
+      color: #ffffff !important;
+      
+      &:hover {
+        --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        --color: white !important;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+        color: white !important;
+      }
+      
+      ion-label {
+        color: #ffffff !important;
+      }
+    }
+  }
+}
+*/
+
+// Estilos más específicos para las opciones del select
+/*
+ion-select-option,
+ion-item-option {
+  --background: rgba(45, 45, 45, 0.95);
+  --color: #ffffff;
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 12px;
+  --padding-bottom: 12px;
+  font-weight: 500;
+  font-size: 1em;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  transition: all 0.2s ease;
+  
+  &:hover {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --color: white;
+    transform: translateX(5px);
+  }
+  
+  &:last-child {
+    border-bottom: none;
+  }
+}
+*/
+
+// Estilos específicos para las opciones desplegadas del select
+/*
+ion-select-option {
+  --background: rgba(45, 45, 45, 0.95) !important;
+  --color: #ffffff !important;
+  background: rgba(45, 45, 45, 0.95) !important;
+  color: #ffffff !important;
+  
+  &:hover {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    --color: white !important;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    color: white !important;
+  }
+}
+*/
+
+// Estilos para el contenido del select cuando está abierto
+/*
+ion-select {
+  &::part(placeholder),
+  &::part(text) {
+    color: white;
+    font-weight: 600;
+  }
+  
+  &::part(icon) {
+    color: rgba(255,255,255,0.9);
+  }
+}
+*/
+
+// Estilos específicos para el modal del select
+/*
+ion-modal {
+  --background: rgba(25, 25, 25, 0.98);
+  
+  ion-header {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95);
+  }
+  
+  ion-list {
+    background: transparent;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95);
+      --color: #ffffff;
+      
+      &:hover {
+        --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --color: white;
+      }
+      
+      ion-label {
+        color: #ffffff;
+      }
+    }
+  }
+}
+*/
+
+// Estilos para el contenido del select cuando está abierto
+/*
+ion-select {
+  &::part(placeholder),
+  &::part(text) {
+    color: white;
+    font-weight: 600;
+  }
+  
+  &::part(icon) {
+    color: rgba(255,255,255,0.9);
+  }
+}
+*/
+
+// Estilos específicos para el modal del select
+/*
+ion-modal {
+  --background: rgba(25, 25, 25, 0.98);
+  
+  ion-header {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95);
+  }
+  
+  ion-list {
+    background: transparent;
+    
+    ion-item {
+      --background: rgba(45, 45, 45, 0.95);
+      --color: #ffffff;
+      
+      &:hover {
+        --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        --color: white;
+      }
+      
+      ion-label {
+        color: #ffffff;
+      }
+    }
+  }
+}
+*/
+
+// Estilos para el popover del select
+/*
+ion-popover {
+  --background: rgba(35, 35, 35, 0.98);
+  --backdrop-opacity: 0.5;
+  --border-radius: 0;
+  --box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  
+  ion-content {
+    --background: transparent;
+  }
+  
+  ion-list {
+    background: transparent;
+    padding: 8px 0;
+    
+          ion-item {
+        --background: rgba(45, 45, 45, 0.9);
+        --color: #ffffff;
+        --border-radius: 0;
+        margin: 2px 8px;
+        transition: all 0.2s ease;
+        
+              &:hover {
+          --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+          --color: white;
+          // transform: translateX(3px); - REMOVIDO
+          box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+        }
+      
+      ion-label {
+        font-weight: 500;
+        font-size: 1em;
+        color: #ffffff;
+      }
+    }
+  }
+}
+*/
+
+// Animación para el popover - REMOVIDA
+
+// Estilos específicos para el modal del select
+/*
+ion-modal {
+  --background: rgba(25, 25, 25, 0.98);
+  --border-radius: 0;
+  --box-shadow: 0 12px 40px rgba(0,0,0,0.5);
+  
+  ion-header {
+    --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    
+    ion-toolbar {
+      --background: transparent;
+      
+      ion-title {
+        color: white;
+        font-weight: 700;
+        font-size: 1.2em;
+      }
+      
+      ion-button {
+        --color: white;
+      }
+    }
+  }
+  
+  ion-content {
+    --background: rgba(35, 35, 35, 0.95);
+    
+    ion-list {
+      padding: 16px 0;
+      
+              ion-item {
+          --background: rgba(45, 45, 45, 0.9);
+          --color: #ffffff;
+          --border-radius: 0;
+          margin: 4px 12px;
+          transition: all 0.3s ease;
+          
+          &:hover {
+            --background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            --color: white;
+            // transform: translateX(5px); - REMOVIDO
+            box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+          }
+        
+        ion-label {
+          font-weight: 600;
+          font-size: 1.1em;
+          color: #ffffff;
+        }
+      }
+    }
+  }
+}
+*/
+
+// Animaciones específicas para filtros - REMOVIDAS
+
+// Estilos adicionales para mejorar la experiencia visual
+.filters-container {
+  .filters-header {
+    ion-icon {
+      margin-right: 8px;
+      font-size: 1.2em;
+    }
+  }
+  
+  // Efecto de partículas flotantes - REMOVIDAS
+}
+
+// Mejoras para los ion-select - SIN ANIMACIONES
+/*
+ion-select {
+  &::part(icon) {
+    // transition: transform 0.3s ease; - REMOVIDO
+  }
+  
+  &:hover::part(icon) {
+    // transform: rotate(180deg); - REMOVIDO
+  }
+}
+*/
+
+// Efecto de resplandor en hover
+.filters-container:hover {
+  box-shadow: 
+    0 8px 32px rgba(0,0,0,0.15),
+    0 4px 16px rgba(0,0,0,0.1),
+    inset 0 1px 0 rgba(255,255,255,0.2),
+    0 0 20px rgba(102, 126, 234, 0.3);
+}
+
+.embarcaciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.embarcacion-card {
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 16px;
+  position: relative;
+}
+
+.embarcacion-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-top: 30px; /* deja espacio para el badge */
+}
+
+.embarcacion-title {
+  background-color: #002a5c;
+  color: #ffffff;
+  font-size: 22px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  text-align: center;
+  word-break: break-word;
+  max-width: 100%;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+.timer-banner-inside {
+  background: rgba(0, 0, 0, 0.05);
+  color: #333;
+  padding: 8px 12px;
+  border-radius: 6px;
+  font-size: 13px;
+  margin: 8px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 13px;
+  width: max-content;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.15);
+}
+
+.badge-aprobado {
+  background-color: #28a745;
+  color: #ffffff;
+}
+
+.badge-enproceso {
+  background-color: #ffc107;
+  color: #000000;
+}
+
+.badge-observaciones {
+  background-color: #dc3545;
+  color: #ffffff;
+}
+
+.embarcacion-fields {
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+}
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.label {
+  color: #002a5c;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.value {
+  color: #666666;
+}
+
+.icon {
+  font-size: 14px;
+}
+
+.embarcacion-card.bg-aprobado {
+  background: #e8f5e9;
+}
+
+.embarcacion-card.bg-enproceso {
+  background: #fff5cc;
+}
+
+.embarcacion-card.bg-observaciones {
+  background: #fdecea;
+}
+
+.embarcacion-card-rediseñada {
+  border-radius: 18px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin-bottom: 18px;
+  padding: 16px;
+  .header-tarjeta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    h2 {
+      margin: 0;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .da-numero {
+      font-size: 0.9em;
+      color: #888;
+    }
+    ion-badge {
+      font-size: 1em;
+      padding: 8px;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+  }
+  ion-grid {
+    margin-top: 10px;
+    font-size: 1em;
+    div {
+      margin-bottom: 6px;
+    }
+  }
+}
+
+.tarjeta-impacto {
+  border-radius: 22px;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+  overflow: hidden;
+  margin-bottom: 28px;
+  background: #fff;
+  transition: transform 0.2s;
+  &:hover {
+    transform: scale(1.03);
+    box-shadow: 0 10px 32px rgba(0,0,0,0.22);
+  }
+  .cabecera-impacto {
+    background-size: cover;
+    background-position: center;
+    padding: 32px 20px 20px 20px;
+    position: relative;
+    text-align: center;
+    h2 {
+      color: #fff;
+      font-size: 2em;
+      font-weight: bold;
+      margin: 0 0 8px 0;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.25);
+    }
+    .da-numero {
+      color: #fff;
+      font-size: 1.1em;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.18);
+    }
+    .estado-badge {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      padding: 10px 18px;
+      border-radius: 18px;
+      font-size: 1.1em;
+      font-weight: bold;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+      &.success { background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%); color: #fff; }
+      &.warning { background: linear-gradient(90deg, #f7971e 0%, #ffd200 100%); color: #fff; }
+      &.danger { background: linear-gradient(90deg, #f857a6 0%, #ff5858 100%); color: #fff; }
+      &.medium { background: #bdbdbd; color: #fff; }
+    }
+  }
+  ion-card-content {
+    padding: 18px 14px 10px 14px;
+    ion-icon {
+      color: #3880ff;
+      margin-right: 6px;
+      font-size: 1.2em;
+      vertical-align: middle;
+    }
+    .footer-impacto {
+      margin-top: 18px;
+      text-align: center;
+    }
+  }
+}
+
+.tarjeta-puerto {
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+  margin-bottom: 20px;
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%) !important;
+  color: white;
+  overflow: hidden;
+  
+  .header-puerto {
+    padding: 20px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    
+    .estado-marino {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-weight: bold;
+      font-size: 0.9em;
+      margin-bottom: 15px;
+      
+      &.success { background: rgba(76, 175, 80, 0.9); }
+      &.warning { background: rgba(255, 152, 0, 0.9); }
+      &.danger { background: rgba(244, 67, 54, 0.9); }
+      &.medium { background: rgba(158, 158, 158, 0.9); }
+    }
+    
+    .info-principal {
+      h2 {
+        font-size: 1.8em;
+        font-weight: bold;
+        margin: 0 0 10px 0;
+        text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        color: #fff;
+      }
+      .da-info {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 1.1em;
+        opacity: 0.9;
+        color: #fff;
+      }
+    }
+  }
+  
+  ion-card-content {
+    padding: 20px;
+    background: rgba(255,255,255,0.10);
+    border-radius: 0 0 20px 20px;
+    color: #fff;
+    .datos-puerto {
+      margin-bottom: 20px;
+      .seccion-puerto, .seccion-cliente, .seccion-fechas, .seccion-pais {
+        margin-bottom: 15px;
+        h3 {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          font-size: 1.1em;
+          margin: 0 0 8px 0;
+          opacity: 0.9;
+          color: #fff;
+        }
+        p {
+          font-size: 1.2em;
+          font-weight: bold;
+          margin: 0;
+          color: #e0e7ff;
+        }
+      }
+    }
+  }
+}
+
+// Animaciones globales - REMOVIDAS
+
+.cards-container {
+  .tarjeta-puerto {
+    border-radius: 20px;
+    box-shadow: 
+      0 10px 30px rgba(0,0,0,0.12),
+      0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+    color: white;
+    overflow: hidden;
+    position: relative;
+    
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+    }
+    
+    .header-puerto {
+      padding: 25px 20px 20px 20px;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(15px);
+      position: relative;
+      text-align: center;
+      
+      .info-principal {
+        h2 {
+          font-size: 2.2em;
+          font-weight: 900;
+          margin: 0 0 15px 0;
+          text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+          letter-spacing: 1px;
+          line-height: 1.2;
+          color: #fff;
+        }
+        
+        .da-info {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 10px;
+          font-size: 1.2em;
+          opacity: 0.95;
+          font-weight: 500;
+          color: #e0e7ff;
+          
+          .estado-mini {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            margin-left: 8px;
+            font-size: 0.8em;
+            font-weight: 600;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            
+            &.success { 
+              background: linear-gradient(135deg, #4CAF50 0%, #66BB6A 100%);
+            }
+            &.warning { 
+              background: linear-gradient(135deg, #FF9800 0%, #FFB74D 100%);
+            }
+            &.danger { 
+              background: linear-gradient(135deg, #F44336 0%, #EF5350 100%);
+            }
+            &.medium { 
+              background: linear-gradient(135deg, #9E9E9E 0%, #BDBDBD 100%);
+            }
+          }
+        }
+      }
+    }
+    
+    .divisor-cristal {
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255,255,255,0.3) 50%, transparent 100%);
+      margin: 0 20px;
+    }
+
+    ion-card-content {
+      padding: 25px 20px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 0 0 20px 20px;
+      .datos-puerto {
+        margin-bottom: 18px;
+        .seccion-puerto, .seccion-cliente, .seccion-fechas {
+          margin-bottom: 14px;
+          h3 {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 1.1em;
+            margin: 0 0 8px 0;
+            opacity: 0.95;
+            font-weight: 700;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+            color: #fff;
+          }
+          p {
+            font-size: 1.2em;
+            font-weight: 700;
+            margin: 0;
+            color: #e0e7ff;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.18);
+            letter-spacing: 0.5px;
+          }
+        }
+      }
+    }
+  }
+}
+
+.barra-resumen-sutil {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background: #14345C !important;
+  border-radius: 0;
+  padding: 10px 0;
+  margin: 24px 0 18px 0 !important;
+  box-shadow: none;
+  border: none;
+  gap: 0;
+  width: 100%;
+  box-sizing: border-box;
+  min-height: unset;
+}
+
+.resumen-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.resumen-label {
+  font-size: 0.75em;
+  font-weight: 700;
+  white-space: normal;
+  text-align: center;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin-bottom: 0;
+  display: block;
+  text-transform: uppercase;
+  line-height: 1.05;
+  word-break: break-word;
+}
+
+.resumen-valor {
+  font-size: 1.2em;
+  font-weight: 700;
+  text-align: center;
+  margin-top: 2px;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+}
+.resumen-valor.total { color: #fff !important; }
+.resumen-valor.aprobado { color: #43e97b !important; }
+.resumen-valor.enproceso { color: #ff9800 !important; }
+.resumen-valor.observaciones { color: #f44336 !important; }
+
+.resumen-divider {
+  width: 1px;
+  height: 38px;
+  background: rgba(255,255,255,0.18);
+  margin: 0 18px;
+  border-radius: 0;
+  align-self: center;
+}
+
+// @keyframes slideInDown { - REMOVIDO
+//   from { opacity: 0; transform: translateY(-30px);}
+//   to { opacity: 1; transform: translateY(0);}
+// }
+// @keyframes popNumber { - REMOVIDO
+//   0% { transform: scale(0.7);}
+//   70% { transform: scale(1.15);}
+//   100% { transform: scale(1);}
+// }
+
+.fondo-marino,
+.fondo-marino::part(scroll) {
+  --background: #f0f6ff !important;
+  background: #f0f6ff !important;
+}
+
+:host ::ng-deep ion-content.fondo-marino {
+  --background: #f0f6ff !important;
+  background: #f0f6ff !important;
+}
+
+:host ::ng-deep ion-content.fondo-marino .inner-scroll,
+:host ::ng-deep ion-content.fondo-marino .scroll-content {
+  background: #f0f6ff !important;
+}
+
+.fechas-bar {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 10px;
+  .fecha-box {
+    background: #f4f6fa;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.08);
+    padding: 16px 10px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    ion-icon {
+      font-size: 2em;
+      color: #667eea;
+      margin-bottom: 6px;
+    }
+    .fecha-label {
+      font-size: 0.9em;
+      color: #888;
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+    .fecha-valor {
+      font-size: 1.1em;
+      font-weight: 700;
+      color: #222;
+    }
+  }
+}
+
+.fechas-grid-v2 {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 10px;
+  .fecha-item-v2 {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: #f4f6fa;
+    border-radius: 14px;
+    padding: 12px 16px;
+    box-shadow: 0 2px 8px rgba(102,126,234,0.06);
+    border: 1px solid #e0e7ff;
+    ion-icon {
+      font-size: 1.6em;
+      color: #667eea;
+      background: #e0e7ff;
+      border-radius: 50%;
+      padding: 6px;
+    }
+    .fecha-info {
+      display: flex;
+      flex-direction: column;
+      .fecha-label {
+        font-size: 0.9em;
+        color: #888;
+        font-weight: 600;
+      }
+      .fecha-valor {
+        font-size: 1.1em;
+        font-weight: 700;
+        color: #222;
+      }
+    }
+  }
+}
+
+.fechas-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 8px;
+  font-size: 0.9em;
+  .fecha-item {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: #666;
+    ion-icon {
+      font-size: 0.9em;
+      color: #888;
+    }
+  }
+}
+
+.fechas-simple {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 8px;
+  .fecha-linea {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+    ion-icon {
+      font-size: 1em;
+      color: #667eea;
+    }
+    .fecha-label {
+      color: #fff;
+      font-weight: 500;
+      min-width: 40px;
+    }
+    .fecha-valor {
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+}
+
+.seccion-pais h3 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.1em;
+  margin: 0 0 8px 0;
+  opacity: 0.95;
+  font-weight: 700;
+  text-shadow: 0 1px 2px rgba(0,0,0,0.18);
+  color: #fff;
+}
+.seccion-pais p {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.2em;
+  font-weight: 700;
+  margin: 0;
+  color: #e0e7ff;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.18);
+  letter-spacing: 0.5px;
+}
+
+.bandera-pais {
+  width: 1.1em;
+  height: 1.1em;
+  border-radius: 2px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+  object-fit: cover;
+  margin-left: 6px;
+  margin-right: 0;
+  vertical-align: unset;
+}
+
+// Estilos para la paginación
+.pagination-container {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #1e3c72 100%);
+  border-radius: 12px;
+  margin: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  color: white;
+  
+  .pagination-info {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    opacity: 0.9;
+  }
+  
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 15px;
+    
+    .page-numbers {
+      display: flex;
+      gap: 5px;
+      
+      ion-button {
+        min-width: 40px;
+        height: 40px;
+        --border-radius: 8px;
+        --color: rgba(255,255,255,0.8);
+        --color-activated: white;
+        --background-activated: rgba(255,255,255,0.2);
+        
+        &[color="primary"] {
+          --color: white;
+          --background: rgba(255,255,255,0.2);
+        }
+      }
+    }
+    
+    ion-button {
+      --color: rgba(255,255,255,0.8);
+      --color-activated: white;
+      --background-activated: rgba(255,255,255,0.1);
+      
+      &[disabled] {
+        --color: rgba(255,255,255,0.3);
+      }
+    }
+  }
+  
+  .items-per-page {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 0.9em;
+    
+    span {
+      opacity: 0.8;
+    }
+    
+    ion-button {
+      --color: rgba(255,255,255,0.8);
+      --color-activated: white;
+      --background-activated: rgba(255,255,255,0.1);
+      min-width: 40px;
+      height: 35px;
+      --border-radius: 6px;
+      
+      &[color="primary"] {
+        --color: white;
+        --background: rgba(255,255,255,0.2);
+      }
+    }
+  }
+}
+
+// Responsive para pantallas pequeñas
+@media (max-width: 480px) {
+  .pagination-container {
+    margin: 12px;
+    padding: 15px;
+    
+    .pagination-controls {
+      flex-direction: column;
+      gap: 15px;
+      
+      .page-numbers {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+    
+    .items-per-page {
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+}
+
+:host ::ng-deep ion-card {
+  border: none !important;
+  box-shadow: none !important;
+  background: #fff !important;
+  color: #222 !important;
+}
+
+// Estilos unificados para el card de embarcación (igual al componente base)
+.tarjeta {
+  background: #14345C !important;
+  border-radius: 0;
+  margin: 0 0 28px 0 !important;
+  padding: 28px 32px 24px 32px !important;
+  width: 100% !important;
+  box-shadow: none;
+  border: none;
+  color: #fff !important;
+  transition: box-shadow 0.2s, transform 0.2s;
+  position: relative;
+  border-bottom: 5px solid #43e97b;
+
+  .card-header-row {
+    justify-content: center;
+    margin-bottom: 18px;
+    margin-top: 6px;
+  }
+
+  ion-list, ion-item, ion-label, .dato-item, h2.titulo {
+    background: #14345C !important;
+    color: #fff !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  &.estado-aprobado { border-bottom-color: #43e97b; }
+  &.estado-observaciones { border-bottom-color: #ff4444; }
+  &.estado-en_proceso { border-bottom-color: #ff8c00; }
+
+  &:hover {
+    box-shadow: 0 6px 18px rgba(30,60,114,0.14);
+    transform: translateY(-2px) scale(1.01);
+  }
+  
+  ion-label {
+    width: 100%;
+    h2.titulo {
+      font-size: 2.2em;
+      font-weight: 900;
+      color: #ffffff !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 24px;
+      margin-top: 24px;
+      text-align: center;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
+      letter-spacing: 1.5px;
+      padding: 12px 20px;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.08);
+      border: 2px solid rgba(255,255,255,0.15);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      position: relative;
+      overflow: hidden;
+      
+      animation: glow 3s ease-in-out infinite alternate;
+      
+      @keyframes glow {
+        from { 
+          box-shadow: 0 0 8px rgba(255,255,255,0.3), 0 0 16px rgba(255,255,255,0.2);
+          text-shadow: 0 4px 8px rgba(0,0,0,0.5), 0 2px 4px rgba(0,0,0,0.3);
+        }
+        to { 
+          box-shadow: 0 0 16px rgba(255,255,255,0.6), 0 0 24px rgba(255,255,255,0.4);
+          text-shadow: 0 6px 12px rgba(0,0,0,0.6), 0 4px 8px rgba(0,0,0,0.4);
+        }
+      }
+    }
+    .dato-item {
+      color: #fff !important;
+      background: none;
+      font-size: 15px;
+      margin-bottom: 6px;
+      gap: 6px;
+    }
+  }
+  
+  .datos-row {
+    margin: 0;
+    padding: 0;
+    gap: 18px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+  
+  .datos-lista-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 18px;
+  }
+  
+  .dato-fila {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.05em;
+    color: #fff;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+  
+  .dato-fila strong {
+    font-weight: 700;
+    margin-right: 4px;
+  }
+  
+  .dato-fila ion-icon {
+    color: #3899ff;
+    font-size: 1.2em;
+    min-width: 22px;
+    margin-right: 2px;
+  }
+  
+  .dato-fila span.estado-aprobado {
+    margin-left: 6px;
+    font-weight: 800;
+    font-size: 1.1em;
+    color: #43e97b !important;
+  }
+
+  .dato-fila span.estado-observaciones {
+    margin-left: 6px;
+    font-weight: 800;
+    font-size: 1.1em;
+    color: #ff4444 !important;
+  }
+
+  .dato-fila span.estado-en_proceso {
+    margin-left: 6px;
+    font-weight: 800;
+    font-size: 1.1em;
+    color: #ff8c00 !important;
+  }
+
+  // Estilos para las banderas de países
+  .bandera-pais {
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 2px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+    object-fit: cover;
+    margin-left: 6px;
+    margin-right: 0;
+    vertical-align: middle;
+  }
+}
+
+// Estilos para el icono del barco
+.icono-barco {
+  color: #3899ff;
+  font-size: 1.5em;
+  margin-right: 8px;
+  vertical-align: middle;
+}

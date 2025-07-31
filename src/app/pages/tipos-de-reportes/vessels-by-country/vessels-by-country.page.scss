@@ -1,0 +1,518 @@
+@import '../vessels-by-services/vessels-by-services.page.scss';
+
+// COLORES PRINCIPALES
+$azul-marino: #15395b;
+$blanco: #fff;
+$gris-claro: #f5f6fa;
+$naranja: #ffb300;
+$gris-boton: #6c757d;
+$gris-placeholder: #b0b8c1;
+
+// RESET DE SOMBRAS Y BORDES REDONDEADOS
+* {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+ion-toolbar, .vessels-footer-toolbar {
+  background: $azul-marino !important;
+  color: $blanco !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+ion-title, .vessels-clone-title, .vessels-clone-title-main {
+  color: $blanco !important;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  background: $azul-marino;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border-radius: 0 !important;
+}
+
+.vessels-clone-title-main {
+  font-size: 1.5rem;
+}
+
+ion-footer, .vessels-footer-toolbar {
+  background: $azul-marino !important;
+  color: $blanco !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.vessels-footer-buttons ion-button {
+  color: $blanco !important;
+  --color: $blanco !important;
+  --background: transparent !important;
+  --box-shadow: none !important;
+  --border-radius: 0 !important;
+  margin: 0 18px !important;
+}
+
+.vessels-footer-buttons ion-icon {
+  color: $blanco !important;
+  font-size: 1.7rem;
+}
+
+ion-card, .vessels-clone-card, .vessels-clone-list-card, .vessels-clone-summary {
+  background: $blanco !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 1px solid $gris-claro;
+  margin-bottom: 16px;
+}
+
+.vessels-clone-summary {
+  background: $gris-claro !important;
+}
+
+.vessels-clone-summary-title {
+  background: $azul-marino;
+  color: $blanco;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  padding: 6px 0;
+  margin-bottom: 8px;
+  border-radius: 0 !important;
+}
+
+.vessels-clone-summary-value {
+  color: $naranja !important;
+  font-size: 2.2rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.vessels-clone-summary-label {
+  color: $azul-marino;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.vessels-clone-summary-label span {
+  color: $naranja !important;
+  font-weight: bold;
+}
+
+.vessels-clone-section {
+  margin-bottom: 18px;
+}
+
+.vessels-clone-subtitle {
+  background: $azul-marino;
+  color: $blanco;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  padding: 6px 0;
+  margin-bottom: 8px;
+  border-radius: 0 !important;
+}
+
+// LABELS
+ion-label, .vessels-clone-label {
+  color: $azul-marino !important;
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+// INPUTS Y SELECTS
+ion-input, ion-select {
+  background: $blanco !important;
+  color: $azul-marino !important;
+  border: 1px solid $gris-claro !important;
+  border-radius: 0 !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+  --placeholder-color: $gris-placeholder !important;
+  --padding-start: 10px !important;
+  --padding-end: 10px !important;
+}
+
+ion-input::part(native), ion-select::part(text) {
+  color: $azul-marino !important;
+  background: $blanco !important;
+}
+
+ion-input[placeholder], ion-select[placeholder] {
+  color: $gris-placeholder !important;
+}
+
+// BOTÓN PRINCIPAL - Cambiado a amarillo con bordes redondeados
+.vessels-clone-btn-solid {
+  background: $naranja !important;
+  color: $blanco !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 1.1rem;
+  min-height: 44px;
+  margin-bottom: 8px;
+  opacity: 1 !important;
+}
+
+// BOTÓN SECUNDARIO - Cambiado a amarillo con bordes redondeados
+.vessels-clone-btn-outline {
+  border: 1.5px solid #ffb300 !important;
+  color: #ffb300 !important;
+  background: #fff !important;
+  font-weight: bold;
+  border-radius: 25px !important;
+  text-transform: uppercase;
+  min-height: 44px;
+  margin-bottom: 8px;
+}
+
+// CHECKBOXES EN NARANJA/AMARILLO
+ion-checkbox {
+  --size: 22px;
+  --border-radius: 0 !important;
+  --border-width: 2px;
+  --border-color: $naranja;
+  --background: $blanco;
+  --checkmark-color: $blanco;
+  --checked-background: $naranja;
+  --checked-border-color: $naranja;
+  --checkmark-width: 3px;
+}
+ion-checkbox[aria-checked="true"] {
+  --background: $naranja;
+  --border-color: $naranja;
+  --checkmark-color: $blanco;
+}
+
+// TOGGLES
+ion-toggle {
+  --handle-background: $azul-marino;
+  --background-checked: $azul-marino;
+  --handle-width: 22px;
+  --handle-height: 22px;
+  --border-radius: 0 !important;
+}
+
+// ICONOS
+ion-icon {
+  color: $azul-marino;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+ion-toolbar ion-icon,
+ion-footer ion-icon,
+.vessels-footer-toolbar ion-icon {
+  color: $blanco !important;
+}
+
+// MÁRGENES Y PADDINGS CONSISTENTES
+.vessels-clone-center {
+  padding: 18px 8px 8px 8px;
+}
+
+ion-list, ion-item {
+  background: transparent !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+ion-item {
+  border-bottom: 1px solid $gris-claro;
+  margin-bottom: 0;
+  padding: 0 8px;
+}
+
+// ELIMINAR SOMBRAS Y BORDES REDONDEADOS GLOBALES
+ion-card, ion-item, ion-input, ion-select, ion-button, ion-checkbox, ion-toggle {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+// REFORZAR TEXTO BLANCO EN TOOLBAR Y FOOTER
+ion-toolbar, .vessels-footer-toolbar, ion-toolbar * {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+ion-title, .vessels-clone-title, .vessels-clone-title-main, ion-toolbar ion-title, ion-toolbar .vessels-clone-title, ion-toolbar .vessels-clone-title-main {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+ion-footer, ion-footer *, .vessels-footer-toolbar, .vessels-footer-toolbar * {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+// REFORZAR TEXTO BLANCO EN BOTÓN PRINCIPAL
+.vessels-clone-btn-solid, .vessels-clone-btn-solid span, .vessels-clone-btn-solid::part(native) {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+
+// FORZAR TEXTO BLANCO EN HEADERS Y SUBTÍTULOS DE SECCIÓN
+.vessels-clone-summary-title, .vessels-clone-subtitle, .vessels-clone-summary-title *, .vessels-clone-subtitle * {
+  color: $blanco !important;
+}
+
+// SEPARACIÓN Y DIFERENCIACIÓN DEL INPUT DE DA N°
+.vessels-clone-section .vessels-clone-subtitle + .vessels-clone-input {
+  margin-top: 12px !important;
+}
+.vessels-clone-input {
+  border: 1.5px solid $gris-claro !important;
+  background: $blanco !important;
+  color: $azul-marino !important;
+  font-size: 1.1rem;
+  font-weight: 500;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  padding: 12px 14px !important;
+}
+
+// BOTONES UNO AL LADO DEL OTRO Y ESTILOS PERSONALIZADOS
+.vessels-clone-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.vessels-clone-btn-outline {
+  flex: 1 1 0;
+  border: 2px solid #ffb300 !important;
+  color: #ffb300 !important;
+  background: #fff !important;
+  font-weight: bold;
+  border-radius: 25px !important;
+  text-transform: uppercase;
+  min-height: 44px;
+  margin-bottom: 0;
+  box-shadow: none !important;
+  --background: #fff !important;
+  --color: #ffb300 !important;
+  --border-radius: 25px !important;
+  --box-shadow: none !important;
+}
+.vessels-clone-btn-solid {
+  flex: 1 1 0;
+  background: $naranja !important;
+  color: $blanco !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 1.1rem;
+  min-height: 44px;
+  margin-bottom: 0;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  --background: #ffb300 !important;
+  --color: #fff !important;
+  --border-radius: 12px !important;
+  --box-shadow: none !important;
+}
+.vessels-clone-btn-solid[disabled] {
+  background: #f5f6fa !important;
+  color: #6c757d !important;
+  opacity: 1 !important;
+  border: none !important;
+  --background: #f5f6fa !important;
+  --color: #6c757d !important;
+}
+
+// REFORZAR BOTÓN PRINCIPAL CON ::ng-deep Y SELECTOR ESPECÍFICO
+:host ::ng-deep .vessels-clone-btn-solid,
+:host ::ng-deep .vessels-clone-btn-solid span,
+:host ::ng-deep .vessels-clone-btn-solid::part(native) {
+  background: $naranja !important;
+  color: $blanco !important;
+  --background: #ffb300 !important;
+  --color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+:host ::ng-deep .vessels-clone-btn-solid[disabled],
+:host ::ng-deep .vessels-clone-btn-solid[disabled] span,
+:host ::ng-deep .vessels-clone-btn-solid[disabled]::part(native) {
+  background: #f5f6fa !important;
+  color: #6c757d !important;
+  --background: #f5f6fa !important;
+  --color: #6c757d !important;
+  border: 2px solid #6c757d !important;
+  opacity: 1 !important;
+}
+
+// BOTÓN LIMPIAR IGUAL AL PRINCIPAL
+:host ::ng-deep .vessels-clone-btn-outline,
+:host ::ng-deep .vessels-clone-btn-outline span,
+:host ::ng-deep .vessels-clone-btn-outline::part(native) {
+  background: #ffb300 !important;
+  color: #fff !important;
+  --background: #ffb300 !important;
+  --color: #fff !important;
+  border: none !important;
+  border-radius: 25px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+:host ::ng-deep .vessels-clone-btn-outline[disabled],
+:host ::ng-deep .vessels-clone-btn-outline[disabled] span,
+:host ::ng-deep .vessels-clone-btn-outline[disabled]::part(native) {
+  background: #f5f6fa !important;
+  color: #6c757d !important;
+  --background: #f5f6fa !important;
+  --color: #6c757d !important;
+  border: 2px solid #6c757d !important;
+  opacity: 1 !important;
+}
+
+// REFORZAR CHECKBOXES EN NARANJA/AMARILLO
+:host ::ng-deep ion-checkbox,
+:host ::ng-deep ion-checkbox[aria-checked="true"],
+:host ::ng-deep ion-checkbox::part(container),
+:host ::ng-deep ion-checkbox[aria-checked="true"]::part(container) {
+  --background: #ffb300 !important;
+  --checked-background: #ffb300 !important;
+  --border-color: #ffb300 !important;
+  --checked-border-color: #ffb300 !important;
+  --checkmark-color: #fff !important;
+  background: #ffb300 !important;
+  border-color: #ffb300 !important;
+}
+// CHECKBOX SIN SELECCIONAR: fondo blanco, borde negro
+:host ::ng-deep ion-checkbox:not([aria-checked="true"]),
+:host ::ng-deep ion-checkbox:not([aria-checked="true"])::part(container) {
+  --background: #fff !important;
+  --checked-background: #fff !important;
+  --border-color: #111 !important;
+  --checked-border-color: #111 !important;
+  --checkmark-color: #ffb300 !important;
+  background: #fff !important;
+  border-color: #111 !important;
+}
+// CHECKBOX SELECCIONADO: fondo amarillo, borde negro
+:host ::ng-deep ion-checkbox[aria-checked="true"],
+:host ::ng-deep ion-checkbox[aria-checked="true"]::part(container) {
+  --background: #ffb300 !important;
+  --checked-background: #ffb300 !important;
+  --border-color: #111 !important;
+  --checked-border-color: #111 !important;
+  --checkmark-color: #fff !important;
+  background: #ffb300 !important;
+  border-color: #111 !important;
+}
+
+.vessels-clone-subtitle-format img.icon-excel,
+.vessels-clone-subtitle-format img.icon-pdf {
+  width: 18px;
+  height: 18px;
+  display: inline-block;
+  margin-left: 6px;
+  vertical-align: middle;
+  background: transparent;
+  border: none;
+}
+
+.mensaje-no-resultados {
+  color: #ffb300;
+  background: #fffbe6;
+  border: 1.5px solid #ffb300;
+  border-radius: 0;
+  padding: 10px 12px;
+  margin: 16px 0 0 0;
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.05em;
+}
+
+// Loading amarillo personalizado
+.custom-yellow-loading .loading-wrapper {
+  --background: #ffb300 !important;
+  background: #ffb300 !important;
+  color: #fff !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+.custom-yellow-loading .loading-message {
+  color: #fff !important;
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+// REFORZAR FOOTER Y ICONOS
+:host ::ng-deep .vessels-footer-toolbar,
+:host ::ng-deep .vessels-footer-toolbar ion-toolbar,
+:host ::ng-deep ion-footer {
+  background: #15395b !important;
+  --background: #15395b !important;
+  color: #fff !important;
+  --color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+:host ::ng-deep .vessels-footer-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+:host ::ng-deep .vessels-footer-buttons ion-button {
+  margin: 0 18px !important;
+  min-width: 36px;
+  flex: 0 1 auto;
+  background: transparent !important;
+  --background: transparent !important;
+  color: #fff !important;
+  --color: #fff !important;
+  border: none !important;
+  --border: none !important;
+}
+:host ::ng-deep .vessels-footer-buttons ion-icon,
+:host ::ng-deep .vessels-footer-toolbar ion-icon {
+  color: #fff !important;
+  --color: #fff !important;
+  font-size: 1.7rem !important;
+}
+
+.vessels-clone-summary-label {
+  font-size: 1.13em;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+  text-align: center;
+  letter-spacing: 0.2px;
+  padding: 0 18px;
+  word-break: break-word;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0;
+}
+.vessels-clone-summary-label .filtro-titulo {
+  color: #15395b !important;
+  font-weight: 900;
+  text-transform: uppercase;
+  margin-bottom: 0px;
+  letter-spacing: 0.5px;
+  display: block;
+}
+.vessels-clone-summary-label .filtro-valor {
+  color: #ffb300 !important;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 2px;
+  display: block;
+  word-break: break-word;
+}

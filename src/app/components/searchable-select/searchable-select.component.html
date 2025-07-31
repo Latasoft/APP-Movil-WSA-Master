@@ -1,0 +1,24 @@
+<ion-item>
+  <ion-label position="stacked">{{ label }}</ion-label>
+  <ion-input [(ngModel)]="keyword" class="search-input" placeholder="Buscar..." (ionInput)="filterItems()"></ion-input>
+</ion-item>
+
+<ion-list *ngIf="isOpen" class="search-results">
+  <ion-item *ngFor="let item of filteredItems" 
+            class="search-item"
+            (click)="selectItem(item)" 
+            [color]="isItemSelected(item) ? 'light' : ''">
+    <ion-label position="stacked">{{ getDisplayValue(item) }}</ion-label>
+    <ion-icon *ngIf="isItemSelected(item)" name="checkmark" slot="end"></ion-icon>
+  </ion-item>
+  <ion-item *ngIf="filteredItems.length === 0">
+    <ion-label color="medium">No se encontraron resultados</ion-label>
+  </ion-item>
+</ion-list>
+
+<div *ngIf="selectedItem" class="selected-item">
+  <ion-chip>
+    {{ getDisplayValue(selectedItem) }}
+    <ion-icon name="close-circle" (click)="clearSelection()"></ion-icon>
+  </ion-chip>
+</div>

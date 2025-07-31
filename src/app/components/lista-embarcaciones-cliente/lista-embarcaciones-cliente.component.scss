@@ -1,0 +1,37 @@
+ion-toolbar{
+    --background: #14345C; /* Azul */
+    color: #ffffff;
+}
+
+ion-title{
+    text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+}
+.custom-content {
+    --background: #f9f9f9;
+  }
+  
+  .search-add-grid {
+    margin-bottom: 1rem;
+  }
+  
+  ion-searchbar {
+    --background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+  
+  .page-info {
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  

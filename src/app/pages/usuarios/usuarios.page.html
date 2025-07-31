@@ -1,0 +1,97 @@
+<ion-header class="ion-no-border" style="--background: #14213d !important; background: #14213d !important; background-color: #14213d !important;">
+  <ion-toolbar style="--background: #14213d !important; background: #14213d !important; background-color: #14213d !important; --color: #ffffff !important; color: #ffffff !important;">
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/lista-usuarios" style="--color: #ffffff !important; color: #ffffff !important;"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Registrar Usuario</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="container">
+    <ion-card class="form-card">
+      <ion-card-header>
+        <ion-card-title class="form-title">Ingrese datos de usuario</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit()">
+          <ion-list lines="none">
+            <!-- Nombre de Usuario -->
+            <ion-item>
+              <ion-label position="stacked">Nombre de usuario</ion-label>
+              <ion-input type="text" formControlName="username" placeholder="Ingrese nombre de usuario"></ion-input>
+            </ion-item>
+
+            <!-- Email -->
+            <ion-item>
+              <ion-label position="stacked">Email</ion-label>
+              <ion-input type="email" formControlName="email" placeholder="ejemplo@correo.com"></ion-input>
+            </ion-item>
+
+            <!-- Contraseña -->
+            <ion-item>
+              <ion-label position="stacked">Contraseña</ion-label>
+              <ion-input type="password" formControlName="password" placeholder="Ingrese una contraseña segura"></ion-input>
+            </ion-item>
+
+            <!-- Confirmar Contraseña -->
+            <ion-item>
+              <ion-label position="stacked">Confirmar contraseña</ion-label>
+              <ion-input type="password" formControlName="confirmarPassword" placeholder="Confirme la contraseña"></ion-input>
+            </ion-item>
+
+            <!-- Rol de Usuario -->
+            <ion-item>
+              <ion-label position="floating">Rol de Usuario</ion-label>
+              <ion-select formControlName="tipo_usuario" placeholder="Seleccione rol">
+                <ion-select-option value="ADMINISTRADOR">Administrador</ion-select-option>
+                <ion-select-option value="TRABAJADOR">TRABAJADOR</ion-select-option>
+                <ion-select-option value="CLIENTE">Cliente</ion-select-option>
+                <ion-select-option value="ASISTENTE">ASISTENTE</ion-select-option>
+                <ion-select-option value="ADMINISTRATIVO">ADMINISTRATIVO</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <!-- Campos adicionales para Cliente -->
+            <div *ngIf="isCliente" class="cliente-fields">
+              <div class="searchable-select-container">
+                <app-searchable-select
+                  [items]="listaPaises"
+                  label="País Cliente"
+                  (selectionChange)="onPaisSeleccionado($event)">
+                </app-searchable-select>
+              </div>
+              <ion-item>
+                <ion-label position="stacked">Nombre Cliente</ion-label>
+                <ion-input type="text" formControlName="nombre_cliente" placeholder="Ingrese nombre"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Dato Contacto Cliente</ion-label>
+                <ion-input type="text" formControlName="dato_contacto_cliente" placeholder="Ingrese dato de contacto"></ion-input>
+              </ion-item>
+              <ion-item>
+                <ion-label position="stacked">Empresa</ion-label>
+                <ion-input type="text" formControlName="empresa_cliente" placeholder="Ingrese dato de empresa"></ion-input>
+              </ion-item>
+            </div>
+          </ion-list>
+
+          <!-- Botón de envío -->
+          <div class="btn-container">
+            <ion-button 
+              expand="block" 
+              (click)="onSubmit(); $event.preventDefault(); $event.stopPropagation();"
+              [disabled]="usuarioForm.invalid"
+              type="submit"
+              fill="solid"
+              color="primary">
+              Registrar Usuario
+            </ion-button>
+          </div>
+        </form>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<app-shared-footer></app-shared-footer>

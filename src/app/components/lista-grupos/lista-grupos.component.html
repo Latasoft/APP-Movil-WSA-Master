@@ -1,0 +1,84 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title class="ion-text-center">Mis Chats</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- ADMINISTRADOR -->
+  <ng-container *ngIf="rolUsuario === 'ADMINISTRADOR'">
+
+    <!-- ✅ Botón para crear grupo -->
+    <div class="ion-text-center ion-margin-bottom">
+      <ion-button color="tertiary" shape="round" fill="solid" (click)="crearNuevoGrupo()">
+        <ion-icon slot="start" name="add-circle-outline"></ion-icon>
+        Crear nuevo grupo
+      </ion-button>
+    </div>
+
+    <ion-card *ngFor="let grupo of gruposAdmin" class="grupo-card">
+      <ion-card-header>
+        <ion-card-title>{{ grupo.name }}</ion-card-title>
+        <ion-card-subtitle>
+          Estado:
+          <ion-badge [color]="grupo.status ? 'success' : 'medium'">
+            {{ grupo.status ? 'Activo' : 'Inactivo' }}
+          </ion-badge>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        
+
+        <!-- ✅ Mostrar los primeros 3 nombres -->
+        <p *ngIf="grupo.members && grupo.members.length > 0">
+          {{ obtenerNombresVisibles(grupo.members) }}
+        </p>
+
+        <ion-button expand="block" color="primary" fill="outline" (click)="verChat(grupo._id)">
+          Ver chat
+        </ion-button>
+
+        <ion-button expand="block" color="warning" fill="solid" (click)="editarGrupo(grupo._id)">
+          Actualizar grupo
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- TRABAJADOR -->
+  <ng-container *ngIf="rolUsuario === 'TRABAJADOR'">
+    <ion-card *ngFor="let grupo of gruposTRABAJADOR" class="grupo-card">
+      <ion-card-header>
+        <ion-card-title>{{ grupo.name }}</ion-card-title>
+        <ion-card-subtitle>
+          Estado:
+          <ion-badge [color]="grupo.status ? 'success' : 'medium'">
+            {{ grupo.status ? 'Activo' : 'Inactivo' }}
+          </ion-badge>
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-card-content>
+        <ion-button expand="block" color="success" (click)="irAlChat(grupo._id)">
+          Ir al chat
+        </ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ng-container>
+
+  <!-- Paginación -->
+  <div class="ion-text-center" *ngIf="totalPages > 1">
+    <ion-button size="small" (click)="cambiarPagina(currentPage - 1)" [disabled]="currentPage === 1">
+      Anterior
+    </ion-button>
+    <ion-button size="small" (click)="cambiarPagina(currentPage + 1)" [disabled]="currentPage === totalPages">
+      Siguiente
+    </ion-button>
+  </div>
+
+</ion-content>

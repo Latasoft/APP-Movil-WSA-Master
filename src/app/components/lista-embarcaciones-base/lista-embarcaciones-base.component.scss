@@ -1,0 +1,594 @@
+/* ===== ESTILOS ESPECÍFICOS PARA LISTA DE EMBARCACIONES - SIN CSS GLOBAL ===== */
+
+/* RESET COMPLETO PARA ESTA VISTA */
+:host {
+  * {
+    box-sizing: border-box;
+  }
+  
+  ion-list {
+    --background: #ffffff;
+    background: #ffffff;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* CARD DE EMBARCACIÓN - ESTILOS ESPECÍFICOS */
+:host ion-card.tarjeta {
+  background: #e9ecef !important; /* Gris fuerte */
+  border-radius: 0 !important; /* Sin bordes redondeados */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08) !important;
+  border: none !important;
+  margin: 0 auto 16px auto !important;
+  padding: 24px 20px 20px 20px !important;
+  width: 90% !important;
+  max-width: 600px !important;
+  color: #1a252f !important;
+  transition: transform 0.2s !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+:host ion-card.tarjeta:hover {
+  transform: scale(1.02) !important;
+}
+
+/* TÍTULO DEL CARD - FONDO AZUL EN FORMA DE SEMICÍRCULO */
+:host ion-card.tarjeta h2.report-title {
+  all: unset;
+  display: inline-block;
+  font-size: 2em;
+  font-weight: 900;
+  color: #ffffff !important;
+  text-align: center;
+  margin: 0 0 4px 0;
+  letter-spacing: 1px;
+  background: #15395b !important;
+  background-color: #15395b !important;
+  padding: 12px 16px !important;
+  width: auto !important;
+  border-radius: 50px !important;
+  text-shadow: none !important;
+  position: relative;
+  transform: none !important;
+  transition: none !important;
+  font-family: 'Arial', sans-serif !important;
+  text-transform: none !important;
+}
+
+/* TÍTULO DEL CARD */
+:host ion-card.tarjeta h2.titulo-vessel {
+  font-size: 2.2em !important;
+  font-weight: 900 !important;
+  color: #14345C !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.5px !important;
+  margin-bottom: 18px !important;
+  margin-top: 0 !important;
+  text-align: left !important;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  text-shadow: 
+    0 2px 4px rgba(20,52,92,0.3),
+    0 4px 8px rgba(20,52,92,0.2),
+    0 8px 16px rgba(20,52,92,0.1),
+    0 1px 2px rgba(0,0,0,0.1) !important;
+  transform: perspective(1000px) rotateX(5deg) !important;
+  transition: all 0.3s ease !important;
+}
+
+:host ion-card.tarjeta h2.titulo-vessel:hover {
+  transform: perspective(1000px) rotateX(8deg) scale(1.02) !important;
+  text-shadow: 
+    0 4px 8px rgba(20,52,92,0.4),
+    0 8px 16px rgba(20,52,92,0.3),
+    0 12px 24px rgba(20,52,92,0.2),
+    0 2px 4px rgba(0,0,0,0.15) !important;
+}
+
+/* GRID DE DATOS */
+:host ion-card.tarjeta .datos-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 16px !important;
+  margin-top: 20px !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* ELEMENTOS DE DATOS */
+:host ion-card.tarjeta .dato-item {
+  display: flex !important;
+  align-items: flex-start !important;
+  gap: 12px !important;
+  padding: 12px 16px !important;
+  background: #e9ecef !important; /* Mismo gris fuerte que el card */
+  border-radius: 0 !important;
+  border: none !important; /* Sin borde */
+  transition: all 0.2s ease !important;
+}
+
+:host ion-card.tarjeta .dato-item:hover {
+  border-color: #008BA3 !important;
+  box-shadow: 0 2px 4px rgba(0, 139, 163, 0.1) !important;
+}
+
+/* ICONOS */
+:host ion-card.tarjeta .dato-icon {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 24px !important;
+  height: 24px !important;
+  flex-shrink: 0 !important;
+}
+
+:host ion-card.tarjeta .dato-icon ion-icon {
+  color: #008BA3 !important;
+  font-size: 1.2em !important;
+}
+
+/* CONTENIDO DE DATOS */
+:host ion-card.tarjeta .dato-content {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 4px !important;
+  flex: 1 !important;
+}
+
+:host ion-card.tarjeta .dato-label {
+  font-size: 0.85em !important;
+  font-weight: 700 !important;
+  color: #34495e !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  margin: 0 !important;
+}
+
+:host ion-card.tarjeta .dato-value {
+  font-size: 0.95em !important;
+  font-weight: 500 !important;
+  color: #5a6c7d !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+}
+
+/* ESTADO */
+:host ion-card.tarjeta .estado-item {
+  grid-column: 1 / -1 !important;
+}
+
+:host ion-card.tarjeta .estado-value {
+  color: #ff9800 !important;
+  font-weight: 700 !important;
+}
+
+/* BANDERA */
+:host ion-card.tarjeta .bandera-pais {
+  width: 1.2em !important;
+  height: 1.2em !important;
+  border-radius: 0 !important;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+  object-fit: cover !important;
+  margin-left: 4px !important;
+}
+
+/* ICONO DE BORRAR - ESQUINA INFERIOR DERECHA SIN INTERFERIR */
+:host ion-card.tarjeta .icono-basurero {
+  position: absolute !important;
+  bottom: 2px !important;
+  right: 12px !important;
+  color: #dc3545 !important;
+  font-size: 1.3em !important;
+  cursor: pointer !important;
+  transition: all 0.2s ease !important;
+  z-index: 10 !important;
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 50% !important;
+  padding: 10px !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+:host ion-card.tarjeta .icono-basurero:hover {
+  color: #c82333 !important;
+  transform: scale(1.1) !important;
+  background: rgba(255, 255, 255, 1) !important;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* RESPONSIVE */
+@media (max-width: 600px) {
+  :host ion-card.tarjeta .datos-grid {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+  
+  :host ion-card.tarjeta .dato-item {
+    padding: 10px 12px !important;
+  }
+  
+  :host ion-card.tarjeta .dato-label {
+    font-size: 0.8em !important;
+  }
+  
+  :host ion-card.tarjeta .dato-value {
+    font-size: 0.9em !important;
+  }
+}
+
+/* ===== NUEVA DISTRIBUCIÓN DE DATOS - ESTRUCTURA REORGANIZADA ===== */
+
+/* NUEVO GRID DE DATOS */
+:host ion-card.tarjeta .datos-grid-nuevo {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 20px !important;
+  margin-top: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+/* NUEVOS ELEMENTOS DE DATOS */
+:host ion-card.tarjeta .dato-item-nuevo {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  text-align: left !important;
+  padding: 8px 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border: none !important;
+  transition: none !important;
+  gap: 12px !important;
+}
+
+:host ion-card.tarjeta .dato-item-nuevo:hover {
+  background: transparent !important;
+  border-color: transparent !important;
+  box-shadow: none !important;
+}
+
+/* NUEVOS ICONOS */
+:host ion-card.tarjeta .dato-icon-nuevo {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 20px !important;
+  height: 20px !important;
+  flex-shrink: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+}
+
+:host ion-card.tarjeta .dato-icon-nuevo ion-icon {
+  color: #15395b !important;
+  font-size: 1.1em !important;
+}
+
+/* NUEVO CONTENIDO DE DATOS */
+:host ion-card.tarjeta .dato-content-nuevo {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+  gap: 4px !important;
+  flex: 1 !important;
+}
+
+/* NUEVAS ETIQUETAS */
+:host ion-card.tarjeta .dato-label-nuevo {
+  font-size: 1.8em !important; /* Aumentado de 1.5em a 1.8em */
+  font-weight: 700 !important;
+  color: #495057 !important;
+  margin-bottom: 4px !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+/* NUEVOS VALORES */
+:host ion-card.tarjeta .dato-value-nuevo {
+  font-size: 0.95em !important;
+  font-weight: 400 !important;
+  color: #6c757d !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 6px !important;
+  line-height: 1.3 !important;
+  word-break: break-word !important;
+}
+
+/* NUEVO ESTADO */
+:host ion-card.tarjeta .estado-value-nuevo {
+  color: #6c757d !important;
+  font-weight: 400 !important;
+}
+
+/* NUEVA BANDERA */
+:host ion-card.tarjeta .bandera-pais-nuevo {
+  width: 1.2em !important;
+  height: 1.2em !important;
+  border-radius: 2px !important;
+  box-shadow: none !important;
+  object-fit: cover !important;
+  margin-left: 6px !important;
+}
+
+/* CONTENEDOR DE FECHAS */
+:host ion-card.tarjeta .fechas-container {
+  grid-column: 1 / -1 !important;
+  background: transparent !important;
+  border-color: transparent !important;
+  padding: 8px 0 !important;
+}
+
+/* GRID DE FECHAS */
+:host ion-card.tarjeta .fechas-grid {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 12px !important;
+  width: 100% !important;
+}
+
+/* ELEMENTOS DE FECHA */
+:host ion-card.tarjeta .fecha-item {
+  display: flex !important;
+  flex-direction: row !important;
+  align-items: flex-start !important;
+  gap: 8px !important;
+  padding: 0 !important;
+  background: transparent !important;
+  border-radius: 0 !important;
+  border: none !important;
+}
+
+/* RESPONSIVE PARA NUEVA DISTRIBUCIÓN */
+@media (max-width: 600px) {
+  :host ion-card.tarjeta .datos-grid-nuevo {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+  
+  :host ion-card.tarjeta .dato-item-nuevo {
+    padding: 6px 0 !important;
+    gap: 10px !important;
+  }
+  
+  :host ion-card.tarjeta .dato-label-nuevo {
+    font-size: 0.85em !important;
+  }
+  
+  :host ion-card.tarjeta .dato-value-nuevo {
+    font-size: 0.9em !important;
+  }
+  
+  :host ion-card.tarjeta .dato-icon-nuevo {
+    width: 18px !important;
+    height: 18px !important;
+  }
+  
+  :host ion-card.tarjeta .dato-icon-nuevo ion-icon {
+    font-size: 1em !important;
+  }
+  
+  :host ion-card.tarjeta .fechas-grid {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+  
+  :host ion-card.tarjeta .fecha-item {
+    padding: 0 !important;
+    gap: 6px !important;
+  }
+}
+
+/* ESTILO 3D PARA EL TÍTULO - ESPECIFICIDAD MÁXIMA */
+:host ::ng-deep ion-card.tarjeta h2.report-title {
+  all: unset !important;
+  display: inline-block !important;
+  font-size: 2.2em !important;
+  font-weight: 700 !important;
+  color: #15395b !important;
+  text-align: center !important;
+  margin: 0 0 10px 0 !important;
+  letter-spacing: 1px !important;
+  background: none !important;
+  background-color: transparent !important;
+  padding: 12px 16px !important;
+  width: auto !important;
+  border-radius: 0 !important;
+  text-shadow: 
+    2px 2px 0 #0a1a2a,
+    4px 4px 0 #061118,
+    6px 6px 0 #030a0f !important;
+  transform: perspective(500px) rotateX(5deg) !important;
+  transition: transform 0.3s ease !important;
+  font-family: 'Arial', sans-serif !important;
+  text-transform: none !important;
+}
+
+/* CONTENEDOR PARA DA Y ESTADO JUNTOS */
+.da-estado-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+  gap: 20px !important;
+}
+
+.da-estado-container .dato-item-nuevo {
+  flex: 1 !important;
+  margin: 0 !important;
+}
+
+/* CONTENEDOR PARA PAÍS Y PUERTO JUNTOS */
+.pais-puerto-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+  gap: 20px !important;
+}
+
+.pais-puerto-container .dato-item-nuevo {
+  flex: 1 !important;
+  margin: 0 !important;
+}
+
+/* CONTENEDOR PARA FECHAS JUNTAS */
+.fechas-container {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  width: 100% !important;
+  margin-bottom: 16px !important;
+  gap: 15px !important; /* Un poco menos de gap para las 3 fechas */
+}
+
+.fechas-container .dato-item-nuevo {
+  flex: 1 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.fechas-container .dato-icon-nuevo {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin-bottom: 8px !important;
+}
+
+.fechas-container .dato-content-nuevo {
+  text-align: center !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+
+.fechas-container .dato-label-nuevo {
+  text-align: center !important;
+}
+
+.fechas-container .dato-value-nuevo {
+  text-align: center !important;
+  white-space: nowrap !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  max-width: 100% !important;
+  font-size: 0.9em !important;
+  line-height: 1.2 !important;
+}
+
+/* DISTRIBUCIÓN DE DATOS - ESTRUCTURA NUEVA */
+
+/* TABLA DE RESUMEN - ESTILOS MODERNOS Y ACORDES */
+.tabla-resumen {
+  background: #15395b !important;
+  border-radius: 12px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08) !important;
+  margin: 16px auto 24px auto !important;
+  width: 95% !important;
+  max-width: 600px !important;
+  overflow: hidden !important;
+  border: 1px solid #15395b !important;
+}
+
+.tabla-header {
+  background: #0a1a2a !important;
+  color: #ffffff !important;
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr !important;
+  padding: 16px 20px !important;
+  font-weight: 700 !important;
+  font-size: 1.1em !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}
+
+.tabla-row {
+  display: grid !important;
+  grid-template-columns: 2fr 1fr 1fr !important;
+  padding: 14px 20px !important;
+  border-bottom: 1px solid #1a252f !important;
+  transition: background-color 0.2s ease !important;
+  font-weight: 500 !important;
+  color: #ffffff !important;
+}
+
+.tabla-row:last-child {
+  border-bottom: none !important;
+}
+
+.tabla-row:hover {
+  background-color: #1a252f !important;
+}
+
+.tabla-row.total {
+  background: #0a1a2a !important;
+  font-weight: 700 !important;
+  color: #ffffff !important;
+  font-size: 1.1em !important;
+}
+
+.tabla-row.aprobado {
+  color: #ffffff !important;
+}
+
+.tabla-row.en-proceso {
+  color: #ffffff !important;
+}
+
+.tabla-row.observaciones {
+  color: #ffffff !important;
+}
+
+.tabla-col {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  padding: 4px 8px !important;
+  color: #ffffff !important;
+}
+
+.tabla-col.valor {
+  font-weight: 700 !important;
+  font-size: 1.2em !important;
+  justify-content: center !important;
+  color: #ffb300 !important;
+}
+
+.tabla-col.porcentaje {
+  font-weight: 600 !important;
+  color: #ffb300 !important;
+  justify-content: center !important;
+}
+
+/* RESPONSIVE PARA TABLA */
+@media (max-width: 768px) {
+  .tabla-resumen {
+    width: 98% !important;
+    margin: 12px auto 20px auto !important;
+  }
+  
+  .tabla-header,
+  .tabla-row {
+    padding: 12px 16px !important;
+    font-size: 0.9em !important;
+  }
+  
+  .tabla-col.valor {
+    font-size: 1.1em !important;
+  }
+}
+

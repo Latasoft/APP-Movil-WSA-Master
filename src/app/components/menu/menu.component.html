@@ -1,0 +1,90 @@
+<ion-menu side="start" contentId="main-content">
+  
+  <ion-content>
+    <ion-list>
+      <ion-list-header>Men&uacute;</ion-list-header>
+      <!-- Opción visible para todos -->
+      <ion-menu-toggle autoHide="false">
+        <ion-item lines="none" routerLink="/home" *ngIf="!isAuthenticated" routerDirection="root">
+          <ion-label>
+            Inicio
+          </ion-label>
+          
+        </ion-item>
+      </ion-menu-toggle>
+
+      <!-- Opción solo visible para administradores -->
+      <ion-menu-toggle autoHide="false" *ngIf="rolUsuario === 'ADMINISTRADOR' && isAuthenticated ">
+        <ion-item lines="none" [routerLink]="'/lista-usuarios'" >
+          <ion-label>Usuarios</ion-label> 
+          <ion-icon name="people-outline"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" routerLink="/lista-embarcaciones" >
+          
+          <ion-label>Embarcaciones</ion-label>
+          <ion-icon name="boat-outline"></ion-icon>
+
+        </ion-item>
+        <ion-item lines="none" routerLink="/lista-grupos" >
+          
+        <ion-label>Grupos</ion-label>
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+          
+        </ion-item>
+        <ion-item lines="none" routerLink="/generar-reporte" >
+          
+          <ion-label>Reporte Clientes</ion-label>
+          <ion-icon name="document-text-outline"></ion-icon>
+            
+          </ion-item>
+
+        
+      </ion-menu-toggle>
+
+
+      <!-- Opción solo visible para TRABAJADORes -->
+      <ion-menu-toggle autoHide="false" *ngIf="rolUsuario === 'TRABAJADOR' && isAuthenticated ">
+        <ion-item lines="none" routerLink="/lista-embarcaciones" >
+      
+          <ion-label>Embarcaciones</ion-label>
+          <ion-icon name="boat-outline"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" routerLink="/lista-grupos" >
+      
+          <ion-label>Grupos</ion-label>
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" routerLink="/historial-cambios" >
+          
+          <ion-label>Historial de Cambios</ion-label>
+          <ion-icon name="time-outline"></ion-icon>
+            
+        </ion-item>
+      </ion-menu-toggle>
+
+      <!-- Opción visible para administradores y usuarios -->
+      <ion-menu-toggle autoHide="false" *ngIf=" rolUsuario === 'CLIENTE'">
+        <ion-item lines="none" routerLink="/perfil" >
+          
+          <ion-label>Perfil</ion-label>
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-item>
+        <ion-item lines="none" routerLink="/mis-embarcaciones" >
+      
+          <ion-label>Mis Embarcaciones</ion-label> 
+          <ion-icon name="boat-outline"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+
+
+        <!-- Opción visible para todos los roles si está autenticado -->
+        <ion-menu-toggle autoHide="false" *ngIf="isAuthenticated">
+          <ion-item lines="none" (click)="logout()" routerDirection="root">
+      
+            <ion-label>Salir</ion-label> 
+            <ion-icon name="log-out-outline"></ion-icon>
+          </ion-item>
+        </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>

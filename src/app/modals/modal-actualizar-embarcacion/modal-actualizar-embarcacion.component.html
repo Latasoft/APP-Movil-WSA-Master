@@ -1,0 +1,188 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Actualizar estado</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+
+  <!-- 🧾 Datos generales de la embarcación -->
+  <ion-card class="info-card-embarcacion">
+    <ion-card-header>
+      <ion-card-title class="titulo-centrado titulo-embarcacion-azul">
+        <img src="assets/logoWSA.svg" alt="WSA Logo" class="logo-wsa-titulo" />
+        <div class="titulo-embarcacion-azul-bg">{{ embarcacion?.titulo_embarcacion }}</div>
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <div class="datos-embarcacion-grid">
+        <div class="dato-item">
+          <span class="dato-label"><ion-icon name="pricetag-outline" class="icono-id"></ion-icon> DA:</span> <span class="dato-valor no-editable">{{ embarcacion?.da_numero }}</span>
+        </div>
+        <div class="dato-item dato-puerto">
+          <span class="dato-label"><ion-icon name="navigate-outline" class="icono-faro"></ion-icon> PORT:</span>
+          <span class="dato-valor-inline no-editable">
+            {{ embarcacion?.destino_embarcacion }}
+            <img *ngIf="getFlagCodeFromPais(getPaisFromPuerto(embarcacion?.destino_embarcacion))"
+                 [src]="'assets/flags/' + getFlagCodeFromPais(getPaisFromPuerto(embarcacion?.destino_embarcacion)) + '.png'"
+                 alt="Bandera" class="bandera-puerto" />
+          </span>
+        </div>
+        <div class="dato-item">
+          <span class="dato-label"><ion-icon name="calendar-outline" class="icono-fecha"></ion-icon> ETA:</span>
+          <ng-container *ngIf="puedeEditarFechas; else soloLecturaETA">
+            <ion-input type="date" [(ngModel)]="embarcacion.eta"></ion-input>
+          </ng-container>
+          <ng-template #soloLecturaETA>
+            <span class="dato-valor no-editable">{{ embarcacion?.eta || '-' }}</span>
+          </ng-template>
+        </div>
+        <div class="dato-item">
+          <span class="dato-label"><ion-icon name="calendar-outline" class="icono-fecha"></ion-icon> ETB:</span>
+          <ng-container *ngIf="puedeEditarFechas; else soloLecturaETB">
+            <ion-input type="date" [(ngModel)]="embarcacion.etb"></ion-input>
+          </ng-container>
+          <ng-template #soloLecturaETB>
+            <span class="dato-valor no-editable">{{ embarcacion?.etb || '-' }}</span>
+          </ng-template>
+        </div>
+        <div class="dato-item">
+          <span class="dato-label"><ion-icon name="calendar-outline" class="icono-fecha"></ion-icon> ETD:</span>
+          <ng-container *ngIf="puedeEditarFechas; else soloLecturaETD">
+            <ion-input type="date" [(ngModel)]="embarcacion.etd"></ion-input>
+          </ng-container>
+          <ng-template #soloLecturaETD>
+            <span class="dato-valor no-editable">{{ embarcacion?.etd || '-' }}</span>
+          </ng-template>
+        </div>
+      </div>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Estado actual -->
+  <ion-item *ngIf="esAdmin; else soloLecturaEstado" class="select-estado-marino">
+    <ion-label>Estado</ion-label>
+    <ion-select interface="popover" [(ngModel)]="embarcacion.estado">
+      <ion-select-option value="aprobado">Aprobado</ion-select-option>
+      <ion-select-option value="en_proceso">En Proceso</ion-select-option>
+      <ion-select-option value="observaciones">Observaciones</ion-select-option>
+    </ion-select>
+  </ion-item>
+
+  <ng-template #soloLecturaEstado>
+    <ion-item>
+      <ion-label><strong>Estado:</strong> {{ embarcacion.estado }}</ion-label>
+    </ion-item>
+  </ng-template>
+
+  <!-- Botón añadir servicio -->
+  <ion-button expand="block" class="btn-marino-anadir-servicio" (click)="abrirModalServicioPrincipal()" style="border-radius:0px !important; --border-radius:0px !important; background:#15395b !important; --background:#15395b !important; color:#fff !important; --color:#fff !important;">
+    <ion-icon slot="start" name="add" color="light"></ion-icon>
+    Añadir servicio
+  </ion-button>
+
+  <!-- 📝 Lista de servicios añadidos -->
+  <ion-card class="info-card-embarcacion" *ngIf="obtenerClavesServicios().length > 0">
+    <ion-card-header>
+      <ion-card-title class="titulo-centrado titulo-embarcacion-azul">
+        <ion-icon name="settings-outline" class="icono-titulo"></ion-icon>
+        Servicios Relacionados
+      </ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ng-container *ngFor="let principal of obtenerClavesServicios()">
+        <ion-accordion-group>
+          <ion-accordion value="{{ principal }}">
+            <ion-item slot="header" class="header-servicio-principal">
+              <div class="header-servicio-info">
+                <div class="titulo-servicio-principal titulo-azul-marino">{{ principal }}</div>
+                <div class="subservicios-contador">
+                  {{ serviciosRelacionadosSeleccionados[principal]?.length }} subservicio{{ serviciosRelacionadosSeleccionados[principal]?.length === 1 ? '' : 's' }} agregado{{ serviciosRelacionadosSeleccionados[principal]?.length === 1 ? '' : 's' }}
+                </div>
+              </div>
+              <ion-button fill="clear" size="large" class="btn-add-subservicio" (click)="agregarServicioDesdeGrupo(principal)">
+                <ion-icon name="add" slot="icon-only"></ion-icon>
+              </ion-button>
+            </ion-item>
+            <div class="ion-padding contenedor-scroll-servicios" slot="content">
+              
+              <!-- REORDER GROUP CON BADGE EN ESQUINA -->
+              <ion-reorder-group
+                (ionItemReorder)="reorderServicios($event, principal)"
+                disabled="!esAdmin"
+              >
+                <ion-item class="item-con-badge" *ngFor="let servicio of serviciosRelacionadosSeleccionados[principal]; let j = index">
+                  
+                  <ion-label>
+                    <div class="servicio-info-block">
+                      <div class="servicio-info-row">
+                        <div class="servicio-info-item">
+                          <div class="servicio-titulo">Campo:</div>
+                          <div class="servicio-valor">{{ servicio.nombre }}</div>
+                        </div>
+                        <div class="servicio-info-item">
+                          <div class="servicio-titulo">Estado:</div>
+                          <div class="servicio-valor servicio-valor-estado">{{ servicio.estado | titlecase }}</div>
+                        </div>
+                      </div>
+                      <div class="servicio-info-item" *ngIf="servicio.subservicio">
+                        <div class="servicio-titulo">Subservicio:</div>
+                        <div class="servicio-valor">{{ servicio.subservicio }}</div>
+                      </div>
+                      <div class="servicio-info-item">
+                        <div class="servicio-titulo">Fecha:</div>
+                        <div class="servicio-valor">{{ servicio.fecha ? servicio.fecha : 'Sin fecha' }}</div>
+                      </div>
+                      <div class="servicio-info-item">
+                        <div class="servicio-titulo">Nota:</div>
+                        <div class="servicio-valor">{{ servicio.nota ? servicio.nota : 'Sin nota' }}</div>
+                      </div>
+                    </div>
+                  </ion-label>
+              
+                  <ion-icon slot="end" name="create-outline" (click)="editarServicio(servicio, j, principal)"></ion-icon>
+                  <ion-icon *ngIf="esAdmin" name="trash-outline" slot="end" (click)="eliminarServicioRelacionado(j, principal)"></ion-icon>
+                  <ion-reorder *ngIf="esAdmin" slot="end"></ion-reorder>
+
+                  <!-- Badge flotante en la esquina -->
+                  <ion-badge class="badge-en-esquina">
+                    {{ j + 1 }}
+                  </ion-badge>
+
+                </ion-item>
+              </ion-reorder-group>
+            </div>
+          </ion-accordion>
+        </ion-accordion-group>
+      </ng-container>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Mensaje cuando no hay servicios agregados -->
+  <ion-card class="info-card-embarcacion" *ngIf="obtenerClavesServicios().length === 0">
+    <ion-card-content class="ion-text-center">
+      <ion-icon name="information-circle-outline" size="large" color="medium"></ion-icon>
+      <p style="margin-top: 16px; color: #666; font-size: 14px;">
+        No hay servicios agregados para esta embarcación.
+      </p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Botones finales -->
+  <div class="botones-finales-row">
+    <ion-button class="btn-marino-anadir-servicio" (click)="guardarCambios()" size="small" style="border-radius:0px !important; --border-radius:0px !important; background:#15395b !important; --background:#15395b !important; color:#fff !important; --color:#fff !important;">
+      <ion-icon slot="start" name="save-outline" color="light"></ion-icon>
+      Guardar
+    </ion-button>
+    <ion-button *ngIf="esAdmin" class="btn-marino-anadir-servicio" (click)="confirmarEliminar()" size="small" style="border-radius:0px !important; --border-radius:0px !important; background:#15395b !important; --background:#15395b !important; color:#fff !important; --color:#fff !important;">
+      <ion-icon slot="start" name="trash-outline" color="light"></ion-icon>
+      Eliminar
+    </ion-button>
+  </div>
+
+</ion-content>

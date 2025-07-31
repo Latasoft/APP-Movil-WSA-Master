@@ -1,0 +1,137 @@
+<!-- LIMPIEZA Y DOCUMENTACIÓN DEL HTML DE LISTA DE EMBARCACIONES -->
+<div class="contenido-scroll">
+  <!-- 📊 TABLA DE RESUMEN CON CONTADORES -->
+  <div class="tabla-resumen">
+    <div class="tabla-header">
+      <div class="tabla-col">ESTADO</div>
+      <div class="tabla-col">CANTIDAD</div>
+      <div class="tabla-col">PORCENTAJE</div>
+    </div>
+    <div class="tabla-row total">
+      <div class="tabla-col">TOTAL</div>
+      <div class="tabla-col valor">{{ totalEmbarcaciones }}</div>
+      <div class="tabla-col porcentaje">100%</div>
+    </div>
+    <div class="tabla-row aprobado">
+      <div class="tabla-col">APROBADAS</div>
+      <div class="tabla-col valor">{{ totalAprobadas }}</div>
+      <div class="tabla-col porcentaje">{{ getPorcentaje(totalAprobadas) }}%</div>
+    </div>
+    <div class="tabla-row en-proceso">
+      <div class="tabla-col">EN PROCESO</div>
+      <div class="tabla-col valor">{{ totalEnProceso }}</div>
+      <div class="tabla-col porcentaje">{{ getPorcentaje(totalEnProceso) }}%</div>
+    </div>
+    <div class="tabla-row observaciones">
+      <div class="tabla-col">OBSERVACIONES</div>
+      <div class="tabla-col valor">{{ totalObservaciones }}</div>
+      <div class="tabla-col porcentaje">{{ getPorcentaje(totalObservaciones) }}%</div>
+    </div>
+  </div>
+
+  <!-- 🔁 LISTADO DE EMBARCACIONES - ESTRUCTURA SIMPLIFICADA -->
+  <ion-card *ngFor="let embarc of properties" class="tarjeta" (click)="puedeAbrirModal() && abrirModal(embarc)">
+    <h2 class="report-title">
+      {{ embarc.titulo_embarcacion || 'Sin dato' }}
+    </h2>
+    
+    <!-- NUEVA DISTRIBUCIÓN DE DATOS - ESTRUCTURA REORGANIZADA -->
+    <div class="datos-grid-nuevo">
+      <!-- PRIMERA FILA: DA y ESTADO JUNTOS -->
+      <div class="dato-item-nuevo da-estado-container">
+        <!-- DA -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="document-text-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">DA:</div>
+            <div class="dato-value-nuevo">{{ embarc.da_numero || 'Sin dato' }}</div>
+          </div>
+        </div>
+        
+        <!-- ESTADO -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="alert-circle-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">ESTADO:</div>
+            <div class="dato-value-nuevo estado-value-nuevo">{{ embarc.estado_actual || 'Sin dato' }}</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- SEGUNDA FILA: PAÍS y PUERTO JUNTOS -->
+      <div class="dato-item-nuevo pais-puerto-container">
+        <!-- PAÍS -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="flag-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">PAÍS:</div>
+            <div class="dato-value-nuevo">{{ getPaisPorPuerto(embarc.destino_embarcacion) || 'Sin dato' }}</div>
+          </div>
+        </div>
+        
+        <!-- PUERTO -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="navigate-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">PUERTO:</div>
+            <div class="dato-value-nuevo">
+              {{ embarc.destino_embarcacion || 'Sin dato' }}
+              <img *ngIf="getPaisPorPuerto(embarc.destino_embarcacion) && getFlagCodeFromPais(getPaisPorPuerto(embarc.destino_embarcacion) || '')"
+                   [src]="'assets/flags/' + getFlagCodeFromPais(getPaisPorPuerto(embarc.destino_embarcacion) || '') + '.png'"
+                   alt="Bandera" class="bandera-pais-nuevo" />
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- TERCERA FILA: FECHAS JUNTAS -->
+      <div class="dato-item-nuevo fechas-container">
+        <!-- ETA -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">ETA:</div>
+            <div class="dato-value-nuevo">{{ getFechaFormateada(embarc.fecha_arribo) || 'Sin dato' }}</div>
+          </div>
+        </div>
+        
+        <!-- ETB -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">ETB:</div>
+            <div class="dato-value-nuevo">{{ getFechaFormateada(embarc.fecha_estimada_zarpe) || 'Sin dato' }}</div>
+          </div>
+        </div>
+        
+        <!-- ETD -->
+        <div class="dato-item-nuevo">
+          <div class="dato-icon-nuevo">
+            <ion-icon name="calendar-outline"></ion-icon>
+          </div>
+          <div class="dato-content-nuevo">
+            <div class="dato-label-nuevo">ETD:</div>
+            <div class="dato-value-nuevo">{{ getFechaFormateada(embarc.fecha_zarpe) || 'Sin dato' }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <ion-icon *ngIf="puedeEliminarEmbarcacion()" name="trash-outline" class="icono-basurero" (click)="$event.stopPropagation(); eliminarEmbarcacion(embarc)"></ion-icon>
+  </ion-card>
+
+  <!-- FOOTER DE NAVEGACIÓN ACTIVO EN 'Embarcaciones' -->
+  <app-footer-navegacion [activo]="'Embarcaciones'"></app-footer-navegacion>
+</div>

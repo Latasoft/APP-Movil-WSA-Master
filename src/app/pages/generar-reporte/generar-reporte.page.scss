@@ -1,0 +1,262 @@
+// COLORES PRINCIPALES
+$azul-marino: #15395b;
+$blanco: #fff;
+$gris-claro: #f5f6fa;
+$gris-card: #e9ecef;
+$gris-boton: #6c757d;
+$naranja: #ffb300;
+$gris-placeholder: #b0b8c1;
+
+// RESET DE SOMBRAS Y BORDES REDONDEADOS
+* {
+  border-radius: 0 !important;
+  box-shadow: none !important;
+}
+
+ion-toolbar, .custom-toolbar {
+  background: $azul-marino !important;
+  color: $blanco !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+ion-title, .toolbar-title {
+  color: $blanco !important;
+  text-align: center;
+  font-weight: bold;
+  font-size: 2rem;
+  background: $azul-marino;
+  padding: 8px 0;
+  margin-bottom: 12px;
+  border-radius: 0 !important;
+}
+
+ion-footer, .custom-footer {
+  background: $azul-marino !important;
+  color: $blanco !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.custom-footer ion-button {
+  color: $blanco !important;
+  --color: $blanco !important;
+  --background: transparent !important;
+  --box-shadow: none !important;
+  --border-radius: 0 !important;
+  margin: 0 18px !important;
+}
+
+.custom-footer ion-icon {
+  color: $blanco !important;
+  font-size: 1.7rem;
+}
+
+ion-card, .report-card {
+  background: $gris-card !important;
+  border-radius: 0 !important;
+  box-shadow: none !important;
+  border: 1px solid $gris-claro;
+  margin-bottom: 16px;
+  padding: 32px 24px 28px 24px;
+  transition: transform 0.2s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.report-card:hover {
+  transform: scale(1.02);
+}
+
+.report-title {
+  font-size: 2em;
+  font-weight: 900;
+  color: $azul-marino !important;
+  text-align: center;
+  margin: 0 0 4px 0;
+  letter-spacing: 1px;
+  text-shadow: 
+    0 1px 0 #fff,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15);
+  position: relative;
+  transform: perspective(500px) rotateX(10deg);
+  transition: all 0.3s ease;
+}
+
+.report-title:hover {
+  transform: perspective(500px) rotateX(5deg) scale(1.05);
+  text-shadow: 
+    0 1px 0 #fff,
+    0 2px 0 #c9c9c9,
+    0 3px 0 #bbb,
+    0 4px 0 #b9b9b9,
+    0 5px 0 #aaa,
+    0 6px 1px rgba(0,0,0,.1),
+    0 0 5px rgba(0,0,0,.1),
+    0 1px 3px rgba(0,0,0,.3),
+    0 3px 5px rgba(0,0,0,.2),
+    0 5px 10px rgba(0,0,0,.25),
+    0 10px 10px rgba(0,0,0,.2),
+    0 20px 20px rgba(0,0,0,.15),
+    0 0 20px rgba(0,0,0,.1);
+}
+
+.report-subtitle {
+  font-size: 0.95em;
+  color: #6c757d;
+  margin-bottom: 28px;
+  margin-top: 0;
+  text-align: center;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  line-height: 1.2;
+  display: block;
+}
+
+// BOTÓN PRINCIPAL - Gris más fuerte que el fondo del card
+.select-btn {
+  background: $naranja !important;
+  color: $blanco !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 1.1rem;
+  min-height: 44px;
+  margin-bottom: 8px;
+  opacity: 1 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 10px;
+  box-shadow: none !important;
+  --background: #ffb300 !important;
+  --color: #fff !important;
+  --border-radius: 12px !important;
+  --box-shadow: none !important;
+}
+
+.select-btn:hover, .select-btn:focus {
+  background: $naranja !important;
+  color: $blanco !important;
+  border-color: $naranja !important;
+}
+
+.btn-icon {
+  font-size: 1.3em;
+  margin-right: 4px;
+  color: $blanco !important;
+  transition: color 0.2s;
+}
+
+.select-btn:hover .btn-icon {
+  color: $blanco !important;
+}
+
+// REFORZAR BOTÓN PRINCIPAL CON ::ng-deep Y SELECTOR ESPECÍFICO
+:host ::ng-deep .select-btn,
+:host ::ng-deep .select-btn span,
+:host ::ng-deep .select-btn::part(native) {
+  background: $naranja !important;
+  color: $blanco !important;
+  --background: #ffb300 !important;
+  --color: #fff !important;
+  border: none !important;
+  border-radius: 12px !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: none !important;
+  opacity: 1 !important;
+}
+
+// Fondo gris clarito del ion-content
+.custom-content {
+  background-color: #f7f9fc;
+}
+
+// Texto explicativo debajo del título
+.subtitle {
+  font-size: 14px;
+  color: #6c757d;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+// Contenedor de las tarjetas
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+// REFORZAR FOOTER Y ICONOS
+:host ::ng-deep .custom-footer,
+:host ::ng-deep .custom-footer ion-toolbar,
+:host ::ng-deep ion-footer {
+  background: #15395b !important;
+  --background: #15395b !important;
+  color: #fff !important;
+  --color: #fff !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+:host ::ng-deep .custom-footer ion-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  flex-wrap: wrap;
+  padding: 0 8px;
+  box-sizing: border-box;
+}
+
+:host ::ng-deep .custom-footer ion-button {
+  margin: 0 18px !important;
+  min-width: 36px;
+  flex: 0 1 auto;
+  background: transparent !important;
+  --background: transparent !important;
+  color: #fff !important;
+  --color: #fff !important;
+  border: none !important;
+  --border: none !important;
+}
+
+:host ::ng-deep .custom-footer ion-icon,
+:host ::ng-deep .custom-footer ion-toolbar ion-icon {
+  color: #fff !important;
+  --color: #fff !important;
+  font-size: 1.7rem !important;
+}
+
+// REFORZAR TEXTO BLANCO EN TOOLBAR Y FOOTER
+ion-toolbar, .custom-toolbar, ion-toolbar * {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+
+ion-title, .toolbar-title, ion-toolbar ion-title, ion-toolbar .toolbar-title {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+
+ion-footer, ion-footer *, .custom-footer, .custom-footer * {
+  color: $blanco !important;
+  --color: #fff !important;
+}
+
+

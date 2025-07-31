@@ -1,0 +1,229 @@
+/* Estilos base para el componente */
+:host {
+  ion-header {
+    --background: #1e3a8a !important;
+    background: #1e3a8a !important;
+  }
+  
+  ion-content {
+    --background: #ffffff !important;
+    background: #ffffff !important;
+    --padding-bottom: 70px !important;
+    padding-bottom: 70px !important;
+  }
+}
+
+/* Toolbar específico para este componente - FORZAR ESTILOS CON MÁXIMA ESPECIFICIDAD */
+:host ion-header ion-toolbar {
+  --background: #1e3a8a !important;
+  background: #1e3a8a !important;
+  background-color: #1e3a8a !important;
+  --color: #ffffff !important;
+  color: #ffffff !important;
+  --border-color: rgba(255, 255, 255, 0.1) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1) !important;
+  
+  &::before {
+    content: '' !important;
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    height: 3px !important;
+    background: linear-gradient(90deg, #008BA3, #00ACC1, #008BA3) !important;
+  }
+}
+
+:host ion-title {
+  color: #ffffff !important;
+  text-transform: uppercase !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  font-family: 'Bebas Neue', 'Impact', 'Arial Black', sans-serif !important;
+  font-size: 1.4rem !important;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3) !important;
+}
+
+:host ion-back-button {
+  --color: #ffffff !important;
+  color: #ffffff !important;
+}
+
+/* Barra de búsqueda mejorada */
+.search-container {
+  padding: 16px 20px 8px !important;
+  
+  .enhanced-searchbar {
+    --background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%) !important;
+    --border-radius: 16px !important;
+    --box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08) !important;
+    --color: #1a252f !important;
+    --placeholder-color: #5a6c7d !important;
+    --icon-color: #5a6c7d !important;
+    border: 1px solid rgba(52, 73, 94, 0.1) !important;
+    transition: all 0.3s ease !important;
+    
+    &:focus-within {
+      --box-shadow: 0 6px 20px rgba(0, 139, 163, 0.15) !important;
+      border-color: rgba(0, 139, 163, 0.3) !important;
+      transform: translateY(-1px) !important;
+    }
+  }
+}
+
+/* Botón flotante de nueva embarcación - SIEMPRE ABAJO */
+.floating-action-button {
+  position: fixed !important;
+  bottom: 90px !important;
+  right: 15px !important;
+  z-index: 999 !important;
+  
+  .fab-new-vessel {
+    width: 60px !important;
+    height: 60px !important;
+    border-radius: 50% !important;
+    background: #ffb300 !important;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
+    --background: #ffb300 !important;
+    --color: #ffffff !important;
+    color: #ffffff !important;
+    transition: all 0.3s ease !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    min-width: 60px !important;
+    min-height: 60px !important;
+    max-width: 60px !important;
+    max-height: 60px !important;
+    --border-radius: 50% !important;
+    --min-width: 60px !important;
+    --min-height: 60px !important;
+    --max-width: 60px !important;
+    --max-height: 60px !important;
+    
+    &:hover {
+      transform: scale(1.1) !important;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3) !important;
+      background: #e6a200 !important;
+      --background: #e6a200 !important;
+    }
+    
+    &:active {
+      transform: scale(0.95) !important;
+    }
+    
+    ion-icon {
+      font-size: 28px !important;
+      font-weight: bold !important;
+      color: #ffffff !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+  }
+}
+
+/* Botón de logout mejorado */
+.logout-btn {
+  --background: transparent !important;
+  --color: #ffffff !important;
+  color: #ffffff !important;
+  border-radius: 8px !important;
+  transition: all 0.3s ease !important;
+  
+  &:hover {
+    --background: rgba(255, 255, 255, 0.1) !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    transform: scale(1.05) !important;
+  }
+  
+  &:active {
+    transform: scale(0.95) !important;
+  }
+  
+  ion-icon {
+    font-size: 20px !important;
+    font-weight: bold !important;
+  }
+}
+
+/* Estilos responsivos */
+@media (max-width: 480px) {
+  .floating-action-button {
+    bottom: 85px !important;
+    
+    .fab-new-vessel {
+      width: 55px !important;
+      height: 55px !important;
+      
+      ion-icon {
+        font-size: 26px !important;
+      }
+    }
+  }
+  
+  ion-content {
+    --padding-bottom: 65px !important;
+    padding-bottom: 65px !important;
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .floating-action-button {
+    bottom: 88px !important;
+    
+    .fab-new-vessel {
+      width: 58px !important;
+      height: 58px !important;
+      
+      ion-icon {
+        font-size: 27px !important;
+      }
+    }
+  }
+  
+  ion-content {
+    --padding-bottom: 75px !important;
+    padding-bottom: 75px !important;
+  }
+}
+
+/* Footer específico para este componente - FORZAR ESTILOS CON MÁXIMA ESPECIFICIDAD */
+:host app-footer-navegacion {
+  position: fixed !important;
+  bottom: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  z-index: 1000 !important;
+  
+  ion-footer {
+    --background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background-color: #1e3a8a !important;
+    border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.15) !important;
+    backdrop-filter: blur(10px) !important;
+    
+    &::before {
+      content: '' !important;
+      position: absolute !important;
+      top: 0 !important;
+      left: 0 !important;
+      right: 0 !important;
+      height: 3px !important;
+      background: linear-gradient(90deg, #008BA3, #00ACC1, #008BA3) !important;
+    }
+  }
+  
+  ion-toolbar {
+    --background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%) !important;
+    background-color: #1e3a8a !important;
+    border: none !important;
+    box-shadow: none !important;
+  }
+}
+

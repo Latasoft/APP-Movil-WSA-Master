@@ -1,0 +1,97 @@
+.tarjeta-servicio {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    transform: scale(1.01);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+// Estilos para el fondo azul marino
+.fondo-admin {
+  --background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 50%, #3b82f6 100%);
+}
+
+// Cards con fondo azul marino
+.card-marino {
+  background: #14345C !important;
+  border: none !important;
+  border-radius: 0px !important;
+  margin-bottom: 16px;
+}
+
+.card-header-marino {
+  background: transparent;
+  padding: 16px;
+}
+
+.card-content-marino {
+  background: transparent;
+  padding: 0 16px 16px;
+}
+
+// Títulos blancos y más llamativos
+.titulo-blanco {
+  color: #ffffff !important;
+  font-size: 0.7rem !important;
+  font-weight: 400 !important;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  margin-bottom: 8px;
+  opacity: 0.7;
+}
+
+.subtitulo-blanco {
+  color: #ffffff !important;
+  font-size: 2rem !important;
+  font-weight: 800 !important;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.4);
+  opacity: 1;
+}
+
+// Estilo para el buscador
+.search-item {
+  --background: #14345C !important;
+  --border-radius: 0px !important;
+  --border: none !important;
+  --box-shadow: none !important;
+  --border-style: none !important;
+  --border-width: 0 !important;
+  margin-bottom: 16px;
+  padding: 16px;
+  
+  ion-input {
+    --color: #ffffff;
+    --placeholder-color: #cbd5e1;
+    --padding-start: 0;
+    --padding-end: 0;
+    --border: none !important;
+    --border-style: none !important;
+    --border-width: 0 !important;
+  }
+}
+
+// Botón de agregar servicio
+ion-button.btn-agregar-servicio {
+  margin-top: 20px;
+  --background: #14345C !important;
+  --color: #ffffff !important;
+  --border-radius: 0px !important;
+  --border: 2px solid #ffffff !important;
+  font-weight: 600;
+  height: 50px;
+  
+  &:hover {
+    --background: #1a4a7a !important;
+  }
+}
+
+// Estilo adicional para el contenido del botón
+ion-button.btn-agregar-servicio ion-icon {
+  color: #ffffff !important;
+}

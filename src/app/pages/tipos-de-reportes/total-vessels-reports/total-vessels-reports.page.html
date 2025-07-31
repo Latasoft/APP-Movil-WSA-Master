@@ -1,0 +1,79 @@
+<ion-header>
+  <ion-toolbar class="vessels-footer-toolbar">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="vessels-clone-title">
+      TOTAL VESSEL'S REPORTS
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="vessels-clone-bg" style="--background: #fff !important; background: #fff !important;">
+  <div class="vessels-clone-center">
+    <ion-card class="vessels-clone-card">
+      <ion-card-content>
+        <div class="vessels-clone-title-main">TOTAL VESSEL'S REPORTS</div>
+        <div class="vessels-clone-section">
+          <ion-label class="vessels-clone-label"><ion-icon name="calendar-outline"></ion-icon> FROM:</ion-label>
+          <ion-input class="vessels-clone-input" type="text" placeholder="DD-MM-YYYY" [value]="fechaDesdeStr" (ionInput)="onInputFecha($event, 'desde')"></ion-input>
+        </div>
+        <div class="vessels-clone-section">
+          <ion-label class="vessels-clone-label"><ion-icon name="calendar-outline"></ion-icon> TO:</ion-label>
+          <ion-input class="vessels-clone-input" type="text" placeholder="DD-MM-YYYY" [value]="fechaHastaStr" (ionInput)="onInputFecha($event, 'hasta')"></ion-input>
+        </div>
+        <ion-card class="vessels-clone-summary">
+          <ion-card-content>
+            <div class="vessels-clone-summary-title">TOTAL VESSELS</div>
+            <div class="vessels-clone-summary-value">{{ totalVessels }}</div>
+            <div class="vessels-clone-summary-label">
+              <span class="filtro-titulo">TOTAL:</span> <span class="filtro-valor">{{ totalVessels }}</span>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle">Formato de Reporte</div>
+          <ion-item>
+            <ion-label>Formato de Reporte</ion-label>
+            <ion-select placeholder="Seleccionar formato" [(ngModel)]="formatoReporte">
+              <ion-select-option value="excel">Excel</ion-select-option>
+              <ion-select-option value="pdf">PDF</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="vessels-clone-buttons">
+          <ion-button expand="block" fill="outline" color="dark" (click)="limpiarFiltros()" class="vessels-clone-btn-outline">Limpiar Filtros</ion-button>
+          <ion-button expand="block" color="light" (click)="generarReporte()" class="vessels-clone-btn-solid">Generar Reporte</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="vessels-footer-toolbar">
+    <ion-buttons slot="primary" class="vessels-footer-buttons">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="construct-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

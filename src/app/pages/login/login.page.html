@@ -1,0 +1,58 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="login-content">
+  <!-- Fondo de video Vimeo -->
+  <div class="video-bg">
+    <div class="video-zoom">
+      <iframe src="https://player.vimeo.com/video/968891179?background=1&autoplay=1&loop=1&muted=1&controls=0&quality=1080p" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <div class="login-card">
+    <img src="assets/logoWSA.svg" alt="Logo WSA" class="login-marca-logo" />
+    <h2 class="login-header">Welcome</h2>
+    <p class="login-subtitle">Enter your credentials</p>
+    <form (ngSubmit)="login()" class="login-form">
+      <ion-item class="input-item" lines="none">
+        <ion-label position="floating">Username</ion-label>
+        <ion-input
+          type="text"
+          [(ngModel)]="username"
+          name="username"
+          required
+        ></ion-input>
+      </ion-item>
+      <ion-item class="input-item" lines="none">
+        <ion-label position="floating">Password</ion-label>
+        <div class="input-with-icon">
+          <ion-input
+            #passwordInput
+            [type]="showPassword ? 'text' : 'password'"
+            [(ngModel)]="password"
+            name="password"
+            required>
+          </ion-input>
+          <ion-button
+            fill="clear"
+            class="eye-button"
+            (click)="togglePassword()"
+            type="button">
+            <ion-icon [name]="showPassword ? 'eye-off' : 'eye'"></ion-icon>
+          </ion-button>
+        </div>
+      </ion-item>
+      <ion-button type="submit" class="btn-primary" expand="block">
+        <ion-icon name="log-in-outline" slot="start"></ion-icon>
+        Sign In
+      </ion-button>
+    </form>
+    <div class="aux-links">
+      <a [routerLink]="'/reset-password'">¿Forgot Your Password?</a>
+    </div>
+  </div>
+</ion-content>

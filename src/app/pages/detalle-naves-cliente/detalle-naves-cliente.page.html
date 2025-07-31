@@ -1,0 +1,146 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/home">
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Mis Naves</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding fondo-marino">
+
+  <!-- Buscador y filtros -->
+  <div class="filters-container">
+    <div class="filters-header">
+      <h3>Filtros Avanzados</h3>
+      <div class="filters-subtitle">Refina tu búsqueda de embarcaciones</div>
+    </div>
+    <ion-item lines="none">
+      <ion-input
+        [ngModel]="searchText"
+        (input)="onSearchChange($event)"
+        placeholder="Buscar por DA, Vessel, Cliente, Operador"
+        clearInput="true"
+      ></ion-input>
+    </ion-item>
+    <div class="dropdowns">
+      <ion-select
+        placeholder="Country"
+        [(ngModel)]="selectedCountry"
+        interface="popover"
+        (ionChange)="resetPagination()"
+      >
+        <ion-select-option *ngFor="let country of countryOptions" [value]="country">
+          {{ country }}
+        </ion-select-option>
+      </ion-select>
+      <ion-select
+        placeholder="Port"
+        [(ngModel)]="selectedPort"
+        interface="popover"
+        (ionChange)="resetPagination()"
+      >
+        <ion-select-option *ngFor="let port of portOptions" [value]="port">
+          {{ port }}
+        </ion-select-option>
+      </ion-select>
+      <ion-select
+        placeholder="Status"
+        [(ngModel)]="selectedStatus"
+        interface="popover"
+        (ionChange)="resetPagination()"
+      >
+        <ion-select-option *ngFor="let status of statusOptions" [value]="status">
+          {{ status }}
+        </ion-select-option>
+      </ion-select>
+      <ion-select
+        placeholder="Operador"
+        [(ngModel)]="selectedOperador"
+        interface="popover"
+        (ionChange)="resetPagination()"
+      >
+        <ion-select-option *ngFor="let operador of operadorOptions" [value]="operador">
+          {{ operador }}
+        </ion-select-option>
+      </ion-select>
+    </div>
+  </div>
+
+  <!-- Barra resumen -->
+  <div class="barra-resumen-sutil">
+    <div class="resumen-item">
+      <span class="resumen-label">TOTAL</span>
+      <span class="resumen-valor total">{{ totalEmbarcaciones }}</span>
+    </div>
+    <div class="resumen-divider"></div>
+    <div class="resumen-item">
+      <span class="resumen-label">APROBADAS</span>
+      <span class="resumen-valor aprobado">{{ totalAprobadas }}</span>
+    </div>
+    <div class="resumen-divider"></div>
+    <div class="resumen-item">
+      <span class="resumen-label">EN PROCESO</span>
+      <span class="resumen-valor enproceso">{{ totalEnProceso }}</span>
+    </div>
+    <div class="resumen-divider"></div>
+    <div class="resumen-item">
+      <span class="resumen-label">OBSERVACIONES</span>
+      <span class="resumen-valor observaciones">{{ totalObservaciones }}</span>
+    </div>
+  </div>
+
+  <!-- Cards con estructura idéntica al componente base -->
+  <div *ngIf="!loading" class="cards-container">
+    <ion-card *ngFor="let embarcacion of embarcacionesFiltradas; let i = index" 
+      class="tarjeta estado-{{ embarcacion.estado_actual }}" 
+      [routerLink]="['/detalle-nave-panel-cliente', embarcacion.da_numero]"
+      style="cursor: pointer;">
+      <ion-label>
+        <div class="card-header-row">
+          <h2 class="titulo">
+            <ion-icon name="boat-outline" class="icono-barco"></ion-icon>
+            {{ embarcacion.vessel?.toUpperCase() || '-' }}
+          </h2>
+        </div>
+        <div class="datos-lista-vertical">
+          <div class="dato-fila"><ion-icon name="document-text-outline"></ion-icon> <strong>DA N°:</strong> {{ embarcacion.da_numero || '-' }}</div>
+          <div class="dato-fila"><ion-icon name="navigate-outline"></ion-icon> <strong>Puerto:</strong> {{ embarcacion.port?.toUpperCase() || '-' }}</div>
+          <div class="dato-fila"><ion-icon name="flag-outline"></ion-icon> <strong>País:</strong>
+            <ng-container *ngIf="getPaisFromPuerto(embarcacion.port)">
+              {{ getPaisFromPuerto(embarcacion.port) }}
+              <img
+                *ngIf="getPaisFromPuerto(embarcacion.port) && getFlagCodeFromPais(getPaisFromPuerto(embarcacion.port))"
+                [src]="'assets/flags/' + getFlagCodeFromPais(getPaisFromPuerto(embarcacion.port)) + '.png'"
+                alt="Bandera"
+                class="bandera-pais"
+              />
+            </ng-container>
+          </div>
+          <div class="dato-fila"><ion-icon name="calendar-outline"></ion-icon> <strong>ETA:</strong> {{ formatDate(embarcacion.eta) }}</div>
+          <div class="dato-fila"><ion-icon name="calendar-outline"></ion-icon> <strong>ETB:</strong> {{ formatDate(embarcacion.etb) }}</div>
+          <div class="dato-fila"><ion-icon name="calendar-outline"></ion-icon> <strong>ETD:</strong> {{ formatDate(embarcacion.etd) }}</div>
+          <div class="dato-fila">
+            <ion-icon [name]="getEstadoIcono(embarcacion.estado_actual)"></ion-icon>
+            <strong>Estado:</strong>
+            <span [ngClass]="{
+              'estado-aprobado': embarcacion.estado_actual === 'aprobado',
+              'estado-observaciones': embarcacion.estado_actual === 'observaciones',
+              'estado-en_proceso': embarcacion.estado_actual === 'en_proceso'
+            }">
+              {{
+                embarcacion.estado_actual === 'aprobado' ? 'Aprobado' :
+                embarcacion.estado_actual === 'observaciones' ? 'Observaciones' :
+                embarcacion.estado_actual === 'en_proceso' ? 'En proceso' : '-'
+              }}
+            </span>
+          </div>
+        </div>
+      </ion-label>
+    </ion-card>
+  </div>
+
+  <ion-spinner *ngIf="loading"></ion-spinner>
+</ion-content>

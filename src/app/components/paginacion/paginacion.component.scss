@@ -1,0 +1,42 @@
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
+  margin-top: auto;
+  padding: 16px 0; // espacio arriba y abajo
+
+  width: 100%;
+  box-sizing: border-box;
+
+  ion-button {
+    --border-color: var(--ion-color-primary);
+    --border-style: solid;
+    --border-width: 1px;
+    --border-radius: 20px;
+    --padding-start: 1.2rem;
+    --padding-end: 1.2rem;
+
+    --color: var(--ion-color-primary);
+    font-weight: 500;
+
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.1s ease;
+
+    &:hover {
+      transform: scale(1.03);
+    }
+
+    &[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  }
+
+  .page-info {
+    font-weight: 600;
+    color: var(--ion-color-dark);
+    margin: 0 0.5rem;
+  }
+}

@@ -1,0 +1,781 @@
+// Fondo por defecto en todo el modal
+:host ion-content {
+  --background: #fff !important;
+  background: #fff !important;
+}
+
+// Tarjeta principal
+ion-card {
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(30,60,114,0.08), 0 4px 12px rgba(42,82,152,0.04);
+  color: #222;
+  margin-bottom: 28px;
+  padding: 0 0 10px 0;
+  border: 1.5px solid #e0e0e0;
+}
+
+ion-card-title {
+  font-size: 2em;
+  color: #222;
+  letter-spacing: 1px;
+  margin-bottom: 8px;
+}
+
+ion-card-content p,
+ion-label,
+ion-item {
+  color: #222 !important;
+  font-size: 1.1rem;
+}
+
+.valor-fecha {
+  padding: 8px 12px;
+  background: #f5f5f5;
+  font-size: 1.05rem;
+  margin-top: 4px;
+  color: #222;
+}
+
+ion-badge {
+  font-size: 1.05rem;
+  padding: 8px 16px;
+  text-transform: capitalize;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.06);
+  margin-right: 6px;
+}
+ion-badge[color="success"] {
+  background: #43e97b;
+  color: #fff;
+}
+ion-badge[color="warning"] {
+  background: #ffd200;
+  color: #222;
+}
+ion-badge[color="danger"] {
+  background: #ff5858;
+  color: #fff;
+}
+ion-badge[color="medium"] {
+  background: #bdbdbd;
+  color: #fff;
+}
+
+ion-icon {
+  font-size: 1.3rem;
+  margin-left: 10px;
+  cursor: pointer;
+  color: #222;
+  opacity: 0.85;
+  &:hover {
+    opacity: 1;
+  }
+}
+
+ion-button {
+  margin-top: 16px;
+  border-radius: 14px;
+  font-weight: 700;
+  font-size: 1.15em;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.06);
+  letter-spacing: 0.5px;
+}
+ion-button[color="primary"] {
+  background: #1976d2 !important;
+  color: #fff !important;
+}
+ion-button[color="success"] {
+  background: #43e97b !important;
+  color: #fff !important;
+}
+ion-button[color="danger"] {
+  background: #ff5858 !important;
+  color: #fff !important;
+}
+
+ion-item {
+  --highlight-color-focused: #3b82f6;
+  background: #fff !important;
+  margin-bottom: 12px;
+  border: 1px solid #e0e0e0;
+  box-shadow: none;
+  color: #222;
+}
+
+ion-accordion-group {
+  margin-top: 14px;
+}
+
+ion-accordion {
+  --border-color: #e0e0e0;
+  --background: #fff;
+  margin-bottom: 16px;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.04);
+}
+
+.contenedor-scroll-servicios {
+  max-height: 320px;
+  overflow-y: auto;
+  padding-right: 8px;
+}
+
+ion-accordion ion-item[slot="header"] {
+  background: #f1f3f7 !important;
+  border-left: 6px solid #15395b !important;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.06);
+  display: flex;
+  align-items: center;
+  min-height: 48px;
+}
+ion-accordion ion-item[slot='header'] ion-label {
+  font-size: 1.18em !important;
+  color: #15395b !important;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+ion-accordion ion-item[slot='header'] ion-icon {
+  color: #15395b !important;
+  font-size: 1.2em;
+  margin-right: 8px;
+}
+ion-accordion ion-item[slot="header"] ion-badge {
+  background: #e0e0e0 !important;
+  color: #222 !important;
+  border-radius: 16px !important;
+  font-size: 1em;
+  font-weight: 700;
+  margin-left: 8px;
+  padding: 4px 12px;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.04);
+}
+
+.item-con-badge {
+  position: relative;
+  background: #fff;
+  margin-bottom: 10px;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.03);
+}
+
+.badge-en-esquina {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: #e0e0e0;
+  color: #222;
+  border-radius: 50%;
+  min-width: 26px;
+  height: 26px;
+  font-size: 13px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2px;
+  z-index: 10;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1);
+}
+
+.info-card-embarcacion {
+  background: #f1f3f7;
+  box-shadow: 0 8px 32px rgba(30,60,114,0.16), 0 2px 8px rgba(30,60,114,0.10);
+  border: 2px solid #e3e8f0;
+  margin-bottom: 28px;
+  padding: 0;
+  transition: box-shadow 0.2s, border 0.2s;
+}
+
+.titulo-embarcacion-con-iconos {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+.titulo-centrado {
+  text-align: center;
+  flex: 1;
+  font-size: 2em;
+  font-weight: 700;
+  color: #222;
+  margin: 0;
+}
+.titulo-centrado.titulo-embarcacion-azul {
+  color: #15395b !important;
+  font-size: 2.3em !important;
+  font-weight: 800;
+  margin: 12px 0 18px 0;
+  text-align: center;
+  letter-spacing: 1px;
+}
+.icono-titulo {
+  font-size: 2.1em;
+  color: #1976d2;
+  filter: drop-shadow(0 2px 6px #1976d288);
+}
+
+.icono-id, .icono-faro, .icono-fecha {
+  color: #15395b !important;
+  font-size: 1.25em;
+  margin-right: 6px;
+  vertical-align: middle;
+}
+
+.datos-embarcacion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px 12px;
+  padding: 18px 12px 10px 12px;
+}
+.dato-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: #f1f3f7;
+  border-radius: 10px;
+  padding: 10px 12px;
+  box-shadow: 0 1px 4px rgba(30,60,114,0.04);
+  min-width: 0;
+}
+.dato-valor-inline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 22px;
+}
+.dato-label {
+  font-weight: 600;
+  color: #15395b !important;
+  font-size: 0.98em;
+  margin-bottom: 2px;
+  letter-spacing: 0.5px;
+}
+.dato-valor, .dato-valor-inline {
+  color: #222;
+  font-size: 1.08em;
+  font-weight: 500;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  width: 100%;
+}
+.dato-valor.no-editable, .dato-valor-inline.no-editable {
+  color: #b0b8c1 !important;
+  font-weight: 500;
+}
+.dato-item ion-input {
+  color: #222;
+}
+
+.dato-puerto .bandera-puerto {
+  width: 22px;
+  height: 16px;
+  margin-left: 8px;
+  vertical-align: middle;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(30,60,114,0.10);
+  object-fit: cover;
+}
+
+@media (max-width: 600px) {
+  .datos-embarcacion-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px 8px;
+    padding: 12px 6px 8px 6px;
+  }
+  .titulo-centrado {
+    font-size: 1.3em;
+  }
+}
+
+// Elimino todos los estilos personalizados de la clase select-estado-marino para que el select de estado sea nativo
+
+// Botones finales
+.botones-finales-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 18px;
+  margin-top: 18px;
+  padding-bottom: 32px;
+}
+.botones-finales-row ion-button {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  margin: 0 8px !important;
+  text-align: center !important;
+}
+.botones-finales-row ion-button span,
+.botones-finales-row ion-button .button-native {
+  text-align: center !important;
+  width: 100%;
+  justify-content: center !important;
+  display: flex !important;
+}
+.botones-finales-row ion-button[color="danger"] {
+  background: #ff5858 !important;
+  color: #fff !important;
+}
+.botones-finales-row ion-button[color="success"] {
+  background: #43e97b !important;
+  color: #fff !important;
+}
+.botones-finales-row ion-icon {
+  font-size: 1.2em;
+  margin-right: 6px;
+}
+
+// Fondo marino y textos blancos para TODO el contenido dentro del acordeón
+ion-accordion [slot="content"],
+ion-accordion .ion-padding.contenedor-scroll-servicios,
+ion-accordion .item-con-badge,
+ion-accordion ion-label,
+ion-accordion p,
+ion-accordion ion-badge,
+ion-accordion ion-icon,
+ion-accordion ion-button,
+ion-accordion h1,
+ion-accordion h2,
+ion-accordion h3,
+ion-accordion h4,
+ion-accordion h5,
+ion-accordion h6,
+ion-accordion span {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.04);
+}
+ion-accordion h3, ion-accordion h4, ion-accordion h5 {
+  color: #222 !important;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+// Fondo marino para todos los contenedores principales
+ion-card,
+ion-card-header,
+ion-card-content,
+ion-list,
+ion-item,
+ion-accordion,
+ion-accordion-group,
+.ion-padding.contenedor-scroll-servicios {
+  color: #222 !important;
+  border-radius: 18px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.04);
+}
+
+// Ajustar paddings y márgenes para evitar solapamientos
+ion-card,
+ion-card-content,
+ion-list,
+ion-item,
+ion-accordion,
+.ion-padding.contenedor-scroll-servicios {
+  padding: 16px 12px !important;
+  margin-bottom: 16px !important;
+}
+
+// Forzar textos blancos en todos los labels, títulos y párrafos
+ion-label,
+ion-card-title,
+ion-card-header,
+ion-card-content,
+ion-item,
+ion-accordion,
+ion-list,
+p,
+h1,h2,h3,h4,h5,h6,
+span {
+  color: #222 !important;
+}
+
+// Fondo marino y textos blancos para la lista interna y reorder dentro del acordeón
+ion-accordion ion-reorder-group,
+ion-accordion ion-reorder-group ion-item,
+ion-accordion ion-reorder-group .item-con-badge {
+  background: #fff !important;
+  color: #222 !important;
+  border-radius: 14px !important;
+  border: none !important;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.04);
+}
+ion-accordion ion-reorder-group ion-item {
+  font-size: 1.05em;
+  font-weight: 600;
+  margin-bottom: 10px;
+  align-items: center;
+}
+ion-accordion ion-reorder-group ion-label,
+ion-accordion ion-reorder-group p,
+ion-accordion ion-reorder-group ion-badge {
+  color: #222 !important;
+}
+ion-accordion ion-reorder-group ion-icon {
+  color: #222 !important;
+}
+ion-accordion ion-reorder {
+  color: #222 !important;
+  background: transparent !important;
+}
+
+// Eliminar cualquier borde/fondo blanco en headers y wrappers de acordeones
+ion-accordion-group > *,
+ion-accordion-group > div,
+ion-accordion-group > ion-item,
+ion-accordion-group > ion-card,
+ion-accordion-group > ion-card-content,
+ion-accordion-group > ion-item[slot='header'],
+ion-accordion-group > ion-accordion > ion-item[slot='header'],
+ion-accordion-group > ion-accordion > div,
+ion-accordion-group > ion-accordion > ion-card,
+ion-accordion-group > ion-accordion > ion-card-content {
+  background: #fff !important;
+  border: none !important;
+  border-color: transparent !important;
+  border-radius: 22px !important;
+  box-shadow: 0 4px 20px rgba(30,60,114,0.04), 0 2px 8px rgba(42,82,152,0.04);
+  color: #222 !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+ion-toolbar {
+  --background: #15395b !important;
+  background: #15395b !important;
+  color: #fff !important;
+  justify-content: center;
+}
+ion-title, ion-toolbar ion-title {
+  color: #fff !important;
+  text-align: center !important;
+  font-size: 1.25em !important;
+  font-weight: 700;
+  width: 100%;
+  margin: 0 auto;
+  display: block;
+}
+ion-toolbar ion-buttons[slot="end"] {
+  display: flex;
+  align-items: center;
+}
+ion-toolbar ion-icon[name="close"] {
+  font-size: 2.1em !important;
+  color: #fff !important;
+}
+
+.input-sin-icono::part(native)::-webkit-calendar-picker-indicator {
+  opacity: 0;
+  display: none;
+}
+.input-sin-icono::part(native)::-ms-input-placeholder {
+  color: transparent;
+}
+.input-sin-icono::part(native)::-moz-placeholder {
+  color: transparent;
+}
+.input-sin-icono::part(native)::-webkit-input-placeholder {
+  color: transparent;
+}
+.input-sin-icono::part(native)::-webkit-input-placeholder {
+  color: transparent;
+}
+.input-sin-icono::part(native)::-webkit-clear-button {
+  display: none;
+}
+.input-fecha-azul::part(icon) {
+  color: #15395b !important;
+  font-size: 1.3em;
+}
+
+.editable-fecha {
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.10);
+  border-radius: 8px;
+  transition: box-shadow 0.2s;
+  background: #e3f2fd !important;
+  font-weight: 600;
+  color: #15395b;
+}
+.editable-fecha:focus {
+  box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+}
+
+.icono-lapiz {
+  color: #1976d2 !important;
+  font-size: 1.3em;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+.titulo-centrado.titulo-embarcacion-azul .icono-titulo {
+  color: #15395b !important;
+  font-size: 1.2em !important;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+ion-accordion ion-item[slot='header'] ion-label {
+  font-size: 1.25em !important;
+  color: #15395b !important;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.label-servicio-principal {
+  font-size: 1.18em !important;
+  color: #15395b !important;
+  font-weight: 800;
+  display: block;
+  line-height: 1.2;
+}
+.subservicios-contador {
+  font-size: 0.78em;
+  color: #b0b0b0 !important;
+  font-weight: 400;
+  margin-top: 0;
+  line-height: 1.1;
+}
+
+.header-servicio-principal {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #f1f3f7 !important;
+  border-left: 6px solid #15395b !important;
+  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.06);
+  min-height: 56px;
+  padding-right: 8px;
+}
+
+.header-servicio-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.titulo-servicio-principal {
+  font-size: 1.25em;
+  color: #15395b;
+  font-weight: 800;
+  line-height: 1.1;
+}
+
+.subservicios-contador {
+  font-size: 0.78em;
+  color: #b0b0b0 !important;
+  font-weight: 400;
+  margin-top: 0;
+  line-height: 1.1;
+}
+
+.btn-add-subservicio, ion-button.btn-add-subservicio {
+  display: none !important;
+}
+
+.titulo-azul-marino {
+  color: #15395b !important;
+}
+
+.header-servicio-principal,
+ion-accordion ion-item[slot='header'] {
+  border-radius: 0 !important;
+}
+
+:host ::ng-deep ion-accordion ion-item[slot='header'],
+:host ::ng-deep .header-servicio-principal,
+:host ::ng-deep ion-accordion ion-item[slot='header']::part(native),
+:host ::ng-deep .header-servicio-principal::part(native),
+:host ::ng-deep ion-item.header-servicio-principal,
+:host ::ng-deep ion-item.header-servicio-principal::part(native),
+:host ::ng-deep ion-item[slot='header'],
+:host ::ng-deep ion-item[slot='header']::part(native) {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+  border-top-left-radius: 0 !important;
+  border-top-right-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+}
+
+ion-accordion ion-item[slot='header'],
+ion-accordion ion-item[slot='header']::part(native),
+ion-accordion .header-servicio-principal,
+ion-accordion .header-servicio-principal::part(native),
+ion-accordion .item-con-badge,
+ion-accordion .item-con-badge::part(native),
+ion-accordion ion-item,
+ion-accordion ion-item::part(native) {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+ion-accordion-group,
+ion-accordion-group::part(native) {
+  border-radius: 0 !important;
+  --border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: #fff !important;
+}
+
+.servicio-info-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.servicio-info-row {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-items: flex-start;
+}
+.servicio-info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 2px;
+  flex: 1;
+}
+.servicio-titulo {
+  color: #111 !important;
+  font-weight: bold;
+  font-size: 1.08em;
+  margin-bottom: 0px;
+  line-height: 1.1;
+}
+.servicio-valor {
+  color: #b0b8c1 !important;
+  font-weight: 500;
+  font-size: 0.98em;
+  margin-top: 0px;
+  line-height: 1.1;
+}
+.servicio-valor ion-badge {
+  font-size: 0.95em;
+  font-weight: 600;
+  vertical-align: middle;
+  margin-left: 0;
+}
+
+.servicio-valor-estado {
+  color: #b0b8c1 !important;
+  font-size: 0.98em;
+  font-weight: 500;
+  text-align: left;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+.servicio-titulo-row {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.btn-editar-estado {
+  margin-left: 2px;
+  --padding-start: 0;
+  --padding-end: 0;
+  --background: transparent !important;
+  --color: #1976d2 !important;
+  font-size: 1.1em;
+}
+.btn-editar-estado ion-icon {
+  font-size: 1.2em;
+}
+
+.vessels-clone-btn-solid, .btn-marino-anadir-servicio, .btn-eliminar {
+  min-width: 140px !important;
+  padding-left: 24px !important;
+  padding-right: 24px !important;
+  white-space: nowrap !important;
+  text-overflow: ellipsis;
+  overflow: visible;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vessels-clone-btn-solid, .vessels-clone-btn-solid span, .vessels-clone-btn-solid::part(native),
+.btn-marino-anadir-servicio, .btn-marino-anadir-servicio span, .btn-marino-anadir-servicio::part(native),
+.btn-eliminar, .btn-eliminar span, .btn-eliminar::part(native) {
+  background: #ffb300 !important; /* Cambiado de gris a amarillo */
+  color: #fff !important;
+  --background: #ffb300 !important; /* Cambiado de gris a amarillo */
+  --color: #fff !important;
+  font-weight: bold;
+  text-transform: uppercase;
+  border-radius: 12px !important;
+  border: none !important;
+  font-size: 1.1rem;
+  min-height: 44px;
+  margin-bottom: 0;
+  opacity: 1 !important;
+  box-shadow: none !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+.vessels-clone-btn-solid[disabled], .btn-marino-anadir-servicio[disabled], .btn-eliminar[disabled] {
+  background: #f5f6fa !important;
+  color: #6c757d !important; /* Cambiado de #fff a gris */
+  opacity: 1 !important;
+  border: none !important;
+  --background: #f5f6fa !important;
+  --color: #6c757d !important; /* Cambiado de #fff a gris */
+}
+// Eliminar cualquier fondo azul global en los contenedores de los botones
+.botones-finales-row, .botones-finales-row * {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+.btn-marino-anadir-servicio {
+  min-width: unset !important;
+  padding-left: unset !important;
+  padding-right: unset !important;
+  white-space: normal !important;
+  display: block !important;
+  margin: 0 auto 18px auto !important;
+  text-align: center !important;
+}
+
+.titulo-embarcacion-azul-bg {
+  background: #15395b;
+  color: #fff !important;
+  font-size: 1em;
+  font-weight: 800;
+  padding: 8px 0 6px 0;
+  border-radius: 0 !important;
+  text-align: center;
+  margin: 0 auto 18px auto;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(30,60,114,0.10);
+  width: 100%;
+  display: block;
+  max-width: 95%;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: unset;
+}
+
+.logo-wsa-titulo {
+  display: block;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  margin-left: auto;
+  margin-right: auto;
+  width: 200px;
+  height: auto;
+  padding-top: 0 !important;
+}

@@ -1,0 +1,44 @@
+<ion-searchbar
+  [(ngModel)]="searchText"
+  [placeholder]="placeholder || 'Buscar...'"
+  showCancelButton="focus">
+</ion-searchbar>
+
+<!-- 
+  Si multiple es true, mostramos una lista con checkboxes 
+  De lo contrario, usamos un ion-radio-group para selección única 
+-->
+<ng-container *ngIf="multiple; else singleSelect">
+  <!-- Selección múltiple -->
+  <ion-list>
+    <ion-item *ngFor="let item of filteredItems">
+      <ion-label>
+        <ion-icon name="person-outline" slot="start" style="margin-right: 8px;"></ion-icon>
+        {{ item[itemTextField] }}
+      </ion-label>
+      <ion-checkbox
+        slot="end"
+        [checked]="isChecked(item)"
+        (ionChange)="onCheckChange(item)">
+      </ion-checkbox>
+    </ion-item>
+  </ion-list>
+</ng-container>
+
+<!-- Selección única con radio buttons -->
+<ng-template #singleSelect>
+  <ion-radio-group [(ngModel)]="selected" (ionChange)="onRadioChange($event)">
+    <ion-list>
+      <ion-item *ngFor="let item of filteredItems">
+        <ion-label>
+          <ion-icon name="person-outline" slot="start" style="margin-right: 8px;"></ion-icon>
+          {{ item[itemTextField] }}
+        </ion-label>
+        <ion-radio
+          slot="end"
+          [value]="item[itemValueField]">
+        </ion-radio>
+      </ion-item>
+    </ion-list>
+  </ion-radio-group>
+</ng-template>

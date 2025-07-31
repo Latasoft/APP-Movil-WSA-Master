@@ -1,0 +1,96 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/generar-reporte"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="vessels-clone-title">Vessel's by Operator Report</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="vessels-clone-bg">
+  <div class="vessels-clone-center">
+    <ion-card class="vessels-clone-card">
+      <ion-card-content>
+        <div class="vessels-clone-title-main">TOTAL VESSEL'S BY OPERATOR</div>
+        <!-- Filtros de fecha -->
+        <div class="vessels-clone-section">
+          <ion-label class="vessels-clone-label"><ion-icon name="calendar-outline"></ion-icon> FROM:</ion-label>
+          <ion-input class="vessels-clone-input" type="text" placeholder="DD-MM-YYYY"></ion-input>
+        </div>
+        <div class="vessels-clone-section">
+          <ion-label class="vessels-clone-label"><ion-icon name="calendar-outline"></ion-icon> TO:</ion-label>
+          <ion-input class="vessels-clone-input" type="text" placeholder="DD-MM-YYYY"></ion-input>
+        </div>
+        <!-- Tarjeta resumen -->
+        <ion-card class="vessels-clone-summary">
+          <ion-card-content>
+            <div class="vessels-clone-summary-title">TOTAL VESSELS</div>
+            <div class="vessels-clone-summary-value">{{ totalVesselsFiltrados }}</div>
+            <div class="vessels-clone-summary-label">
+              <span class="filtro-titulo">OPERATOR:</span> <span class="filtro-valor">{{ operadoresSeleccionados.join(', ') }}</span>
+            </div>
+          </ion-card-content>
+        </ion-card>
+        <!-- Selección de operador -->
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle">Seleccionar Operador:</div>
+          <ion-card class="vessels-clone-list-card">
+            <ion-list>
+              <ion-item *ngFor="let operador of operadoresUnicos">
+                <ion-checkbox slot="start"
+                  [checked]="operadoresSeleccionados.includes(operador)"
+                  (ionChange)="seleccionarOperador(operador)">
+                </ion-checkbox>
+                <ion-label>{{ operador }}</ion-label>
+                <img src="assets/logoWSA.svg" alt="logo" style="width: 64px; height: 64px; margin-left: 20px; vertical-align: middle;" />
+              </ion-item>
+            </ion-list>
+          </ion-card>
+        </div>
+        <!-- Selector de formato -->
+        <div class="vessels-clone-section">
+          <div class="vessels-clone-subtitle">Formato de Reporte</div>
+          <ion-item>
+            <ion-label>Formato de Reporte</ion-label>
+            <ion-select placeholder="Seleccionar formato" [(ngModel)]="formatoReporte">
+              <ion-select-option value="excel">Excel</ion-select-option>
+              <ion-select-option value="pdf">PDF</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </div>
+        <div class="vessels-clone-buttons">
+          <ion-button expand="block" fill="outline" color="dark" (click)="limpiarFiltros()" class="vessels-clone-btn-outline">Limpiar Filtros</ion-button>
+          <ion-button expand="block" color="light" (click)="generarReporte()" class="vessels-clone-btn-solid">Generar Reporte</ion-button>
+        </div>
+      </ion-card-content>
+    </ion-card>
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar class="vessels-footer-toolbar">
+    <ion-buttons slot="primary" class="vessels-footer-buttons">
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="home-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="people-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="settings-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="construct-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="document-text-outline"></ion-icon>
+      </ion-button>
+      <ion-button fill="clear">
+        <ion-icon slot="icon-only" name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-footer>

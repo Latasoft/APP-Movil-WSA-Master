@@ -1,0 +1,36 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Gestion de Servicios</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding fondo-admin">
+
+  <ion-item class="search-item">
+    <ion-input [(ngModel)]="busqueda" placeholder="Buscar servicio principal..." clearInput></ion-input>
+  </ion-item>
+
+  <ion-card 
+    *ngFor="let servicio of serviciosEstructurados | servicioFilter: busqueda; let i = index"
+    class="tarjeta-servicio card-marino"
+    (click)="abrirModalDetalle(servicio)">
+    
+    <ion-card-header class="card-header-marino">
+      <ion-card-title class="subtitulo-blanco">{{ servicio.principal }}</ion-card-title>
+      <ion-card-subtitle class="titulo-blanco">{{ servicio.subtitulo }}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content class="card-content-marino">
+      <!-- Aquí puedes agregar más contenido si es necesario -->
+    </ion-card-content>
+  </ion-card>
+
+  <ion-button expand="block" class="btn-agregar-servicio" (click)="agregar()" style="--background: #14345C !important; --color: #ffffff !important; --border: 2px solid #ffffff !important; --border-radius: 0px !important;">
+    <ion-icon name="add-circle-outline" slot="start"></ion-icon>
+    Agregar Servicio Principal
+  </ion-button>
+
+</ion-content>

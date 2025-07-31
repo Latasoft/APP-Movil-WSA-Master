@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar class="customToolBar">
+    <ion-title>Chat</ion-title>
+    <ion-buttons slot="end">
+      <ion-back-button defaultHref="/lista-grupos"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content #scrollContent fullscreen class="chat-content">
+
+  <!-- Botón para cargar mensajes anteriores -->
+  <div class="load-more" *ngIf="hasMore">
+    <ion-button fill="outline" size="small" (click)="loadPreviousMessages()">
+      Cargar mensajes anteriores
+    </ion-button>
+  </div>
+
+  <!-- Mensajes -->
+  <div class="chat-container">
+    <div *ngFor="let msg of messages" [ngClass]="{ 'own': isOwnMessage(msg), 'other': !isOwnMessage(msg) }" class="message-bubble">
+      <div class="sender">{{ getSenderName(msg) }}</div>
+      <div class="text">{{ msg.content }}</div>
+      <small class="timestamp">{{ msg.sentAt | date:'shortTime' }}</small>
+    </div>
+  </div>
+
+</ion-content>
+
+<!-- Campo de texto y botón -->
+<ion-footer>
+  <ion-toolbar class="input-toolbar">
+    <ion-item lines="none" class="message-input">
+      <ion-input
+        [(ngModel)]="newMessage"
+        placeholder="Escribe un mensaje..."
+        (keyup.enter)="enviarMensaje()"
+        inputmode="text"
+        type="text"
+        clearInput
+      ></ion-input>
+      <ion-buttons slot="end">
+        <ion-button fill="clear" color="primary" (click)="enviarMensaje()">
+          <ion-icon name="send-outline" slot="icon-only"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>

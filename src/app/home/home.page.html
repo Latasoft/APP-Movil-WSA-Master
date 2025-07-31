@@ -1,0 +1,290 @@
+<ion-header class="ion-no-border" style="--background: #14213d !important; background: #14213d !important; background-color: #14213d !important;">
+  <ion-toolbar style="--background: #14213d !important; background: #14213d !important; background-color: #14213d !important; --color: #ffffff !important; color: #ffffff !important;">
+    <ion-buttons slot="start" *ngIf="isLoggedIn">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>{{ getPanelTitle() }}</ion-title>
+    <ion-buttons slot="end">
+      <div class="language-toggle">
+        <div class="custom-toggle-container">
+          <ion-toggle 
+            [checked]="currentLanguage === 'en'"
+            (ionChange)="toggleLanguage()"
+            color="primary"
+            class="flag-toggle">
+          </ion-toggle>
+          <div class="flag-handle">
+            <img 
+              [src]="currentLanguage === 'en' ? 'assets/flags/us.svg' : 'assets/flags/es.svg'"
+              [alt]="currentLanguage === 'en' ? 'US Flag' : 'Spain Flag'"
+              class="flag-icon"
+            />
+          </div>
+        </div>
+      </div>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content fullscreen class="home-content">
+  <!-- Header con logo y bienvenida -->
+  <div class="welcome-header">
+    <div class="logo-section">
+      <img src="assets/logoWSA.svg" alt="Logo WSA" class="main-logo" />
+    </div>
+    <div class="welcome-info">
+      <h1 class="welcome-title">{{ 'welcome' | translate }}<br>{{ getRoleTranslationKey(userRole) | translate }}</h1>
+      <p class="welcome-subtitle">{{ 'quickAccess' | translate }}</p>
+    </div>
+  </div>
+
+  <!-- Contenido principal -->
+  <div class="main-content">
+    <!-- Opciones para ADMINISTRADOR -->
+    <div class="options-section" *ngIf="userRole === 'ADMINISTRADOR'">
+      <div class="options-grid">
+        <ion-card routerLink="/lista-usuarios" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="people-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'manageUsers' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'manageUsersDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/gestionar-clientes" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="people-circle-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'manageClients' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'manageClientsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/lista-embarcaciones" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="boat-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'manageVessels' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'manageVesselsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/generar-reporte" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="document-text-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'viewReports' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'viewReportsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/lista-grupos" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="chatbubbles-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'manageGroups' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'manageGroupsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/lista-descarga-reportes" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="document-attach-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'reportHistory' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'reportHistoryDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/servicios" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="construct-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'manageServices' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'manageServicesDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/historial-cambios" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="time-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>Historial de Cambios</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>Visualiza todos los cambios realizados en el sistema</p>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+
+
+
+    <!-- Opciones para CLIENTE -->
+    <div class="options-section" *ngIf="userRole === 'CLIENTE'">
+      <div class="options-grid">
+        <ion-card routerLink="/perfil" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="person-circle-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'myProfile' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'myProfileDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/detalle-naves-cliente" class="option-card">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="boat-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'myVessels' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'myVesselsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+
+    <!-- Opciones para TRABAJADOR -->
+    <div class="options-section" *ngIf="userRole === 'TRABAJADOR'">
+      <div class="options-grid" style="display: flex; flex-direction: column; align-items: center; gap: 20px;">
+        <ion-card routerLink="/lista-embarcaciones" class="option-card" style="width: 80%; max-width: 300px;">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="boat-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'manageVessels' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'manageVesselsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/lista-grupos" class="option-card" style="width: 80%; max-width: 300px;">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="chatbubbles-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>{{ 'myGroups' | translate }}</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>{{ 'myGroupsDesc' | translate }}</p>
+          </div>
+        </ion-card>
+
+        <ion-card routerLink="/historial-cambios" class="option-card" style="width: 80%; max-width: 300px;">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="time-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>Historial de Cambios</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>Visualiza todos los cambios realizados en embarcaciones</p>
+          </div>
+        </ion-card>
+
+        <!-- Botón para crear nueva nave (solo si puede_crear_nave es true) -->
+        <ion-card *ngIf="puedeCrearNave" routerLink="/embarcaciones" class="option-card" style="width: 80%; max-width: 300px;">
+          <div class="card-header">
+            <div class="card-icon">
+              <ion-icon name="boat-outline"></ion-icon>
+            </div>
+            <div class="card-title">
+              <h3>Crear Embarcación</h3>
+            </div>
+          </div>
+          <div class="card-description">
+            <p>Registrar una nueva embarcación en el sistema</p>
+          </div>
+        </ion-card>
+      </div>
+    </div>
+  </div>
+</ion-content>
+
+<ion-footer class="custom-footer">
+  <div class="footer-content">
+    <ion-buttons slot="start">
+      <ion-button routerLink="/lista-embarcaciones">
+        <ion-icon name="boat-outline"></ion-icon>
+      </ion-button>
+      <ion-button routerLink="/generar-reporte">
+        <ion-icon name="document-text-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button routerLink="/lista-grupos">
+        <ion-icon name="chatbubbles-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="confirmLogout()">
+        <ion-icon name="log-out-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <button routerLink="/home" class="home-button">
+      <ion-icon name="home-outline"></ion-icon>
+    </button>
+  </div>
+</ion-footer>
+<ion-alert
+  [isOpen]="showLogoutAlert"
+  [header]="'logout' | translate"
+  [message]="'logoutMessage' | translate"
+  cssClass="logout-alert-marino"
+  [backdropDismiss]="true"
+  [buttons]="alertButtons"
+  (didDismiss)="handleLogoutConfirm($event)">
+</ion-alert>

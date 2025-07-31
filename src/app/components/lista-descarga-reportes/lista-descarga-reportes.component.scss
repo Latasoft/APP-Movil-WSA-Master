@@ -1,0 +1,104 @@
+/* 📌 Toolbar bonito con gradiente */
+ion-toolbar {
+    --background: linear-gradient(90deg, #1e3c72 0%, #2a5298 100%);
+    --color: #ffffff;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  /* 📌 Fondo del contenido con gradiente */
+  ion-content {
+    --background: linear-gradient(180deg, #f5f7fa 0%, #c3cfe2 100%);
+  }
+  
+  /* 📌 Spinner de carga centrado */
+  .loading-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+  }
+  
+  /* 📌 Cada item de solicitud */
+  .solicitud-item {
+    ion-label {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      padding: 0.8rem 0.5rem;
+  
+      h2 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        color: var(--ion-color-primary);
+        margin: 0;
+      }
+  
+      .datos-solicitud {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+  
+        p {
+          margin: 0;
+          font-size: 0.95rem;
+          color: var(--ion-color-medium);
+          word-break: break-word;
+        }
+      }
+    }
+  }
+  
+  /* 📌 Paginación centrada y estilizada */
+  .paginacion-container {
+    margin: 1.5rem 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  
+    app-paginacion {
+      display: flex;
+      gap: 8px;
+  
+      ion-button {
+        --border-radius: 8px;
+        --padding-start: 12px;
+        --padding-end: 12px;
+        font-size: 0.9rem;
+        min-width: 100px;
+      }
+  
+      .page-info {
+        display: flex;
+        align-items: center;
+        font-size: 0.9rem;
+        color: var(--ion-color-medium);
+      }
+    }
+  }
+  
+  /* 📌 Mensaje de "no hay datos" */
+  .no-data {
+    text-align: center;
+    color: var(--ion-color-medium);
+    font-size: 1rem;
+    padding: 3rem 1rem;
+  }
+  
+  /* 📌 Responsive ajustes */
+  @media (min-width: 600px) {
+    .solicitud-item {
+      ion-label {
+        .datos-solicitud {
+          flex-direction: row;
+          justify-content: start;
+          flex-wrap: wrap;
+  
+          p {
+            min-width: 140px;
+          }
+        }
+      }
+    }
+  }
+  
